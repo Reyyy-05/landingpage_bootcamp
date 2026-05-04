@@ -1,0 +1,64 @@
+import {
+  Award,
+  Users,
+  Briefcase,
+  Headphones,
+  RefreshCw,
+  MessageSquare,
+} from "lucide-react";
+import { FEATURES } from "@/constants";
+
+const ICON_MAP: Record<string, React.ElementType> = {
+  Award,
+  Users,
+  Briefcase,
+  HeadphonesIcon: Headphones,
+  RefreshCw,
+  MessageSquare,
+};
+
+export function FeaturesSection() {
+  return (
+    <section id="features" className="py-24 bg-white">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <span className="section-label">Kenapa Creativemu?</span>
+          <h2 className="heading-lg mt-2 mb-4">Keunggulan Program</h2>
+          <p className="text-gray-500 max-w-2xl mx-auto">
+            Kami bukan bootcamp biasa — setiap detail dirancang agar kamu siap
+            kerja, bukan sekadar lulus.
+          </p>
+        </div>
+
+        {/* Features grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {FEATURES.map((feature, i) => {
+            const Icon = ICON_MAP[feature.icon] ?? Award;
+            return (
+              <div
+                key={feature.title}
+                className="card-feature animate-fade-up"
+                style={{ animationDelay: `${i * 0.1}s` }}
+              >
+                {/* Icon */}
+                <div className="size-11 rounded-xl bg-violet-50 flex items-center justify-center mb-4">
+                  <Icon className="text-violet-600" size={22} />
+                </div>
+                <h3
+                  className="font-semibold text-gray-900 mb-2"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
