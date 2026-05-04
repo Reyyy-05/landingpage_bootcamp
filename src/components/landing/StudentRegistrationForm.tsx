@@ -132,9 +132,7 @@ export function StudentRegistrationForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...data,
-          birth_date: data.birth_date instanceof Date
-            ? data.birth_date.toISOString().split("T")[0]
-            : data.birth_date,
+          birth_date: data.birth_date,
         }),
       });
 
@@ -398,7 +396,7 @@ export function StudentRegistrationForm() {
                         watch("package_selected") === pkg.value
                           ? "border-violet-600 bg-violet-50"
                           : "border-gray-200 hover:border-violet-300"
-                      } ${pkg.popular ? "ring-1 ring-violet-400" : ""}`}
+                      } ${'popular' in pkg && pkg.popular ? "ring-1 ring-violet-400" : ""}`}
                     >
                       <input
                         {...register("package_selected")}
@@ -406,7 +404,7 @@ export function StudentRegistrationForm() {
                         value={pkg.value}
                         className="sr-only"
                       />
-                      {pkg.popular && (
+                      {'popular' in pkg && pkg.popular && (
                         <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-0.5 rounded-full">
                           Populer
                         </span>

@@ -1,8 +1,20 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
-import type { ApiSuccess, ApiError, Bootcamp } from "@/types";
+import type { ApiError } from "@/types";
 
-export const revalidate = 60; // cache for 60 seconds
+export const dynamic = "force-dynamic";
+
+type PublicBootcamp = {
+  id: string;
+  name: string;
+  batch_number: number;
+  program_type: string;
+  location: string | null;
+  price_reguler: number;
+  price_premium: number | null;
+  price_intensif: number | null;
+  is_open: boolean;
+};
 
 export async function GET() {
   try {
@@ -16,8 +28,8 @@ export async function GET() {
 
     if (error) throw error;
 
-    return NextResponse.json<ApiSuccess<Bootcamp[]>>({
-      data: data ?? [],
+    return NextResponse.json<{ data: PublicBootcamp[] }>({
+      data: (data ?? []) as PublicBootcamp[],
     });
   } catch (error) {
     console.error("[bootcamps-public] error:", error);

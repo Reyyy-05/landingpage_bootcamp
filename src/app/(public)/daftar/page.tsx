@@ -1,11 +1,24 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { StudentRegistrationForm } from "@/components/landing/StudentRegistrationForm";
+import { Loader2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Daftar Sekarang",
   description:
     "Daftarkan diri Anda ke program Creativemu Academy dan mulai perjalanan karir digital Anda.",
 };
+
+function FormFallback() {
+  return (
+    <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-12 flex items-center justify-center">
+      <div className="flex flex-col items-center gap-3 text-gray-400">
+        <Loader2 size={28} className="animate-spin text-violet-500" />
+        <p className="text-sm">Memuat formulir...</p>
+      </div>
+    </div>
+  );
+}
 
 export default function DaftarPage() {
   return (
@@ -19,7 +32,9 @@ export default function DaftarPage() {
             Anda akan diarahkan untuk konfirmasi via WhatsApp.
           </p>
         </div>
-        <StudentRegistrationForm />
+        <Suspense fallback={<FormFallback />}>
+          <StudentRegistrationForm />
+        </Suspense>
       </div>
     </div>
   );
