@@ -207,10 +207,10 @@ creativemu-academy/
 ### `students` — Data Pendaftar
 ```sql
 id, email, full_name, birth_place, birth_date, address,
-phone_wa, instagram_handle, gender, student_status, major,
-bootcamp_id, package_selected, voucher_id, voucher_code_used,
-registration_status, admin_notes, confirmed_at, confirmed_by,
-created_at, updated_at
+phone_wa, instagram_handle, gender, student_status, school_name,
+university_name, major, bootcamp_id, package_selected, voucher_id, 
+voucher_code_used, registration_status, admin_notes, confirmed_at, 
+confirmed_by, created_at, updated_at
 ```
 
 ### `bootcamps` — Program & Batch

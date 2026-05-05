@@ -244,27 +244,9 @@ Minggu 6   → Phase 6: Testing, SEO & Deployment
 
 ---
 
-## Phase 5 — Dashboard Advanced (Bootcamp & Voucher)
+## Phase 5 — Dashboard Advanced + Polish
 **Estimasi: 4–5 hari**
 
-### 5.1 Bootcamp Management (`/dashboard/bootcamps`)
-- [ ] List semua bootcamp (card/table view)
-- [ ] Progress bar: terdaftar/kapasitas per batch
-- [ ] Badge status: Aktif/Tutup/Penuh
-- [ ] Toggle is_open langsung dari list
-- [ ] Create bootcamp baru (Dialog form)
-- [ ] Edit bootcamp (full page atau sheet)
-- [ ] Delete dengan konfirmasi
-- [ ] Klik bootcamp → lihat list student yang terdaftar
-
-### 5.2 Voucher Management (`/dashboard/vouchers`)
-- [ ] List semua voucher dengan usage stats (dipakai/maks)
-- [ ] Progress bar penggunaan
-- [ ] Badge: aktif/expired/habis
-- [ ] Create voucher:
-  - Kode (manual input atau auto-generate)
-  - Bootcamp target (semua atau spesifik)
-  - Tipe diskon (fixed/percentage)
   - Nilai diskon
   - Maks penggunaan
   - Tanggal berlaku

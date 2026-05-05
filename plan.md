@@ -197,6 +197,22 @@ interface StudentFormData {
 - View usage & sisa kuota
 - Auto-generate kode random
 
+### Phase 5: Dashboard Advanced & UX Polish (Selesai 100%)
+**Fokus**: Melengkapi fitur manajemen konten (bootcamp & voucher) serta menyempurnakan alur pendaftaran.
+
+*   [x] **Bootcamp Management**
+    *   [x] Buat komponen list/tabel untuk melihat semua bootcamp (`/dashboard/bootcamps`).
+    *   [x] Tambahkan fitur toggle (aktif/non-aktif) status pendaftaran menggunakan *Server Actions*.
+    *   [x] Buat modal/form untuk menambah & mengedit data bootcamp.
+*   [x] **Voucher Management**
+    *   [x] Buat komponen list/tabel untuk manajemen voucher (`/dashboard/vouchers`).
+    *   [x] Buat form pembuatan voucher baru dengan validasi tanggal dan jumlah maksimal pemakaian.
+*   [x] **UI/UX Polish**
+    *   [x] Sempurnakan tampilan admin dashboard agar sepenuhnya responsif di semua ukuran layar (termasuk *overflow-x-auto* pada tabel).
+    *   [x] Perbaiki *state management* pemilihan paket pada form pendaftaran agar lebih intuitif.
+    *   [x] Tangani error dari sisi server dengan memberikan pesan error yang jelas kepada pengguna (termasuk *raw database error* saat *debugging*).
+    *   [x] Perbaiki fungsi *Logout* di dashboard admin menggunakan `useTransition`.
+
 ---
 
 ## 8. Confirmation Page Flow
