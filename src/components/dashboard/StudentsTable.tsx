@@ -144,10 +144,61 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
     },
   });
 
+  const handleExportCSV = () => {
+    // Ambil data yang sedang di-filter di tabel (bukan cuma halaman aktif)
+    const rows = table.getFilteredRowModel().rows;
+    if (rows.length === 0) {
+      alert("Tidak ada data untuk diexport");
+      return;
+    }
+
+    // Header CSV
+    const headers = [
+      "ID",
+      "Nama Lengkap",
+      "Email",
+      "No. WhatsApp",
+      "Program",
+      "Batch",
+      "Paket",
+      "Status",
+      "Tanggal Daftar"
+    ];
+
+    // Data rows
+    const csvData = rows.map((row) => {
+      const d = row.original;
+      return [
+        d.id,
+        `"${d.full_name}"`, // Quote strings to handle commas in names
+        d.email,
+        `'${d.phone_wa}`, // Prefix with tick to prevent excel auto-formatting numbers
+        `"${d.bootcamp_name}"`,
+        d.bootcamp_batch,
+        d.package_selected,
+        d.registration_status,
+        format(new Date(d.created_at), "yyyy-MM-dd HH:mm:ss")
+      ].join(",");
+    });
+
+    // Gabungkan Header dan Data
+    const csvString = [headers.join(","), ...csvData].join("\n");
+    
+    // Download File
+    const blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", `Data_Pendaftar_${format(new Date(), "yyyyMMdd_HHmmss")}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <div className="relative w-72">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="relative w-full sm:w-72">
           <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Cari nama atau email..."
@@ -158,6 +209,9 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
             className="pl-9 bg-white"
           />
         </div>
+        <Button variant="outline" onClick={handleExportCSV} className="w-full sm:w-auto bg-white">
+          Export CSV
+        </Button>
       </div>
 
       <div className="rounded-md border bg-white shadow-sm overflow-hidden">

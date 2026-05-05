@@ -16,12 +16,16 @@ const NAV_ITEMS = [
     href: "/dashboard/students",
     icon: Users,
   },
-  // Future items
-  // {
-  //   title: "Vouchers",
-  //   href: "/dashboard/vouchers",
-  //   icon: Ticket,
-  // },
+  {
+    title: "Program Bootcamp",
+    href: "/dashboard/bootcamps",
+    icon: Ticket,
+  },
+  {
+    title: "Vouchers",
+    href: "/dashboard/vouchers",
+    icon: Ticket,
+  },
 ];
 
 export function DashboardSidebar({ admin }: { admin: any }) {
