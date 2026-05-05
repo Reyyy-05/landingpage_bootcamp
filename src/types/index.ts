@@ -80,6 +80,8 @@ export interface Student {
   gender: Gender;
   student_status: StudentStatus;
   major: string | null;
+  school_name: string | null;
+  university_name: string | null;
   bootcamp_id: string | null;
   package_selected: PackageType | null;
   voucher_id: string | null;
@@ -108,6 +110,8 @@ export interface StudentFormData {
   gender: Gender;
   student_status: StudentStatus;
   major?: string;
+  school_name?: string;
+  university_name?: string;
   bootcamp_id: string;
   package_selected: PackageType;
   voucher_code?: string;

@@ -1,7 +1,17 @@
 import { z } from "zod";
 import { STUDENT_STATUSES, GENDER_OPTIONS, PACKAGES } from "@/constants";
 
-export const studentFormSchema = z.object({
+// ── Helper: check student status category ─────────────────────
+export function isPelajarStatus(status: string | undefined): boolean {
+  return !!status?.startsWith("pelajar_sma_smk_");
+}
+
+export function isMahasiswaStatus(status: string | undefined): boolean {
+  return !!status?.startsWith("mahasiswa_");
+}
+
+// ── Base schema (without conditional validation) ──────────────
+const studentFormBaseSchema = z.object({
   email: z
     .string()
     .min(1, "Email wajib diisi")
@@ -52,6 +62,8 @@ export const studentFormSchema = z.object({
   ),
 
   major: z.string().max(100).optional(),
+  school_name: z.string().max(200).optional(),
+  university_name: z.string().max(200).optional(),
 
   bootcamp_id: z
     .string()
@@ -66,11 +78,55 @@ export const studentFormSchema = z.object({
   voucher_code: z.string().max(50).optional(),
 });
 
+// ── Full schema with conditional validation ───────────────────
+export const studentFormSchema = studentFormBaseSchema.superRefine((data, ctx) => {
+  // Pelajar SMA/SMK → Nama Sekolah wajib
+  if (isPelajarStatus(data.student_status)) {
+    if (!data.school_name || data.school_name.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Nama sekolah wajib diisi (minimal 2 karakter)",
+        path: ["school_name"],
+      });
+    }
+  }
+
+  // Mahasiswa → Nama Kampus wajib
+  if (isMahasiswaStatus(data.student_status)) {
+    if (!data.university_name || data.university_name.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Nama kampus/universitas wajib diisi (minimal 2 karakter)",
+        path: ["university_name"],
+      });
+    }
+  }
+});
+
 export type StudentFormSchema = z.infer<typeof studentFormSchema>;
 
 // Server-side: additional validation for API route
-export const studentApiSchema = studentFormSchema.extend({
+export const studentApiSchema = studentFormBaseSchema.extend({
   birth_date: z.string().min(1, "Tanggal lahir wajib diisi"),
+}).superRefine((data, ctx) => {
+  if (isPelajarStatus(data.student_status)) {
+    if (!data.school_name || data.school_name.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Nama sekolah wajib diisi",
+        path: ["school_name"],
+      });
+    }
+  }
+  if (isMahasiswaStatus(data.student_status)) {
+    if (!data.university_name || data.university_name.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Nama kampus/universitas wajib diisi",
+        path: ["university_name"],
+      });
+    }
+  }
 });
 
 export type StudentApiSchema = z.infer<typeof studentApiSchema>;

@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2, CheckCircle2, AlertCircle, Tag, ChevronDown } from "lucide-react";
-import { studentFormSchema, type StudentFormSchema } from "@/lib/validations/student";
+import { studentFormSchema, type StudentFormSchema, isPelajarStatus, isMahasiswaStatus } from "@/lib/validations/student";
 import { STUDENT_STATUSES, GENDER_OPTIONS, PACKAGES } from "@/constants";
 import { formatCurrency } from "@/lib/utils";
 import type { Bootcamp } from "@/types";
@@ -79,7 +79,25 @@ export function StudentRegistrationForm() {
   const watchedVoucher = watch("voucher_code");
   const watchedBootcamp = watch("bootcamp_id");
   const debouncedVoucher = useDebounce(watchedVoucher, 700);
-  const isMahasiswa = watchedStatus?.startsWith("mahasiswa_");
+  const isPelajar = isPelajarStatus(watchedStatus);
+  const isMahasiswa = isMahasiswaStatus(watchedStatus);
+
+  // ── Clear irrelevant fields when status changes ────────────
+  useEffect(() => {
+    if (isPelajar) {
+      // Pelajar: clear kampus & jurusan
+      setValue("university_name", "");
+      setValue("major", "");
+    } else if (isMahasiswa) {
+      // Mahasiswa: clear sekolah
+      setValue("school_name", "");
+    } else {
+      // Lainnya: clear semua
+      setValue("school_name", "");
+      setValue("university_name", "");
+      setValue("major", "");
+    }
+  }, [watchedStatus, isPelajar, isMahasiswa, setValue]);
 
   // ── Load bootcamps ─────────────────────────────────────────
   useEffect(() => {
@@ -320,10 +338,38 @@ export function StudentRegistrationForm() {
               <FieldError message={errors.student_status?.message} />
             </div>
 
-            {/* Jurusan — conditional */}
+            {/* Nama Sekolah — conditional: pelajar SMA/SMK */}
+            {isPelajar && (
+              <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                <Label required>Nama Sekolah</Label>
+                <input
+                  {...register("school_name")}
+                  type="text"
+                  placeholder="SMKN 1 Yogyakarta, SMA Negeri 3 Bantul, dll."
+                  className={errors.school_name ? inputErrorClass : inputClass}
+                />
+                <FieldError message={errors.school_name?.message} />
+              </div>
+            )}
+
+            {/* Nama Kampus — conditional: mahasiswa */}
             {isMahasiswa && (
-              <div>
-                <Label>Jurusan / Program Studi</Label>
+              <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                <Label required>Nama Kampus / Universitas</Label>
+                <input
+                  {...register("university_name")}
+                  type="text"
+                  placeholder="Universitas Gadjah Mada, UIN Sunan Kalijaga, dll."
+                  className={errors.university_name ? inputErrorClass : inputClass}
+                />
+                <FieldError message={errors.university_name?.message} />
+              </div>
+            )}
+
+            {/* Jurusan — conditional: mahasiswa */}
+            {isMahasiswa && (
+              <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                <Label>Jurusan / Program Studi <span className="text-gray-400 font-normal">(opsional)</span></Label>
                 <input
                   {...register("major")}
                   type="text"
