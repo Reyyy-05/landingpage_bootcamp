@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2, CheckCircle2, AlertCircle, Tag, ChevronDown } from "lucide-react";
 import { studentFormSchema, type StudentFormSchema, isPelajarStatus, isMahasiswaStatus } from "@/lib/validations/student";
@@ -50,8 +50,6 @@ const inputErrorClass =
 // ─── Main Component ───────────────────────────────────────────
 export function StudentRegistrationForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const preselectedPackage = searchParams.get("package") as StudentFormSchema["package_selected"] | null;
 
   const [bootcamps, setBootcamps] = useState<Bootcamp[]>([]);
   const [isLoadingBootcamps, setIsLoadingBootcamps] = useState(true);
@@ -71,7 +69,7 @@ export function StudentRegistrationForm() {
   } = useForm<StudentFormSchema>({
     resolver: zodResolver(studentFormSchema),
     defaultValues: {
-      package_selected: preselectedPackage ?? undefined,
+      package_selected: "reguler",
     },
   });
 

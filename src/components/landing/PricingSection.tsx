@@ -169,7 +169,7 @@ export async function PricingSection() {
 
                 {/* CTA */}
                 <Link
-                  href={`/daftar?package=${key}`}
+                  href="/daftar"
                   className={`block text-center py-3 rounded-full font-semibold transition-all ${
                     isPopular
                       ? "bg-white text-violet-700 hover:bg-violet-50"
