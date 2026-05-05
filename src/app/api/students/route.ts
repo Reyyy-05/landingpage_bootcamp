@@ -131,7 +131,7 @@ export async function POST(request: NextRequest) {
       }
       console.error("[students/route] insert error:", insertError);
       return NextResponse.json<ApiError>(
-        { error: "Gagal menyimpan data pendaftaran. Coba lagi." },
+        { error: `Database Error: ${insertError.message || insertError.details || "Gagal menyimpan data"}` },
         { status: 500 }
       );
     }

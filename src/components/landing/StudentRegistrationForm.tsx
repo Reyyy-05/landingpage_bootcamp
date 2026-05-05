@@ -440,9 +440,9 @@ export function StudentRegistrationForm() {
                       onClick={() => setValue("package_selected", pkg.value as any, { shouldValidate: true })}
                       className={`relative cursor-pointer rounded-xl border-2 p-4 transition-all ${
                         watchedPackage === pkg.value
-                          ? "border-violet-600 bg-violet-50"
+                          ? "border-violet-600 bg-violet-50 ring-1 ring-violet-600"
                           : "border-gray-200 hover:border-violet-300"
-                      } ${'popular' in pkg && pkg.popular ? "ring-1 ring-violet-400" : ""}`}
+                      }`}
                     >
                       <input
                         {...register("package_selected")}
