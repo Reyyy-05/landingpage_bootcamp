@@ -21,7 +21,7 @@ export async function loginAdmin(prevState: any, formData: FormData) {
   });
 
   if (authError || !authData.user) {
-    return { error: "Email atau password salah" };
+    return { error: authError?.message || "Gagal login ke sistem otentikasi" };
   }
 
   // 2. Cek apakah user ada di tabel admins dan aktif
