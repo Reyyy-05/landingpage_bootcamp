@@ -2,45 +2,45 @@
 const CURRICULUM = [
   {
     month: 1,
-    title: "Fondasi Digital Marketing",
-    description:
-      "Pengenalan dunia digital marketing, mindset marketer profesional, penguasaan tools dasar, dan strategi konten media sosial.",
+    title: "PHP Fundamentals",
+    description: "Bangun fondasi yang kuat dalam PHP, mencakup sintaks dasar, logika, dan konsep pemrograman esensial untuk pengembangan web.",
     isFinal: false,
+    colorClass: "bg-blue-600",
   },
   {
     month: 2,
-    title: "Social Media Marketing",
-    description:
-      "Pengelolaan Instagram, TikTok, Facebook secara profesional. Membuat konten viral, jadwal posting, dan analisis engagement.",
+    title: "Object-Oriented Programming (OOP)",
+    description: "Kuasai prinsip-prinsip OOP termasuk kelas, objek, pewarisan (inheritance), dan praktik clean code yang digunakan dalam aplikasi modern.",
     isFinal: false,
+    colorClass: "bg-indigo-600",
   },
   {
     month: 3,
-    title: "Paid Advertising (Meta & Google Ads)",
-    description:
-      "Membuat dan mengoptimalkan iklan berbayar di Meta Ads dan Google Ads. Targeting, copywriting iklan, dan optimasi ROAS.",
+    title: "Laravel Fundamentals",
+    description: "Pelajari framework Laravel, termasuk arsitektur MVC, routing, manajemen database, dan fitur-fitur intinya.",
     isFinal: false,
+    colorClass: "bg-violet-600",
   },
   {
     month: 4,
-    title: "SEO & Content Marketing",
-    description:
-      "Riset kata kunci, on-page & off-page SEO, pembuatan konten SEO-friendly, dan strategi inbound marketing.",
+    title: "Laravel Implementation (Individual Project)",
+    description: "Terapkan keahlianmu dengan membangun proyek dunia nyata secara mandiri menggunakan praktik terbaik Laravel.",
     isFinal: false,
+    colorClass: "bg-fuchsia-600",
   },
   {
     month: 5,
-    title: "E-Commerce & Marketplace Marketing",
-    description:
-      "Optimasi toko di Shopee, Tokopedia, dan Lazada. Iklan marketplace, manajemen produk, dan analisis penjualan.",
+    title: "Laravel Implementation (Group Project)",
+    description: "Berkolaborasi dalam tim untuk mengembangkan aplikasi dunia nyata yang skalabel, mensimulasikan alur kerja di industri.",
     isFinal: false,
+    colorClass: "bg-rose-600",
   },
   {
     month: 6,
-    title: "Capstone Project & Sertifikasi BNSP",
-    description:
-      "Mengerjakan proyek akhir berskala nyata secara tim. Persiapan intensif dan pelaksanaan ujian sertifikasi kompetensi BNSP.",
+    title: "Capstone Project & BNSP Certification",
+    description: "Selesaikan proyek akhir berstandar industri dan persiapkan ujian sertifikasi BNSP untuk memvalidasi keahlian profesionalmu.",
     isFinal: true,
+    colorClass: "bg-orange-600",
   },
 ];
 
@@ -50,21 +50,18 @@ export function RoadmapSection() {
       <div className="container mx-auto px-4 max-w-3xl">
         {/* Header */}
         <div className="text-center mb-14">
-          <h2
-            className="heading-lg mb-3"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Perjalanan 6 Bulan Anda
+          <h2 className="text-[clamp(32px,4vw,48px)] font-bold text-slate-900 leading-[1.2] tracking-tight mb-4">
+            Perjalanan Belajar 6 Bulanmu
           </h2>
-          <p className="text-gray-500">
-            Kurikulum komprehensif dari fundamental hingga tingkat mahir.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Kurikulum komprehensif dari dasar hingga menjadi ahli yang siap kerja.
           </p>
         </div>
 
         {/* Timeline */}
         <div className="relative flex flex-col gap-6">
           {/* Vertical line */}
-          <div className="absolute left-8 top-8 bottom-8 w-px bg-violet-200 hidden sm:block" />
+          <div className="absolute left-8 top-8 bottom-8 w-px bg-slate-200 hidden sm:block" />
 
           {CURRICULUM.map((item, i) => (
             <div
@@ -74,32 +71,28 @@ export function RoadmapSection() {
             >
               {/* Number badge */}
               <div className="relative z-10 shrink-0">
-                <div className="size-16 rounded-full bg-violet-700 text-white flex items-center justify-center font-bold text-lg shadow-lg"
-                  style={{ fontFamily: "var(--font-display)" }}>
+                <div className={`size-16 rounded-full text-white flex items-center justify-center font-bold text-xl shadow-lg ${item.colorClass}`}>
                   {item.month}
                 </div>
               </div>
 
               {/* Card */}
               <div
-                className={`flex-1 bg-white rounded-2xl p-5 shadow-sm border transition-all hover:shadow-md ${
+                className={`flex-1 bg-white rounded-2xl p-6 shadow-sm border transition-all hover:shadow-md ${
                   item.isFinal
-                    ? "border-violet-300 ring-1 ring-violet-200"
-                    : "border-gray-100"
+                    ? "border-orange-300 ring-1 ring-orange-100"
+                    : "border-slate-100 hover:border-slate-300"
                 }`}
               >
                 {item.isFinal && (
-                  <span className="inline-block text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-600 mb-3 uppercase tracking-wider">
+                  <span className="inline-block text-xs font-bold px-3 py-1 rounded-full bg-orange-100 text-orange-700 mb-3 uppercase tracking-wider">
                     Final Stage
                   </span>
                 )}
-                <h3
-                  className="font-semibold text-gray-900 mb-1.5"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
                   Bulan {item.month}: {item.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-base text-slate-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>

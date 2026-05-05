@@ -53,15 +53,22 @@ export async function HeroSection() {
           <div className="flex flex-col justify-center">
             {/* Headline */}
             <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-6 tracking-tight animate-fade-up">
-              Jadilah Ahli Digital Marketing{" "}
+              Jadi Full-Stack <br />
               <span className="bg-gradient-to-br from-violet-600 to-indigo-500 bg-clip-text text-transparent">
-                Bersertifikasi BNSP
-              </span>
+                Laravel Developer
+              </span>{" "}
+              <br />
+              Siap Kerja dalam 6 Bulan
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg animate-fade-up delay-100">
-              Program bootcamp intensif berbasis studi kasus nyata yang dirancang khusus untuk memastikan kamu siap bersaing di dunia industri digital.
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed max-w-lg animate-fade-up delay-100">
+              Bootcamp intensif berbasis project nyata + mentoring hingga kamu siap masuk industri dan tersertifikasi BNSP.
+            </p>
+
+            {/* Urgency */}
+            <p className="text-sm font-semibold text-violet-600 mb-6 animate-fade-up delay-[150ms]">
+              ✨ Amankan Kursimu Sekarang!
             </p>
 
             {/* CTA Buttons */}
