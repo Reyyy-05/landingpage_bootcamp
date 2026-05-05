@@ -439,6 +439,7 @@ export function StudentRegistrationForm() {
                   return (
                     <label
                       key={pkg.value}
+                      onClick={() => setValue("package_selected", pkg.value as any, { shouldValidate: true })}
                       className={`relative cursor-pointer rounded-xl border-2 p-4 transition-all ${
                         watchedPackage === pkg.value
                           ? "border-violet-600 bg-violet-50"
@@ -450,6 +451,8 @@ export function StudentRegistrationForm() {
                         type="radio"
                         value={pkg.value}
                         className="sr-only"
+                        checked={watchedPackage === pkg.value}
+                        readOnly
                       />
                       {'popular' in pkg && pkg.popular && (
                         <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-0.5 rounded-full">
