@@ -95,34 +95,6 @@ export async function HeroSection() {
                 alt="CreativeMU Bootcamp" 
                 className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
               />
-
-              {/* Floating batch info card */}
-              {bootcamp && (
-                <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white min-w-[220px] animate-float">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="size-10 rounded-full bg-violet-100 flex items-center justify-center">
-                      <span className="text-violet-700 text-sm font-bold">
-                        {bootcamp.batch_number}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sm font-bold text-slate-800">
-                        Batch {bootcamp.batch_number}
-                      </p>
-                      <p className="text-xs text-rose-500 font-medium">
-                        Pendaftaran Terbatas
-                      </p>
-                    </div>
-                  </div>
-                  {/* Progress bar */}
-                  <div className="mt-3 h-2 bg-slate-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full"
-                      style={{ width: "85%" }}
-                    />
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
