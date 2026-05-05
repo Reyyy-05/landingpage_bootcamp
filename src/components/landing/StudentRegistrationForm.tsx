@@ -78,6 +78,7 @@ export function StudentRegistrationForm() {
   const watchedStatus = watch("student_status");
   const watchedVoucher = watch("voucher_code");
   const watchedBootcamp = watch("bootcamp_id");
+  const watchedPackage = watch("package_selected");
   const debouncedVoucher = useDebounce(watchedVoucher, 700);
   const isPelajar = isPelajarStatus(watchedStatus);
   const isMahasiswa = isMahasiswaStatus(watchedStatus);
@@ -439,7 +440,7 @@ export function StudentRegistrationForm() {
                     <label
                       key={pkg.value}
                       className={`relative cursor-pointer rounded-xl border-2 p-4 transition-all ${
-                        watch("package_selected") === pkg.value
+                        watchedPackage === pkg.value
                           ? "border-violet-600 bg-violet-50"
                           : "border-gray-200 hover:border-violet-300"
                       } ${'popular' in pkg && pkg.popular ? "ring-1 ring-violet-400" : ""}`}
