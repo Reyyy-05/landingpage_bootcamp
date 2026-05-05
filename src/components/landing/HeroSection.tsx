@@ -50,45 +50,27 @@ export async function HeroSection() {
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
           {/* Left: Content */}
-          <div>
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 border border-violet-200 mb-6 animate-fade-up">
-              <Shield size={14} className="text-violet-600" />
-              <span className="text-sm font-semibold text-violet-700">
-                Sertifikasi Resmi BNSP
-              </span>
-            </div>
-
+          <div className="flex flex-col justify-center">
             {/* Headline */}
-            <h1
-              className="heading-xl mb-6 animate-fade-up delay-100"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Jadi Digital Marketer{" "}
-              <span className="gradient-text">Profesional</span>{" "}
-              Siap Kerja dalam 6 Bulan
+            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-6 tracking-tight animate-fade-up">
+              Jadilah Ahli Digital Marketing{" "}
+              <span className="bg-gradient-to-br from-violet-600 to-indigo-500 bg-clip-text text-transparent">
+                Bersertifikasi BNSP
+              </span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed animate-fade-up delay-200">
-              Bootcamp intensif berbasis proyek nyata + mentoring hingga kamu
-              siap masuk industri dan tersertifikasi BNSP.
+            <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg animate-fade-up delay-100">
+              Program bootcamp intensif berbasis studi kasus nyata yang dirancang khusus untuk memastikan kamu siap bersaing di dunia industri digital.
             </p>
 
-            {/* Urgency */}
-            {bootcamp && (
-              <p className="text-sm font-semibold text-violet-600 mb-6 animate-fade-up delay-300">
-                ✨ Amankan Kursimu Sekarang!
-              </p>
-            )}
-
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 animate-fade-up delay-400">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-200">
               <Link
                 href="/daftar"
-                className="group inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-violet-700 text-white font-semibold hover:bg-violet-800 transition-all hover:shadow-xl hover:-translate-y-0.5"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
-                Daftar Batch Sekarang
+                Daftar Sekarang
                 <ArrowRight
                   size={18}
                   className="transition-transform group-hover:translate-x-1"
@@ -98,94 +80,90 @@ export async function HeroSection() {
                 href="https://wa.me/6285177114036?text=Halo+Admin+Creativemu+Academy%2C+saya+ingin+konsultasi+tentang+program"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border-2 border-violet-300 text-violet-700 font-semibold hover:bg-violet-50 transition-all"
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-slate-200 bg-white text-slate-700 font-semibold hover:border-violet-200 hover:bg-violet-50 transition-all shadow-sm"
               >
-                Konsultasi Gratis
+                Konsultasi Program
               </a>
-            </div>
-
-            {/* Trust signals */}
-            <div className="flex items-center gap-6 mt-8 animate-fade-up delay-500">
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Users size={16} className="text-violet-500" />
-                <span>100+ alumni</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Shield size={16} className="text-violet-500" />
-                <span>Terverifikasi BNSP</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Clock size={16} className="text-violet-500" />
-                <span>6 bulan program</span>
-              </div>
             </div>
           </div>
 
           {/* Right: Visual */}
           <div className="relative flex justify-center lg:justify-end animate-fade-up delay-300">
-            {/* Main image/mockup container */}
-            <div className="relative">
-              {/* Placeholder image frame */}
-              <div
-                className="w-full max-w-md rounded-2xl overflow-hidden shadow-2xl"
-                style={{ aspectRatio: "4/3" }}
-              >
-                <div className="w-full h-full bg-gradient-to-br from-violet-100 to-violet-200 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-6xl mb-4">🎓</div>
-                    <p className="text-violet-700 font-semibold">
-                      Creativemu Academy
-                    </p>
-                    <p className="text-violet-500 text-sm mt-1">
-                      Bootcamp Digital Marketing
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <div className="relative w-full max-w-lg">
+              <img 
+                src="/images/aset-landing-page.png" 
+                alt="CreativeMU Bootcamp" 
+                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
+              />
 
               {/* Floating batch info card */}
               {bootcamp && (
-                <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-xl border border-violet-100 min-w-[200px] animate-float">
+                <div className="absolute -bottom-6 -left-6 bg-white/90 backdrop-blur-sm rounded-2xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-white min-w-[220px] animate-float">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="size-8 rounded-full bg-violet-100 flex items-center justify-center">
-                      <span className="text-violet-600 text-xs font-bold">
+                    <div className="size-10 rounded-full bg-violet-100 flex items-center justify-center">
+                      <span className="text-violet-700 text-sm font-bold">
                         {bootcamp.batch_number}
                       </span>
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-gray-800">
+                      <p className="text-sm font-bold text-slate-800">
                         Batch {bootcamp.batch_number}
                       </p>
-                      <p className="text-xs text-orange-500 font-medium">
-                        Pendaftaran Segera Ditutup
+                      <p className="text-xs text-rose-500 font-medium">
+                        Pendaftaran Terbatas
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-gray-500">Kapasitas Terisi</span>
-                    <span className="font-bold text-violet-700">
-                      Terbatas!
-                    </span>
-                  </div>
                   {/* Progress bar */}
-                  <div className="mt-2 h-1.5 bg-violet-100 rounded-full overflow-hidden">
+                  <div className="mt-3 h-2 bg-slate-100 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-violet-600 rounded-full"
-                      style={{ width: "75%" }}
+                      className="h-full bg-gradient-to-r from-violet-500 to-indigo-500 rounded-full"
+                      style={{ width: "85%" }}
                     />
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+        </div>
 
-              {/* Price chip */}
-              {bootcamp && (
-                <div className="absolute -top-3 -right-3 bg-violet-700 text-white rounded-2xl px-4 py-2 shadow-lg">
-                  <p className="text-xs opacity-75">Mulai dari</p>
-                  <p className="font-bold text-sm">
-                    {formatCurrency(bootcamp.price_reguler)}
-                  </p>
-                </div>
-              )}
+        {/* Bottom Banner (Batas Hero) */}
+        <div className="mt-8 mb-4">
+          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-2 h-full bg-violet-500"></div>
+            
+            <div className="flex items-center gap-4 px-4 w-full md:w-auto">
+              <div className="w-12 h-12 rounded-full bg-violet-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <Users size={24} className="text-violet-600" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-slate-900 leading-none mb-1">100+</p>
+                <p className="text-sm text-slate-500 font-medium">Alumni Sukses</p>
+              </div>
+            </div>
+
+            <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+
+            <div className="flex items-center gap-4 px-4 w-full md:w-auto">
+              <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <Shield size={24} className="text-amber-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-slate-900 leading-none mb-1">BNSP</p>
+                <p className="text-sm text-slate-500 font-medium">Sertifikasi Resmi</p>
+              </div>
+            </div>
+
+            <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+
+            <div className="flex items-center gap-4 px-4 w-full md:w-auto">
+              <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                <Clock size={24} className="text-emerald-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-slate-900 leading-none mb-1">6 Bulan</p>
+                <p className="text-sm text-slate-500 font-medium">Program Intensif</p>
+              </div>
             </div>
           </div>
         </div>

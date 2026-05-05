@@ -4,6 +4,7 @@ import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { RoadmapSection } from "@/components/landing/RoadmapSection";
 import { PricingSection } from "@/components/landing/PricingSection";
 import { CTASection } from "@/components/landing/CTASection";
+import { FAQSection } from "@/components/landing/FAQSection";
 
 export default function HomePage() {
   return (
@@ -14,6 +15,7 @@ export default function HomePage() {
       <RoadmapSection />
       <PricingSection />
       <CTASection />
+      <FAQSection />
     </>
   );
 }

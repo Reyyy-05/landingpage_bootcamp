@@ -35,7 +35,6 @@
 **Yang perlu dilakukan:**
 - [ ] Ganti teks "Creativemu Academy" di Navbar menjadi file SVG/PNG Logo resmi.
 - [ ] Update `favicon.ico` dan `apple-icon.png`.
-- [ ] Ganti placeholder emoji/foto di **Hero Section** dengan foto nyata suasana belajar offline CreativeMU.
 - [ ] Siapkan *assets* logo perusahaan/universitas alumni jika ada section *Social Proof*.
 
 ### 4. Konten Copywriting Nyata
