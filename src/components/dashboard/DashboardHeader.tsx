@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useTransition } from "react";
 import { logoutAdmin } from "@/app/actions/auth";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -15,8 +15,7 @@ import {
 import { LogOut, User } from "lucide-react";
 
 export function DashboardHeader({ admin }: { admin: any }) {
-  // We use useActionState for the logout action
-  const [state, formAction, isPending] = useActionState(logoutAdmin, null);
+  const [isPending, startTransition] = useTransition();
 
   const getInitials = (name: string) => {
     return name
@@ -54,14 +53,19 @@ export function DashboardHeader({ admin }: { admin: any }) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <form action={formAction}>
-              <DropdownMenuItem asChild>
-                <button type="submit" disabled={isPending} className="w-full cursor-pointer text-red-600 flex items-center">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  <span>{isPending ? "Keluar..." : "Log out"}</span>
-                </button>
-              </DropdownMenuItem>
-            </form>
+            <DropdownMenuItem 
+              onClick={(e) => {
+                e.preventDefault();
+                startTransition(async () => {
+                  await logoutAdmin();
+                });
+              }}
+              disabled={isPending} 
+              className="w-full cursor-pointer text-red-600 flex items-center"
+            >
+              <LogOut className="mr-2 h-4 w-4" />
+              <span>{isPending ? "Keluar..." : "Log out"}</span>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
