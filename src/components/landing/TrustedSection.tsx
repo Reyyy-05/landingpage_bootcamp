@@ -3,23 +3,21 @@
 import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
+const baseLogos = [
+  { name: "Partner 1", src: "/logos/partner-1.jpg", width: 110 },
+  { name: "Partner 2", src: "/logos/partner-2.jpg", width: 110 },
+  { name: "Partner 3", src: "/logos/partner-3.jpg", width: 110 },
+  { name: "Partner 4", src: "/logos/partner-4.jpg", width: 110 },
+  { name: "Partner 6", src: "/logos/partner-6.jpg", width: 110 },
+  { name: "SMK Budi Mulia", src: "/logos/smk.jpeg", width: 110 },
+];
+
+// Buat 16 item untuk mengisi 2 baris (8 item per baris) agar penuh dan tidak terlihat kosong
 const logos = [
-  { name: "Google", src: "/logos/google.svg", width: 80 },
-  { name: "Microsoft", src: "/logos/microsoft.svg", width: 110 },
-  { name: "Amazon Web Services", src: "/logos/aws.svg", width: 60 },
-  { name: "IBM", src: "/logos/ibm.svg", width: 70 },
-  { name: "Samsung", src: "/logos/samsung.svg", width: 100 },
-  { name: "Lenovo", src: "/logos/lenovo.svg", width: 90 },
-  { name: "Intel", src: "/logos/intel.svg", width: 60 },
-  { name: "Ericsson", src: "/logos/ericsson.svg", width: 100 },
-  { name: "LINE", src: "/logos/line.svg", width: 60 },
-  { name: "XL Axiata", src: "/logos/xl-axiata.svg", width: 90 },
-  { name: "Indosat Ooredoo", src: "/logos/indosat.svg", width: 100 },
-  { name: "Lintasarta", src: "/logos/lintasarta.svg", width: 100 },
-  { name: "DBS Foundation", src: "/logos/dbs.svg", width: 90 },
-  { name: "Kemkominfo", src: "/logos/kemkominfo.svg", width: 70 },
-  { name: "Kampus Merdeka", src: "/logos/kampus-merdeka.svg", width: 80 },
-  { name: "Bangkit", src: "/logos/bangkit.svg", width: 90 },
+  ...baseLogos,
+  baseLogos[0], baseLogos[1],
+  ...baseLogos,
+  baseLogos[2], baseLogos[3],
 ];
 
 const ROW_1 = logos.slice(0, 8);
@@ -29,16 +27,17 @@ function LogoCard({ name, src, width }: { name: string; src: string; width: numb
   const [imgError, setImgError] = useState(false);
 
   return (
-    <div className="flex items-center justify-center bg-white border border-slate-200 rounded-xl px-7 py-4 min-w-[160px] h-[72px] transition-all duration-200 hover:border-violet-300 hover:shadow-[0_4px_20px_rgba(124,58,237,0.12)] hover:-translate-y-0.5 shrink-0">
+    <div className="flex items-center justify-center bg-white border border-slate-200 rounded-xl px-4 py-4 min-w-[150px] w-[150px] h-[80px] transition-all duration-200 hover:border-violet-300 hover:shadow-[0_4px_20px_rgba(124,58,237,0.12)] hover:-translate-y-0.5 shrink-0 group">
       {!imgError ? (
         <img
           src={src}
           alt={`Logo ${name}`}
-          style={{ objectFit: "contain", height: 36, width: "auto", maxWidth: width }}
+          className="object-contain max-h-[40px] w-auto transition-all duration-300 mix-blend-multiply filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100"
+          style={{ maxWidth: width }}
           onError={() => setImgError(true)}
         />
       ) : (
-        <span className="font-semibold text-slate-400 text-sm tracking-wide">{name}</span>
+        <span className="font-semibold text-slate-400 text-xs tracking-wide text-center">{name}</span>
       )}
     </div>
   );
