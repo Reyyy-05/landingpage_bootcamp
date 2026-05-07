@@ -58,12 +58,12 @@ export function Footer() {
 
           {/* Program links */}
           <div className="md:col-span-3 lg:col-span-3">
-            <h3 className="text-white font-semibold mb-5">Menu</h3>
+            <h3 className="text-white font-semibold mb-5">Tentang</h3>
             <ul className="flex flex-col gap-3 text-sm">
               {[
                 { href: "#features", label: "Keunggulan" },
                 { href: "#roadmap", label: "Kurikulum" },
-                { href: "#footer", label: "About" },
+                { href: "#footer", label: "Tentang" },
                 { href: "/daftar", label: "Daftar Sekarang" },
               ].map((link) => (
                 <li key={link.href}>
