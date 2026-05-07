@@ -81,7 +81,7 @@ export function Footer() {
             <ul className="flex flex-col gap-3 text-sm">
               <li className="flex items-center gap-2">
                 <Mail size={14} className="text-violet-400 shrink-0" />
-                <span>info@creativemu.id</span>
+                <span>admin_official@creativemuacademy.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={14} className="text-violet-400 shrink-0" />
