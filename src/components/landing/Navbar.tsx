@@ -8,8 +8,8 @@ import { Menu, X } from "lucide-react";
 const NAV_LINKS = [
   { href: "#features", label: "Keunggulan" },
   { href: "#roadmap", label: "Kurikulum" },
-  { href: "#footer", label: "Tentang" },
   { href: "#cta", label: "Daftar" },
+  { href: "#footer", label: "Tentang" },
 ];
 
 export function Navbar() {
