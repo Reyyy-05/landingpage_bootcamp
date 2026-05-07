@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 
@@ -31,12 +32,15 @@ export function Navbar() {
     >
       <nav className="container mx-auto px-4 max-w-6xl flex items-center justify-between h-16">
         {/* Logo */}
-        <Link
-          href="/"
-          className="font-display font-800 text-xl text-violet-900"
-          style={{ fontFamily: "var(--font-display)" }}
-        >
-          Creativemu Academy
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo-creativemu.png"
+            alt="Creativemu Academy Logo"
+            width={200}
+            height={50}
+            className="h-9 md:h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop links */}
