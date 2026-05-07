@@ -66,7 +66,7 @@ export function RoadmapSection() {
           {CURRICULUM.map((item, i) => (
             <div
               key={item.month}
-              className="relative flex gap-6 animate-fade-up"
+              className="relative flex gap-6 scroll-animate"
               style={{ animationDelay: `${i * 0.1}s` }}
             >
               {/* Number badge */}

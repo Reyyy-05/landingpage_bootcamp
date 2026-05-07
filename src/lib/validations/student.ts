@@ -64,6 +64,8 @@ const studentFormBaseSchema = z.object({
   major: z.string().max(100).optional(),
   school_name: z.string().max(200).optional(),
   university_name: z.string().max(200).optional(),
+  workplace: z.string().max(200).optional(),
+  job_title: z.string().max(100).optional(),
 
   bootcamp_id: z
     .string()
@@ -80,7 +82,7 @@ const studentFormBaseSchema = z.object({
 
 // ── Full schema with conditional validation ───────────────────
 export const studentFormSchema = studentFormBaseSchema.superRefine((data, ctx) => {
-  // Pelajar SMA/SMK → Nama Sekolah wajib
+  // Pelajar SMA/SMK → Nama Sekolah wajib & Jurusan wajib
   if (isPelajarStatus(data.student_status)) {
     if (!data.school_name || data.school_name.trim().length < 2) {
       ctx.addIssue({
@@ -89,15 +91,47 @@ export const studentFormSchema = studentFormBaseSchema.superRefine((data, ctx) =
         path: ["school_name"],
       });
     }
+    if (!data.major || data.major.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Jurusan wajib diisi",
+        path: ["major"],
+      });
+    }
   }
 
-  // Mahasiswa → Nama Kampus wajib
+  // Mahasiswa → Nama Kampus wajib & Jurusan wajib
   if (isMahasiswaStatus(data.student_status)) {
     if (!data.university_name || data.university_name.trim().length < 2) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message: "Nama kampus/universitas wajib diisi (minimal 2 karakter)",
         path: ["university_name"],
+      });
+    }
+    if (!data.major || data.major.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Jurusan/Prodi wajib diisi",
+        path: ["major"],
+      });
+    }
+  }
+
+  // Lainnya → Tempat Kerja & Posisi
+  if (data.student_status === "lainnya") {
+    if (!data.workplace || data.workplace.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Tempat kerja wajib diisi (isi '-' jika tidak ada)",
+        path: ["workplace"],
+      });
+    }
+    if (!data.job_title || data.job_title.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Posisi/Sebagai apa wajib diisi (isi '-' jika tidak ada)",
+        path: ["job_title"],
       });
     }
   }
@@ -117,6 +151,13 @@ export const studentApiSchema = studentFormBaseSchema.extend({
         path: ["school_name"],
       });
     }
+    if (!data.major || data.major.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Jurusan wajib diisi",
+        path: ["major"],
+      });
+    }
   }
   if (isMahasiswaStatus(data.student_status)) {
     if (!data.university_name || data.university_name.trim().length < 2) {
@@ -124,6 +165,29 @@ export const studentApiSchema = studentFormBaseSchema.extend({
         code: z.ZodIssueCode.custom,
         message: "Nama kampus/universitas wajib diisi",
         path: ["university_name"],
+      });
+    }
+    if (!data.major || data.major.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Jurusan wajib diisi",
+        path: ["major"],
+      });
+    }
+  }
+  if (data.student_status === "lainnya") {
+    if (!data.workplace || data.workplace.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Tempat kerja wajib diisi",
+        path: ["workplace"],
+      });
+    }
+    if (!data.job_title || data.job_title.trim().length < 2) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Posisi wajib diisi",
+        path: ["job_title"],
       });
     }
   }

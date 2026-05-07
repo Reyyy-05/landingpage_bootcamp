@@ -112,6 +112,8 @@ export async function POST(request: NextRequest) {
         major: data.major?.trim() || null,
         school_name: data.school_name?.trim() || null,
         university_name: data.university_name?.trim() || null,
+        workplace: data.workplace?.trim() || null,
+        job_title: data.job_title?.trim() || null,
         bootcamp_id: data.bootcamp_id,
         package_selected: data.package_selected,
         voucher_id: voucherId,

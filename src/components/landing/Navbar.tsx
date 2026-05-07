@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 const NAV_LINKS = [
   { href: "#features", label: "Keunggulan" },
   { href: "#roadmap", label: "Kurikulum" },
-  { href: "#pricing", label: "Harga" },
+  { href: "#pricing", label: "Program" },
   { href: "#cta", label: "Daftar" },
 ];
 

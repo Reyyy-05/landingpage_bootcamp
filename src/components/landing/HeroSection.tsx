@@ -52,7 +52,7 @@ export async function HeroSection() {
           {/* Left: Content */}
           <div className="flex flex-col justify-center">
             {/* Headline */}
-            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-6 tracking-tight animate-fade-up">
+            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-6 tracking-tight scroll-animate">
               Jadi Full-Stack <br />
               <span className="bg-gradient-to-br from-violet-600 to-indigo-500 bg-clip-text text-transparent">
                 Laravel Developer
@@ -62,17 +62,17 @@ export async function HeroSection() {
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg text-slate-600 mb-6 leading-relaxed max-w-lg animate-fade-up delay-100">
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed max-w-lg scroll-animate scroll-animate-delay-100">
               Bootcamp intensif berbasis project nyata + mentoring hingga kamu siap masuk industri dan tersertifikasi BNSP.
             </p>
 
             {/* Urgency */}
-            <p className="text-sm font-semibold text-violet-600 mb-6 animate-fade-up delay-[150ms]">
+            <p className="text-sm font-semibold text-violet-600 mb-6 scroll-animate scroll-animate-delay-200">
               ✨ Amankan Kursimu Sekarang!
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up delay-200">
+            <div className="flex flex-col sm:flex-row gap-4 scroll-animate scroll-animate-delay-200">
               <Link
                 href="/daftar"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-all hover:shadow-lg hover:-translate-y-0.5"
@@ -95,7 +95,7 @@ export async function HeroSection() {
           </div>
 
           {/* Right: Visual */}
-          <div className="relative flex justify-center lg:justify-end animate-fade-up delay-300">
+          <div className="relative flex justify-center lg:justify-end scroll-animate scroll-animate-delay-300">
             <div className="relative w-full max-w-lg">
               <img 
                 src="/images/aset-landing-page.png" 

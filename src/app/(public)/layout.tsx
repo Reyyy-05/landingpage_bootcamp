@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { ScrollAnimationProvider } from "@/components/shared/ScrollAnimationProvider";
 
 export const metadata: Metadata = {
   title: {
@@ -15,10 +16,10 @@ export default function PublicLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <ScrollAnimationProvider>
       <Navbar />
       <main>{children}</main>
       <Footer />
-    </>
+    </ScrollAnimationProvider>
   );
 }

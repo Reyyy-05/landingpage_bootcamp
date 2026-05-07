@@ -69,7 +69,7 @@ export function StudentRegistrationForm() {
   } = useForm<StudentFormSchema>({
     resolver: zodResolver(studentFormSchema),
     defaultValues: {
-      package_selected: "reguler",
+      package_selected: "laravel_full_online",
     },
   });
 
@@ -84,14 +84,17 @@ export function StudentRegistrationForm() {
   // ── Clear irrelevant fields when status changes ────────────
   useEffect(() => {
     if (isPelajar) {
-      // Pelajar: clear kampus & jurusan
+      // Pelajar: clear kampus & lainnya
       setValue("university_name", "");
-      setValue("major", "");
+      setValue("workplace", "");
+      setValue("job_title", "");
     } else if (isMahasiswa) {
-      // Mahasiswa: clear sekolah
+      // Mahasiswa: clear sekolah & lainnya
       setValue("school_name", "");
+      setValue("workplace", "");
+      setValue("job_title", "");
     } else {
-      // Lainnya: clear semua
+      // Lainnya: clear sekolah, kampus, jurusan
       setValue("school_name", "");
       setValue("university_name", "");
       setValue("major", "");
@@ -337,45 +340,81 @@ export function StudentRegistrationForm() {
               <FieldError message={errors.student_status?.message} />
             </div>
 
-            {/* Nama Sekolah — conditional: pelajar SMA/SMK */}
+            {/* Nama Sekolah & Jurusan — conditional: pelajar SMA/SMK */}
             {isPelajar && (
-              <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                <Label required>Nama Sekolah</Label>
-                <input
-                  {...register("school_name")}
-                  type="text"
-                  placeholder="SMKN 1 Yogyakarta, SMA Negeri 3 Bantul, dll."
-                  className={errors.school_name ? inputErrorClass : inputClass}
-                />
-                <FieldError message={errors.school_name?.message} />
+              <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
+                <div>
+                  <Label required>Nama Sekolah</Label>
+                  <input
+                    {...register("school_name")}
+                    type="text"
+                    placeholder="SMKN 1 Yogyakarta, SMA Negeri 3 Bantul, dll."
+                    className={errors.school_name ? inputErrorClass : inputClass}
+                  />
+                  <FieldError message={errors.school_name?.message} />
+                </div>
+                <div>
+                  <Label required>Jurusan</Label>
+                  <input
+                    {...register("major")}
+                    type="text"
+                    placeholder="RPL, TKJ, Multimedia, dll."
+                    className={errors.major ? inputErrorClass : inputClass}
+                  />
+                  <FieldError message={errors.major?.message} />
+                </div>
               </div>
             )}
 
-            {/* Nama Kampus — conditional: mahasiswa */}
+            {/* Nama Kampus & Jurusan — conditional: mahasiswa */}
             {isMahasiswa && (
-              <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                <Label required>Nama Kampus / Universitas</Label>
-                <input
-                  {...register("university_name")}
-                  type="text"
-                  placeholder="Universitas Gadjah Mada, UIN Sunan Kalijaga, dll."
-                  className={errors.university_name ? inputErrorClass : inputClass}
-                />
-                <FieldError message={errors.university_name?.message} />
+              <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
+                <div>
+                  <Label required>Nama Kampus / Universitas</Label>
+                  <input
+                    {...register("university_name")}
+                    type="text"
+                    placeholder="Universitas Gadjah Mada, UIN Sunan Kalijaga, dll."
+                    className={errors.university_name ? inputErrorClass : inputClass}
+                  />
+                  <FieldError message={errors.university_name?.message} />
+                </div>
+                <div>
+                  <Label required>Jurusan / Program Studi</Label>
+                  <input
+                    {...register("major")}
+                    type="text"
+                    placeholder="Manajemen Bisnis, Teknik Informatika, dll."
+                    className={errors.major ? inputErrorClass : inputClass}
+                  />
+                  <FieldError message={errors.major?.message} />
+                </div>
               </div>
             )}
 
-            {/* Jurusan — conditional: mahasiswa */}
-            {isMahasiswa && (
-              <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                <Label>Jurusan / Program Studi <span className="text-gray-400 font-normal">(opsional)</span></Label>
-                <input
-                  {...register("major")}
-                  type="text"
-                  placeholder="Manajemen Bisnis, Teknik Informatika, dll."
-                  className={errors.major ? inputErrorClass : inputClass}
-                />
-                <FieldError message={errors.major?.message} />
+            {/* Tempat Kerja & Posisi — conditional: lainnya */}
+            {watchedStatus === "lainnya" && (
+              <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
+                <div>
+                  <Label required>Tempat Kerja / Instansi</Label>
+                  <input
+                    {...register("workplace")}
+                    type="text"
+                    placeholder="Isi '-' jika belum bekerja"
+                    className={errors.workplace ? inputErrorClass : inputClass}
+                  />
+                  <FieldError message={errors.workplace?.message} />
+                </div>
+                <div>
+                  <Label required>Posisi / Jabatan</Label>
+                  <input
+                    {...register("job_title")}
+                    type="text"
+                    placeholder="Isi '-' jika belum bekerja"
+                    className={errors.job_title ? inputErrorClass : inputClass}
+                  />
+                  <FieldError message={errors.job_title?.message} />
+                </div>
               </div>
             )}
 
@@ -420,59 +459,8 @@ export function StudentRegistrationForm() {
               <FieldError message={errors.bootcamp_id?.message} />
             </div>
 
-            {/* Paket */}
-            <div>
-              <Label required>Pilih Paket</Label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {PACKAGES.map((pkg) => {
-                  const selectedBootcamp = bootcamps.find(b => b.id === watchedBootcamp);
-                  const price = selectedBootcamp
-                    ? pkg.value === "reguler"
-                      ? selectedBootcamp.price_reguler
-                      : pkg.value === "premium"
-                        ? selectedBootcamp.price_premium
-                        : selectedBootcamp.price_intensif
-                    : null;
-
-                  return (
-                    <label
-                      key={pkg.value}
-                      onClick={() => setValue("package_selected", pkg.value as any, { shouldValidate: true })}
-                      className={`relative cursor-pointer rounded-xl border-2 p-4 transition-all ${
-                        watchedPackage === pkg.value
-                          ? "border-violet-600 bg-violet-50 ring-1 ring-violet-600"
-                          : "border-gray-200 hover:border-violet-300"
-                      }`}
-                    >
-                      <input
-                        {...register("package_selected")}
-                        type="radio"
-                        value={pkg.value}
-                        className="sr-only"
-                        checked={watchedPackage === pkg.value}
-                        readOnly
-                      />
-                      {'popular' in pkg && pkg.popular && (
-                        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-orange-400 text-white text-xs font-bold px-3 py-0.5 rounded-full">
-                          Populer
-                        </span>
-                      )}
-                      <p className="font-semibold text-gray-900 text-sm mb-0.5"
-                        style={{ fontFamily: "var(--font-display)" }}>
-                        {pkg.label}
-                      </p>
-                      {price !== null && price !== undefined && (
-                        <p className="text-violet-700 font-bold text-sm">
-                          {formatCurrency(price)}
-                        </p>
-                      )}
-                      <p className="text-xs text-gray-500 mt-1">{pkg.description}</p>
-                    </label>
-                  );
-                })}
-              </div>
-              <FieldError message={errors.package_selected?.message} />
-            </div>
+            {/* Paket (Hidden as there is only 1 package) */}
+            <input type="hidden" {...register("package_selected")} value="laravel_full_online" />
 
             {/* Kode Voucher */}
             <div>

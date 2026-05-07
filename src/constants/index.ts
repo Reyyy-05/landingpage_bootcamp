@@ -11,20 +11,10 @@ export const PROGRAM_TYPES = [
 
 export const PACKAGES = [
   {
-    value: "reguler",
-    label: "Reguler",
-    description: "Cocok untuk belajar mandiri dengan komunitas",
-  },
-  {
-    value: "premium",
-    label: "Premium (BNSP)",
-    description: "Paket lengkap menuju karir profesional",
+    value: "laravel_full_online",
+    label: "Bootcamp Laravel Full Online",
+    description: "Paket lengkap full online (Juni-Oktober)",
     popular: true,
-  },
-  {
-    value: "intensif",
-    label: "Intensif",
-    description: "Bootcamp offline full-time dengan fasilitas",
   },
 ] as const;
 
@@ -64,34 +54,34 @@ export const FEATURES = [
       "Sertifikat diakui secara nasional oleh Badan Nasional Sertifikasi Profesi, memperkuat nilai kamu di pasar kerja.",
   },
   {
-    icon: "Users",
+    icon: "GraduationCap",
     title: "Mentor Praktisi Industri",
     description:
       "Belajar langsung dari developer aktif yang sudah mengerjakan proyek nyata di perusahaan teknologi terkemuka.",
   },
   {
-    icon: "Briefcase",
+    icon: "BriefcaseBusiness",
     title: "Proyek Portfolio Nyata",
     description:
       "Bangun 3 proyek production-grade yang bisa kamu tampilkan di GitHub dan interview kerja.",
   },
   {
-    icon: "HeadphonesIcon",
-    title: "Career Support 1 Tahun",
+    icon: "Handshake",
+    title: "Berkesempatan Di-hire Mitra & Job Connection",
     description:
-      "Akses eksklusif ke jaringan alumni, job board, dan sesi mock interview selama satu tahun penuh.",
+      "Akses eksklusif ke jaringan mitra perusahaan kami untuk peluang kerja dan penyaluran karir langsung.",
   },
   {
-    icon: "RefreshCw",
+    icon: "LifeBuoy",
+    title: "Career Support Selamanya",
+    description:
+      "Dukungan karir seumur hidup. Akses eksklusif ke jaringan alumni, job board, dan sesi mock interview.",
+  },
+  {
+    icon: "BookOpen",
     title: "Kurikulum Selalu Update",
     description:
       "Materi diperbarui setiap semester mengikuti tren industri — tidak ada materi kadaluarsa.",
-  },
-  {
-    icon: "MessageSquare",
-    title: "Komunitas Discord Aktif",
-    description:
-      "Bergabung dengan ribuan developer dalam komunitas eksklusif yang saling mendukung seumur hidup.",
   },
 ] as const;
 

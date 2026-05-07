@@ -99,6 +99,8 @@
 | `gender` | `text` | NOT NULL | laki-laki / perempuan |
 | `student_status` | `text` | NOT NULL | Enum pelajar/mahasiswa |
 | `major` | `text` | NULLABLE | Jurusan/Prodi (opsional) |
+| `workplace` | `text` | NULLABLE | Tempat kerja/instansi (Lainnya) |
+| `job_title` | `text` | NULLABLE | Posisi/sebagai apa (Lainnya) |
 | `bootcamp_id` | `uuid` | FK bootcamps | Program dipilih |
 | `package_selected` | `text` | | reguler/premium/intensif |
 | `voucher_id` | `uuid` | FK vouchers, NULLABLE | |

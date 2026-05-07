@@ -35,12 +35,12 @@
 **Yang perlu dilakukan:**
 - [ ] Ganti teks "Creativemu Academy" di Navbar menjadi file SVG/PNG Logo resmi.
 - [ ] Update `favicon.ico` dan `apple-icon.png`.
-- [ ] Siapkan *assets* logo perusahaan/universitas alumni jika ada section *Social Proof*.
+- [x] Siapkan *assets* logo perusahaan/universitas alumni jika ada section *Social Proof*.
 
 ### 4. Konten Copywriting Nyata
 **Yang perlu dilakukan:**
 - [ ] Minta kurikulum resmi bulan 1 sampai 6 dari tim materi, lalu masukkan ke `RoadmapSection.tsx`.
-- [ ] Ganti teks deskripsi keunggulan di `FeaturesSection.tsx` agar sesuai dengan *Unique Selling Proposition* terbaru.
+- [x] Ganti teks deskripsi keunggulan di `FeaturesSection.tsx` agar sesuai dengan *Unique Selling Proposition* terbaru. (Selesai pada revisi terbaru: Sertif BNSP, Job Connection, Career Support, dll)
 - [ ] Masukkan testimoni asli dari alumni (Nama, Instansi, Quote) untuk menggantikan data dummy.
 
 ---
@@ -59,8 +59,8 @@
 
 | Fitur Utama | Status |
 |-------------|--------|
-| Landing Page Utama (UI/UX) | ✅ Selesai |
-| Form Registrasi & Logika | ✅ Selesai |
+| Landing Page Utama (UI/UX) | ✅ Selesai (Animasi scroll & update konten bootcamp 8 Mei) |
+| Form Registrasi & Logika | ✅ Selesai (Pemisahan field status Pendidikan/Lainnya) |
 | Supabase Database & Auth | ✅ Selesai |
 | Dashboard: Login & Proteksi | ✅ Selesai |
 | Dashboard: Manajemen Pendaftar | ✅ Selesai |

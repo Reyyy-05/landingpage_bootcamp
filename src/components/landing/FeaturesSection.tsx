@@ -1,20 +1,20 @@
 import {
   Award,
-  Users,
-  Briefcase,
-  Headphones,
-  RefreshCw,
-  MessageSquare,
+  GraduationCap,
+  BriefcaseBusiness,
+  Handshake,
+  LifeBuoy,
+  BookOpen,
 } from "lucide-react";
 import { FEATURES } from "@/constants";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Award,
-  Users,
-  Briefcase,
-  HeadphonesIcon: Headphones,
-  RefreshCw,
-  MessageSquare,
+  GraduationCap,
+  BriefcaseBusiness,
+  Handshake,
+  LifeBuoy,
+  BookOpen,
 };
 
 export function FeaturesSection() {
@@ -38,7 +38,7 @@ export function FeaturesSection() {
             return (
               <div
                 key={feature.title}
-                className="card-feature animate-fade-up"
+                className="card-feature scroll-animate"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
                 {/* Icon */}

@@ -297,8 +297,8 @@ Minggu 6   → Phase 6: Testing, SEO & Deployment
 - [ ] Test di berbagai ukuran layar
 
 ### 6.5 Deployment
-- [ ] Push ke GitHub (repo private)
-- [ ] Connect ke Vercel
+- [x] Push ke GitHub (repo private)
+- [x] Connect ke Vercel
 - [ ] Set environment variables di Vercel
 - [ ] Setup custom domain
 - [ ] Enable Vercel Analytics

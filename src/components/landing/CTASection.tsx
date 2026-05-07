@@ -46,9 +46,9 @@ export function CTASection() {
                 </h2>
                 {bootcamp && (
                   <p className="text-violet-200 text-sm mb-8">
-                    Batch {bootcamp.batch_number} akan segera dimulai. Jangan
+                    Kelas terbaru akan dimulai pada <strong>8 Mei 2026</strong>. Jangan
                     lewatkan kesempatan untuk bertransformasi menjadi digital
-                    marketer tersertifikasi.
+                    marketer tersertifikasi melalui kelas <strong>Full Online</strong>.
                   </p>
                 )}
 
