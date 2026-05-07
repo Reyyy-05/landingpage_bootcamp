@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { StudentRegistrationForm } from "@/components/landing/StudentRegistrationForm";
+import { PromoBanner } from "@/components/landing/PromoBanner";
 import { Loader2 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -32,6 +33,9 @@ export default function DaftarPage() {
             Anda akan diarahkan untuk konfirmasi via WhatsApp.
           </p>
         </div>
+        
+        <PromoBanner />
+        
         <Suspense fallback={<FormFallback />}>
           <StudentRegistrationForm />
         </Suspense>

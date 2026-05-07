@@ -12,16 +12,11 @@ const baseLogos = [
   { name: "SMK Budi Mulia", src: "/logos/smk.jpeg", width: 110 },
 ];
 
-// Buat 16 item untuk mengisi 2 baris (8 item per baris) agar penuh dan tidak terlihat kosong
 const logos = [
   ...baseLogos,
-  baseLogos[0], baseLogos[1],
   ...baseLogos,
-  baseLogos[2], baseLogos[3],
+  ...baseLogos,
 ];
-
-const ROW_1 = logos.slice(0, 8);
-const ROW_2 = logos.slice(8);
 
 function LogoCard({ name, src, width }: { name: string; src: string; width: number }) {
   const [imgError, setImgError] = useState(false);
@@ -32,7 +27,7 @@ function LogoCard({ name, src, width }: { name: string; src: string; width: numb
         <img
           src={src}
           alt={`Logo ${name}`}
-          className="object-contain max-h-[40px] w-auto transition-all duration-300 mix-blend-multiply filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100"
+          className="object-contain max-h-[40px] w-auto transition-all duration-300 mix-blend-multiply"
           style={{ maxWidth: width }}
           onError={() => setImgError(true)}
         />
@@ -101,8 +96,7 @@ export function TrustedSection() {
         <div className="absolute top-0 bottom-0 left-0 w-[200px] z-10 pointer-events-none bg-gradient-to-r from-white to-transparent" />
         <div className="absolute top-0 bottom-0 right-0 w-[200px] z-10 pointer-events-none bg-gradient-to-l from-white to-transparent" />
         
-        <MarqueeRow items={ROW_1} direction="left" speed={35} />
-        <MarqueeRow items={ROW_2} direction="right" speed={28} />
+        <MarqueeRow items={logos} direction="left" speed={30} />
       </div>
 
       {/* Global styles for the keyframes since Tailwind arbitrary values for keyframes can be messy */}
