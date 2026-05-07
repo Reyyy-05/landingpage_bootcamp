@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Instagram, Youtube, Facebook, Phone, Mail, MapPin } from "lucide-react";
 import { SOCIAL_LINKS } from "@/constants";
 
@@ -11,13 +10,12 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image
-                src="/images/logo-creativemu.png"
-                alt="Creativemu Academy Logo"
-                width={160}
-                height={40}
-                className="h-8 w-auto object-contain filter brightness-0 invert"
-              />
+              <div className="size-9 rounded-lg bg-violet-600 flex items-center justify-center">
+                <span className="text-white font-bold text-sm">CA</span>
+              </div>
+              <span className="text-white font-semibold" style={{ fontFamily: "var(--font-display)" }}>
+                Creativemu Academy
+              </span>
             </div>
             <p className="text-sm leading-relaxed mb-5">
               Platform pelatihan teknologi terpercaya dengan fokus pada kesiapan industri dan sertifikasi profesional.
