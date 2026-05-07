@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Instagram, Youtube, Facebook, Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Instagram, Youtube, Facebook, Phone, Mail, MapPin, Globe } from "lucide-react";
 import { SOCIAL_LINKS } from "@/constants";
 
 export function Footer() {
@@ -10,28 +11,47 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="size-9 rounded-lg bg-violet-600 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CA</span>
-              </div>
-              <span className="text-white font-semibold" style={{ fontFamily: "var(--font-display)" }}>
-                Creativemu Academy
-              </span>
+              <Image
+                src="/images/CreativeAc-New.png"
+                alt="Creativemu Academy Logo"
+                width={160}
+                height={40}
+                className="h-8 w-auto object-contain filter brightness-0 invert"
+              />
             </div>
             <p className="text-sm leading-relaxed mb-5">
               Platform pelatihan teknologi terpercaya dengan fokus pada kesiapan industri dan sertifikasi profesional.
             </p>
-            <div className="flex gap-3">
-              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer"
-                className="size-9 rounded-full bg-white/5 hover:bg-violet-600 flex items-center justify-center transition-colors">
-                <Instagram size={16} />
-              </a>
-              <a href={SOCIAL_LINKS.youtube} target="_blank" rel="noopener noreferrer"
-                className="size-9 rounded-full bg-white/5 hover:bg-violet-600 flex items-center justify-center transition-colors">
-                <Youtube size={16} />
-              </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mt-6">
               <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer"
-                className="size-9 rounded-full bg-white/5 hover:bg-violet-600 flex items-center justify-center transition-colors">
-                <Facebook size={16} />
+                className="flex items-center gap-3 text-white hover:text-violet-400 transition-colors">
+                <div className="size-8 rounded-full bg-[#1877F2] flex items-center justify-center shrink-0">
+                  <Facebook size={18} className="text-white" fill="currentColor" strokeWidth={0} />
+                </div>
+                <span className="text-sm font-medium">@creativemu_academy</span>
+              </a>
+              <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white hover:text-violet-400 transition-colors">
+                <div className="size-8 rounded-full bg-black flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-white">
+                    <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 15.68a6.34 6.34 0 006.26 6.36 6.33 6.33 0 006.33-6.26v-6.3a8.16 8.16 0 004.28 1.15V7.07a4.93 4.93 0 01-2.28-.38z"/>
+                  </svg>
+                </div>
+                <span className="text-sm font-medium">@creativemu_academy</span>
+              </a>
+              <a href={SOCIAL_LINKS.website} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white hover:text-violet-400 transition-colors">
+                <div className="size-8 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-500 flex items-center justify-center shrink-0">
+                  <Globe size={18} className="text-white" />
+                </div>
+                <span className="text-sm font-medium">www.creativemuacademy.com</span>
+              </a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-3 text-white hover:text-violet-400 transition-colors">
+                <div className="size-8 rounded-xl bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600 flex items-center justify-center shrink-0">
+                  <Instagram size={18} className="text-white" />
+                </div>
+                <span className="text-sm font-medium">@creativemu_academy</span>
               </a>
             </div>
           </div>

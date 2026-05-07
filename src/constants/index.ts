@@ -87,9 +87,11 @@ export const FEATURES = [
 
 // ─── Social Media ─────────────────────────────────────────────
 export const SOCIAL_LINKS = {
-  instagram: "https://instagram.com/creativemuid",
+  instagram: "https://instagram.com/creativemu_academy",
+  tiktok: "https://tiktok.com/@creativemu_academy",
+  facebook: "https://facebook.com/creativemu_academy",
+  website: "https://www.creativemuacademy.com",
   youtube: "https://youtube.com/@creativemuofficial7496",
-  facebook: "https://facebook.com/creativemuid",
   whatsapp: `https://wa.me/${ADMIN_WA_NUMBER}`,
 } as const;
 
