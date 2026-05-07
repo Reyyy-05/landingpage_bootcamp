@@ -33,7 +33,7 @@
 
 ### 3. Aset Grafis (Logo & Foto)
 **Yang perlu dilakukan:**
-- [ ] Ganti teks "Creativemu Academy" di Navbar menjadi file SVG/PNG Logo resmi.
+- [x] Ganti teks "Creativemu Academy" di Navbar dan Footer menjadi file gambar Logo resmi.
 - [ ] Update `favicon.ico` dan `apple-icon.png`.
 - [x] Siapkan *assets* logo perusahaan/universitas alumni jika ada section *Social Proof*.
 

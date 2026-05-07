@@ -146,13 +146,14 @@ app/
 
 | # | Section | Konten Utama |
 |---|---------|--------------|
-| 1 | Navbar | Logo, menu anchor, CTA "Daftar Sekarang" |
+| 1 | Navbar | Logo Gambar (`CreativeAc-New.png`), menu anchor, CTA "Daftar" |
 | 2 | Hero | Headline bold, badge BNSP, batch info card, foto |
 | 3 | Features | 6 keunggulan program (BNSP, Mentor, Proyek, dll) |
 | 4 | Roadmap | Timeline kurikulum per bulan |
 | 5 | Pricing | 3 paket dengan harga dinamis dari DB |
 | 6 | CTA | Split: info batch kiri + mini form kanan |
-| 7 | Footer | Logo, sosmed, links, kontak |
+| 7 | Footer | Logo Gambar, sosmed 2x2 grid, links, kontak (`admin_official@creativemuacademy.com`) |
+| 8 | Halaman Daftar | `PromoBanner` (Timer mundur diskon `LVBOOT`), Form Registrasi |
 
 ---
 
@@ -226,7 +227,7 @@ interface StudentFormData {
                                     |
                          [Button: Chat Admin WA]
                          wa.me/6285177114036?text=...
-                         (pre-filled: Nama + Program + ID)
+                         (pre-filled: 🔹 Nama + 🔹 Program + 🔹 ID)
 ```
 
 ---
