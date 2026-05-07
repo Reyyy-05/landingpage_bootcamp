@@ -5,7 +5,7 @@ import { SOCIAL_LINKS } from "@/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0F0F1A] text-gray-400">
+    <footer id="footer" className="bg-[#0F0F1A] text-gray-400">
       <div className="container mx-auto px-4 max-w-6xl py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
           {/* Brand */}
@@ -58,12 +58,12 @@ export function Footer() {
 
           {/* Program links */}
           <div className="md:col-span-3 lg:col-span-3">
-            <h3 className="text-white font-semibold mb-5">Program</h3>
+            <h3 className="text-white font-semibold mb-5">Menu</h3>
             <ul className="flex flex-col gap-3 text-sm">
               {[
                 { href: "#features", label: "Keunggulan" },
                 { href: "#roadmap", label: "Kurikulum" },
-                { href: "#pricing", label: "Program" },
+                { href: "#footer", label: "About" },
                 { href: "/daftar", label: "Daftar Sekarang" },
               ].map((link) => (
                 <li key={link.href}>
