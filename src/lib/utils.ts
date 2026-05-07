@@ -47,7 +47,7 @@ export function buildStudentWAMessage(params: {
   program: string;
   registrationId: string;
 }): string {
-  return `Halo Admin Creativemu Academy,\n\nSaya *${params.name}* ingin mengkonfirmasi pendaftaran saya:\n\n📚 Program: ${params.program}\n🔖 No. Registrasi: ${params.registrationId}\n\nMohon informasi lebih lanjut mengenai proses pendaftaran saya. Terima kasih!`;
+  return `Halo Admin Creativemu Academy,\n\nSaya *${params.name}* ingin mengkonfirmasi pendaftaran saya:\n\n🔹 Program: ${params.program}\n🔹 No. Registrasi: ${params.registrationId}\n\nMohon informasi lebih lanjut mengenai proses pendaftaran saya. Terima kasih!`;
 }
 
 export function truncate(str: string, length: number): string {

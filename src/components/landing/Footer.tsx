@@ -7,9 +7,9 @@ export function Footer() {
   return (
     <footer className="bg-[#0F0F1A] text-gray-400">
       <div className="container mx-auto px-4 max-w-6xl py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10">
           {/* Brand */}
-          <div>
+          <div className="md:col-span-6 lg:col-span-6">
             <div className="flex items-center gap-3 mb-4">
               <Image
                 src="/images/CreativeAc-New.png"
@@ -57,13 +57,13 @@ export function Footer() {
           </div>
 
           {/* Program links */}
-          <div>
+          <div className="md:col-span-3 lg:col-span-3">
             <h3 className="text-white font-semibold mb-5">Program</h3>
             <ul className="flex flex-col gap-3 text-sm">
               {[
                 { href: "#features", label: "Keunggulan" },
                 { href: "#roadmap", label: "Kurikulum" },
-                { href: "#pricing", label: "Harga & Paket" },
+                { href: "#pricing", label: "Program" },
                 { href: "/daftar", label: "Daftar Sekarang" },
               ].map((link) => (
                 <li key={link.href}>
@@ -76,7 +76,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div className="md:col-span-3 lg:col-span-3">
             <h3 className="text-white font-semibold mb-5">Kontak</h3>
             <ul className="flex flex-col gap-3 text-sm">
               <li className="flex items-center gap-2">
