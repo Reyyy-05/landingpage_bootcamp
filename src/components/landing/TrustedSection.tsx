@@ -4,25 +4,28 @@ import { useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 const baseLogos = [
+  // ── Mitra Lama ──
   { name: "Partner 1", src: "/logos/partner-1.jpg", width: 110 },
   { name: "Partner 2", src: "/logos/partner-2.jpg", width: 110 },
   { name: "Partner 3", src: "/logos/partner-3.jpg", width: 110 },
   { name: "Partner 4", src: "/logos/partner-4.jpg", width: 110 },
   { name: "Partner 6", src: "/logos/partner-6.jpg", width: 110 },
   { name: "SMK Budi Mulia", src: "/logos/smk.jpeg", width: 110 },
-  { name: "Bank Indonesia", src: "/logos/bank-indonesia.png", width: 110 },
+  // ── Mitra Baru (file sudah tersedia) ──
+  { name: "Bank Indonesia", src: "/logos/bank-indonesia.png", width: 130 },
   { name: "SMKN 1 Bantul", src: "/logos/smkn1-bantul.png", width: 110 },
-  { name: "SMKN 1 Sanden", src: "/logos/smkn1-sanden.png", width: 110 },
-  { name: "SMKN 1 Tempel", src: "/logos/smkn1-tempel.png", width: 110 },
-  { name: "SMK 17 Seyegan", src: "/logos/smk17-seyegan.png", width: 110 },
   { name: "SMKN 1 Godean", src: "/logos/smkn1-godean.png", width: 110 },
   { name: "SMK 1 Argomulyo", src: "/logos/smk1-argomulyo.png", width: 110 },
-  { name: "SMKN 1 Gedangsari", src: "/logos/smkn1-gedangsari.png", width: 110 },
   { name: "Kampus UNISA", src: "/logos/unisa.png", width: 110 },
   { name: "UNU Jogja", src: "/logos/unujogja.png", width: 110 },
   { name: "UMBY", src: "/logos/umby.png", width: 110 },
-  { name: "Nuansa Global", src: "/logos/nuansa-global.png", width: 110 },
   { name: "Smile Group Jogja", src: "/logos/smile-group.png", width: 110 },
+  // ── Mitra Baru (file BELUM ada — tambahkan setelah user upload) ──
+  // { name: "SMKN 1 Sanden", src: "/logos/smkn1-sanden.png", width: 110 },
+  // { name: "SMKN 1 Tempel", src: "/logos/smkn1-tempel.png", width: 110 },
+  // { name: "SMK 17 Seyegan", src: "/logos/smk17-seyegan.png", width: 110 },
+  // { name: "SMKN 1 Gedangsari", src: "/logos/smkn1-gedangsari.png", width: 110 },
+  // { name: "Nuansa Global", src: "/logos/nuansa-global.png", width: 110 },
 ];
 
 const logos = [
