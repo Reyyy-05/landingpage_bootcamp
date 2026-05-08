@@ -146,14 +146,15 @@ app/
 
 | # | Section | Konten Utama |
 |---|---------|--------------|
-| 1 | Navbar | Logo Gambar (`CreativeAc-New.png`), menu anchor, CTA "Daftar" |
+| 1 | Navbar | Logo Gambar (`CreativeAc-New.png`), menu: Keunggulan, Kurikulum, Daftar, Tentang |
 | 2 | Hero | Headline bold, badge BNSP, batch info card, foto |
-| 3 | Features | 6 keunggulan program (BNSP, Mentor, Proyek, dll) |
-| 4 | Roadmap | Timeline kurikulum per bulan |
-| 5 | Pricing | 3 paket dengan harga dinamis dari DB |
-| 6 | CTA | Split: info batch kiri + mini form kanan |
-| 7 | Footer | Logo Gambar, sosmed 2x2 grid, links, kontak (`admin_official@creativemuacademy.com`) |
-| 8 | Halaman Daftar | `PromoBanner` (Timer mundur diskon `LVBOOT`), Form Registrasi |
+| 3 | Trusted | Marquee logo 14 mitra (BI, SMK, Kampus, Perusahaan) — warna asli |
+| 4 | Features | 6 keunggulan program (BNSP, Mentor, Proyek, dll) |
+| 5 | Roadmap | Timeline kurikulum per bulan |
+| 6 | Pricing | Paket bootcamp dengan harga dinamis dari DB |
+| 7 | CTA | Split: info batch kiri + mini form kanan |
+| 8 | Footer | Logo Gambar, sosmed 2x2 grid, menu "Tentang", kontak (`admin_official@creativemuacademy.com`) |
+| 9 | Halaman Daftar | `PromoBanner` (Timer mundur diskon `LVBOOT` s/d 20 Mei), Form Registrasi |
 
 ---
 

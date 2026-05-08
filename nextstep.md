@@ -36,6 +36,14 @@
 - [x] Ganti teks "Creativemu Academy" di Navbar dan Footer menjadi file gambar Logo resmi.
 - [ ] Update `favicon.ico` dan `apple-icon.png`.
 - [x] Siapkan *assets* logo perusahaan/universitas alumni jika ada section *Social Proof*.
+- [x] Download & pasang 8 logo mitra baru: Bank Indonesia, SMKN 1 Bantul, SMKN 1 Godean, SMK 1 Argomulyo, UNISA, UNU Jogja, UMBY, Smile Group Jogja.
+- [ ] **Upload 5 logo mitra yang masih kurang** (file belum tersedia, website mereka error/tidak accessible):
+  - `public/logos/smkn1-sanden.png` — SMKN 1 Sanden
+  - `public/logos/smkn1-tempel.png` — SMKN 1 Tempel
+  - `public/logos/smk17-seyegan.png` — SMK 17 Seyegan
+  - `public/logos/smkn1-gedangsari.png` — SMKN 1 Gedangsari
+  - `public/logos/nuansa-global.png` — Nuansa Global
+  > Setelah file di-upload ke folder tersebut, uncomment entri di `TrustedSection.tsx`.
 
 ### 4. Konten Copywriting Nyata
 **Yang perlu dilakukan:**
@@ -59,7 +67,7 @@
 
 | Fitur Utama | Status |
 |-------------|--------|
-| Landing Page Utama (UI/UX) | ✅ Selesai (Animasi scroll & update konten bootcamp 8 Mei) |
+| Landing Page Utama (UI/UX) | ✅ Selesai (Logo resmi, navigasi, social links, promo banner, 14 logo mitra) |
 | Form Registrasi & Logika | ✅ Selesai (Pemisahan field status Pendidikan/Lainnya) |
 | Supabase Database & Auth | ✅ Selesai |
 | Dashboard: Login & Proteksi | ✅ Selesai |
