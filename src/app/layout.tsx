@@ -19,34 +19,52 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Creativemu Academy — Bootcamp Digital Marketing Bersertifikat BNSP",
+    default: "Creativemu Academy – Jadi Full-Stack Laravel Developer dalam 6 Bulan",
     template: "%s | Creativemu Academy",
   },
   description:
-    "Bootcamp Digital Marketing intensif bersertifikat BNSP di Yogyakarta. Belajar dari mentor praktisi industri, kerjakan proyek nyata, dan siap berkarir dalam 6 bulan.",
+    "Bootcamp IT intensif dengan sertifikasi resmi BNSP. Belajar langsung dari praktisi industri, bangun portofolio nyata, dan dapatkan koneksi kerja selamanya.",
   keywords: [
-    "bootcamp digital marketing",
+    "bootcamp laravel",
+    "fullstack developer",
     "sertifikasi BNSP",
-    "pelatihan digital marketing yogyakarta",
+    "belajar coding jogja",
     "creativemu academy",
-    "belajar digital marketing",
+    "digital marketing",
   ],
   authors: [{ name: "Creativemu Academy" }],
   creator: "Creativemu Academy",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://landingpagebootcamp-omega.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: process.env.NEXT_PUBLIC_APP_URL,
+    url: "/",
     siteName: "Creativemu Academy",
-    title: "Creativemu Academy — Bootcamp Digital Marketing Bersertifikat BNSP",
+    title: "Creativemu Academy – Jadi Full-Stack Laravel Developer dalam 6 Bulan",
     description:
-      "Bootcamp Digital Marketing intensif bersertifikat BNSP di Yogyakarta. Belajar dari mentor praktisi, kerjakan proyek nyata, siap karir dalam 6 bulan.",
+      "Bootcamp IT intensif dengan sertifikasi resmi BNSP. Belajar langsung dari praktisi industri, bangun portofolio nyata, dan siap kerja dalam 6 bulan.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Creativemu Academy",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Creativemu Academy — Bootcamp Digital Marketing Bersertifikat BNSP",
+    title: "Creativemu Academy – Jadi Full-Stack Laravel Developer dalam 6 Bulan",
     description:
-      "Bootcamp Digital Marketing intensif bersertifikat BNSP di Yogyakarta.",
+      "Bootcamp IT intensif dengan sertifikasi resmi BNSP. Belajar langsung dari praktisi industri dan siap kerja.",
+    images: ["/opengraph-image.png"],
+  },
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   robots: {
     index: true,
