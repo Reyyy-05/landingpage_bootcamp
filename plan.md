@@ -148,7 +148,7 @@ app/
 |---|---------|--------------|
 | 1 | Navbar | Logo Gambar (`CreativeAc-New.png`), menu: Keunggulan, Kurikulum, Daftar, Tentang |
 | 2 | Hero | Headline bold, badge BNSP, batch info card, foto |
-| 3 | Trusted | Marquee logo 14 mitra (BI, SMK, Kampus, Perusahaan) — warna asli |
+| 3 | Trusted | Marquee logo 18 mitra (BI, SMK, Kampus, Perusahaan) — warna asli |
 | 4 | Features | 6 keunggulan program (BNSP, Mentor, Proyek, dll) |
 | 5 | Roadmap | Timeline kurikulum per bulan |
 | 6 | Pricing | Paket bootcamp dengan harga dinamis dari DB |
