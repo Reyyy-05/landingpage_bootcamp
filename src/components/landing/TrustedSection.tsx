@@ -19,12 +19,13 @@ const baseLogos = [
   { name: "UNU Jogja", src: "/logos/unujogja.png", width: 110 },
   { name: "UMBY", src: "/logos/umby.png", width: 110 },
   { name: "Smile Group Jogja", src: "/logos/smile-group.png", width: 110 },
+  // ── Mitra Baru (file sudah di-upload user) ──
+  { name: "SMKN 1 Sanden", src: "/logos/SMKN 1 Sanden.png", width: 110 },
+  { name: "SMKN 1 Tempel", src: "/logos/SMKN 1 Tempel.jpg", width: 110 },
+  { name: "SMK 17 Seyegan", src: "/logos/SMK 17 Seyegan.png", width: 110 },
+  { name: "Nuansa Global", src: "/logos/Nuansa Global.jpg", width: 110 },
   // ── Mitra Baru (file BELUM ada — tambahkan setelah user upload) ──
-  // { name: "SMKN 1 Sanden", src: "/logos/smkn1-sanden.png", width: 110 },
-  // { name: "SMKN 1 Tempel", src: "/logos/smkn1-tempel.png", width: 110 },
-  // { name: "SMK 17 Seyegan", src: "/logos/smk17-seyegan.png", width: 110 },
   // { name: "SMKN 1 Gedangsari", src: "/logos/smkn1-gedangsari.png", width: 110 },
-  // { name: "Nuansa Global", src: "/logos/nuansa-global.png", width: 110 },
 ];
 
 const logos = [
