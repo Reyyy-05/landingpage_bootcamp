@@ -22,8 +22,8 @@
 ### 2. Optimasi Metadata & SEO
 **Problem:** Tampilan saat dibagikan ke media sosial (WhatsApp/Instagram) masih menggunakan metadata standar.
 **Yang perlu dilakukan:**
-- [ ] Buat gambar `opengraph-image.png` berukuran 1200x630px yang menarik. Letakkan di root `app/`.
-- [ ] Update object `metadata` di `app/layout.tsx` (title, description, openGraph, twitter).
+- [x] Buat gambar `opengraph-image.png` berukuran 1200x630px yang menarik. Letakkan di root `app/` atau `public/`.
+- [x] Update object `metadata` di `app/layout.tsx` (title, description, openGraph, twitter).
 - [ ] Tambahkan file `robots.txt` dan `sitemap.xml` dinamis atau statis.
 - [ ] Tambahkan tag `canonical` pada setiap halaman publik.
 
@@ -34,7 +34,7 @@
 ### 3. Aset Grafis (Logo & Foto)
 **Yang perlu dilakukan:**
 - [x] Ganti teks "Creativemu Academy" di Navbar dan Footer menjadi file gambar Logo resmi.
-- [ ] Update `favicon.ico` dan `apple-icon.png`.
+- [x] Update `favicon.ico` dan `apple-icon.png` (sudah pakai favicon.png).
 - [x] Siapkan *assets* logo perusahaan/universitas alumni jika ada section *Social Proof*.
 - [x] Download & pasang 17 logo mitra: Bank Indonesia, SMKN 1 Bantul, SMKN 1 Godean, SMK 1 Argomulyo, UNISA, UNU Jogja, UMBY, Smile Group Jogja, Sanden, Tempel, Seyegan, Nuansa Global, dan lainnya.
 - [x] **Upload & aktifkan semua logo mitra** (Total 17 logo aktif).
