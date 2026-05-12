@@ -78,7 +78,7 @@ NEXT_PUBLIC_ADMIN_WA_NUMBER=6285177114036
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-> ⚠️ **Jangan commit** `SUPABASE_SERVICE_ROLE_KEY` ke repository!
+
 
 ### 4. Setup Database
 
