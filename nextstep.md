@@ -10,9 +10,9 @@
 ### 1. Integrasi Google Analytics & Meta Pixel
 **Problem:** Sebagai landing page untuk konversi iklan, kita membutuhkan tracking yang solid.
 **Yang perlu dilakukan:**
-- [ ] Buat properti Google Analytics (GA4) dan dapatkan Measurement ID.
-- [ ] Buat Meta Pixel ID untuk Facebook/Instagram Ads.
-- [ ] Pasang script tracking di `app/layout.tsx` menggunakan `next/third-parties` atau custom script tag.
+- [x] Buat properti Google Analytics (GA4) dan dapatkan Measurement ID.
+- [x] Buat Meta Pixel ID untuk Facebook/Instagram Ads.
+- [x] Pasang script tracking di `app/layout.tsx` menggunakan `next/third-parties` atau custom script tag.
 - [ ] Trigger custom event `purchase` atau `generate_lead` saat siswa berhasil mendaftar dan diarahkan ke `/konfirmasi`.
 
 ---
@@ -24,8 +24,8 @@
 **Yang perlu dilakukan:**
 - [x] Buat gambar `opengraph-image.png` berukuran 1200x630px yang menarik. Letakkan di root `app/` atau `public/`.
 - [x] Update object `metadata` di `app/layout.tsx` (title, description, openGraph, twitter).
-- [ ] Tambahkan file `robots.txt` dan `sitemap.xml` dinamis atau statis.
-- [ ] Tambahkan tag `canonical` pada setiap halaman publik.
+- [x] Tambahkan file `robots.txt` dan `sitemap.xml` dinamis atau statis.
+- [x] Tambahkan tag `canonical` pada setiap halaman publik.
 
 ---
 
@@ -72,8 +72,8 @@
 | Dashboard: Manajemen Pendaftar | ✅ Selesai |
 | Dashboard: Manajemen Program & Harga | ✅ Selesai |
 | Dashboard: Manajemen Voucher Diskon | ✅ Selesai |
-| **Integrasi GA4 & Meta Pixel** | ❌ Belum |
-| **Open Graph (SEO) & Sitemap** | ❌ Belum |
+| **Integrasi GA4 & Meta Pixel** | ✅ Selesai (Script sudah tertanam di Root Layout) |
+| **Open Graph (SEO) & Sitemap** | ✅ Selesai (OG Image, Favicon, Sitemap, Robots.txt) |
 | **Custom Domain Setup** | ❌ Belum |
 
 > **Rekomendasi eksekusi berikutnya:**  
