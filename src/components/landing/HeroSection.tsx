@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Shield, Users, Clock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-import { formatCurrency } from "@/lib/utils";
 import type { Bootcamp } from "@/types";
+import { SocialProof } from "./SocialProof";
 
 async function getActiveBootcamp(): Promise<Bootcamp | null> {
   try {
@@ -27,7 +27,7 @@ export async function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen landing-bg flex items-center pt-16 overflow-hidden"
+      className="hero-section relative landing-bg flex items-center pt-10 overflow-hidden"
     >
       {/* Background orbs */}
       <div
@@ -48,13 +48,13 @@ export async function HeroSection() {
       />
 
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-8 lg:py-12">
           {/* Left: Content */}
           <div className="flex flex-col justify-center">
-            {/* Headline */}
-            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-6 tracking-tight scroll-animate">
+            {/* Headline — P7: gradient shimmer on "Laravel Developer" */}
+            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-5 tracking-tight scroll-animate">
               Jadi Full-Stack <br />
-              <span className="bg-gradient-to-br from-violet-600 to-indigo-500 bg-clip-text text-transparent">
+              <span className="headline-gradient">
                 Laravel Developer
               </span>{" "}
               <br />
@@ -62,16 +62,26 @@ export async function HeroSection() {
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg text-slate-600 mb-6 leading-relaxed max-w-lg scroll-animate scroll-animate-delay-100">
+            <p className="text-lg text-slate-600 mb-4 leading-relaxed max-w-lg scroll-animate scroll-animate-delay-100">
               Bootcamp intensif berbasis project nyata + mentoring hingga kamu siap masuk industri dan tersertifikasi BNSP.
             </p>
 
-            {/* Urgency */}
-            <p className="text-sm font-semibold text-violet-600 mb-6 scroll-animate scroll-animate-delay-200">
-              ✨ Amankan Kursimu Sekarang!
-            </p>
+            {/* P3: Benefit Chips */}
+            <div className="benefit-chips scroll-animate scroll-animate-delay-100">
+              <span className="chip">✓ Project Nyata</span>
+              <span className="chip">✓ Mentoring 1-on-1</span>
+              <span className="chip">✓ Sertifikat BNSP</span>
+              <span className="chip">✓ Job Referral</span>
+            </div>
 
-            {/* CTA Buttons */}
+
+
+            {/* P4: Social Proof — Avatar Stack */}
+            <div className="scroll-animate scroll-animate-delay-200 mb-5">
+              <SocialProof />
+            </div>
+
+            {/* CTA Buttons — P2: fix outline button visibility */}
             <div className="flex flex-col sm:flex-row gap-4 scroll-animate scroll-animate-delay-200">
               <Link
                 href="/daftar"
@@ -87,7 +97,7 @@ export async function HeroSection() {
                 href="https://wa.me/6285177114036?text=Halo+Admin+Creativemu+Academy%2C+saya+ingin+konsultasi+tentang+program"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-slate-200 bg-white text-slate-700 font-semibold hover:border-violet-200 hover:bg-violet-50 transition-all shadow-sm"
+                className="btn-secondary inline-flex items-center justify-center"
               >
                 Konsultasi Program
               </a>
@@ -106,42 +116,43 @@ export async function HeroSection() {
           </div>
         </div>
 
-        {/* Bottom Banner (Batas Hero) */}
-        <div className="mt-8 mb-4">
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-2 h-full bg-violet-500"></div>
-            
-            <div className="flex items-center gap-4 px-4 w-full md:w-auto">
-              <div className="w-12 h-12 rounded-full bg-violet-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Users size={24} className="text-violet-600" />
+        {/* P5: Revamped Stats Bar */}
+        <div className="mt-4 mb-4">
+          <div className="stats-bar">
+            <div className="stat-item">
+              <div className="stat-icon stat-icon-purple">
+                <Users size={24} />
               </div>
-              <div>
-                <p className="text-2xl font-bold text-slate-900 leading-none mb-1">100+</p>
-                <p className="text-sm text-slate-500 font-medium">Alumni Sukses</p>
-              </div>
-            </div>
-
-            <div className="hidden md:block w-px h-12 bg-slate-200"></div>
-
-            <div className="flex items-center gap-4 px-4 w-full md:w-auto">
-              <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Shield size={24} className="text-amber-500" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-slate-900 leading-none mb-1">BNSP</p>
-                <p className="text-sm text-slate-500 font-medium">Sertifikasi Resmi</p>
+              <div className="stat-text">
+                <span className="stat-number">100+</span>
+                <span className="stat-label">Alumni Sukses</span>
+                <span className="stat-sub">Tersebar di 30+ perusahaan</span>
               </div>
             </div>
 
-            <div className="hidden md:block w-px h-12 bg-slate-200"></div>
+            <div className="stat-divider" />
 
-            <div className="flex items-center gap-4 px-4 w-full md:w-auto">
-              <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                <Clock size={24} className="text-emerald-500" />
+            <div className="stat-item">
+              <div className="stat-icon stat-icon-amber">
+                <Shield size={24} />
               </div>
-              <div>
-                <p className="text-2xl font-bold text-slate-900 leading-none mb-1">6 Bulan</p>
-                <p className="text-sm text-slate-500 font-medium">Program Intensif</p>
+              <div className="stat-text">
+                <span className="stat-number">BNSP</span>
+                <span className="stat-label">Sertifikasi Resmi</span>
+                <span className="stat-sub">Diakui secara nasional</span>
+              </div>
+            </div>
+
+            <div className="stat-divider" />
+
+            <div className="stat-item">
+              <div className="stat-icon stat-icon-emerald">
+                <Clock size={24} />
+              </div>
+              <div className="stat-text">
+                <span className="stat-number">6 Bulan</span>
+                <span className="stat-label">Program Intensif</span>
+                <span className="stat-sub">Terstruktur & terbimbing</span>
               </div>
             </div>
           </div>
