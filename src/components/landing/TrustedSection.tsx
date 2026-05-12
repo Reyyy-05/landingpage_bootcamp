@@ -112,7 +112,7 @@ export function TrustedSection() {
         <div className="absolute top-0 bottom-0 left-0 w-[200px] z-10 pointer-events-none bg-gradient-to-r from-white to-transparent" />
         <div className="absolute top-0 bottom-0 right-0 w-[200px] z-10 pointer-events-none bg-gradient-to-l from-white to-transparent" />
         
-        <MarqueeRow items={logos} direction="left" speed={30} />
+        <MarqueeRow items={logos} direction="left" speed={80} />
       </div>
 
       {/* Global styles for the keyframes since Tailwind arbitrary values for keyframes can be messy */}
