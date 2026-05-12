@@ -13,7 +13,7 @@
 - [x] Buat properti Google Analytics (GA4) dan dapatkan Measurement ID.
 - [x] Buat Meta Pixel ID untuk Facebook/Instagram Ads.
 - [x] Pasang script tracking di `app/layout.tsx` menggunakan `next/third-parties` atau custom script tag.
-- [ ] Trigger custom event `purchase` atau `generate_lead` saat siswa berhasil mendaftar dan diarahkan ke `/konfirmasi`.
+- [x] Trigger custom event `purchase` atau `generate_lead` saat siswa berhasil mendaftar dan diarahkan ke `/konfirmasi`.
 
 ---
 

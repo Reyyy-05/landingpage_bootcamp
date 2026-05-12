@@ -1,9 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle2, MessageSquareMore, ArrowLeft, Copy } from "lucide-react";
 import { toast } from "sonner";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export function ConfirmationContent() {
   const params = useSearchParams();
@@ -14,6 +16,23 @@ export function ConfirmationContent() {
   const waLink = params.get("wa") ?? `https://wa.me/6285177114036`;
 
   const shortId = studentId.slice(0, 8).toUpperCase();
+
+  // Trigger conversion tracking saat halaman berhasil dimuat
+  useEffect(() => {
+    // 1. Google Analytics Event
+    sendGAEvent("event", "generate_lead", {
+      event_category: "registration",
+      event_label: programName,
+    });
+
+    // 2. Meta Pixel Event
+    if (typeof window !== "undefined" && (window as any).fbq) {
+      (window as any).fbq("track", "Lead", {
+        content_name: programName,
+        currency: "IDR",
+      });
+    }
+  }, [programName]);
 
   const copyId = () => {
     navigator.clipboard.writeText(studentId);
