@@ -65,6 +65,7 @@
 | Fitur Utama | Status |
 |-------------|--------|
 | Landing Page Utama (UI/UX) | ✅ Selesai (Logo resmi, navigasi, social links, promo banner, 14 logo mitra) |
+| **Hero Section Revisi (2026-05-12)** | ✅ Selesai (Benefit chips, social proof avatar, stats bar revamp, headline animation, button fix) |
 | Form Registrasi & Logika | ✅ Selesai (Pemisahan field status Pendidikan/Lainnya) |
 | Supabase Database & Auth | ✅ Selesai |
 | Dashboard: Login & Proteksi | ✅ Selesai |

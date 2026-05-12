@@ -147,7 +147,7 @@ app/
 | # | Section | Konten Utama |
 |---|---------|--------------|
 | 1 | Navbar | Logo Gambar (`CreativeAc-New.png`), menu: Keunggulan, Kurikulum, Daftar, Tentang |
-| 2 | Hero | Headline bold, badge BNSP, batch info card, foto |
+| 2 | Hero | Headline bold (gradient shimmer animation), benefit chips, social proof avatar stack, revamped stats bar (100+ Alumni, BNSP, 6 Bulan), foto |
 | 3 | Trusted | Marquee logo 18 mitra (BI, SMK, Kampus, Perusahaan) — warna asli |
 | 4 | Features | 6 keunggulan program (BNSP, Mentor, Proyek, dll) |
 | 5 | Roadmap | Timeline kurikulum per bulan |

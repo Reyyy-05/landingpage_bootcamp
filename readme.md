@@ -160,6 +160,8 @@ creativemu-academy/
 │   ├── landing/               # Landing page sections
 │   │   ├── Navbar.tsx
 │   │   ├── HeroSection.tsx
+│   │   ├── SocialProof.tsx      # Avatar stack social proof
+│   │   ├── UrgencyBlock.tsx     # Countdown timer (unused)
 │   │   ├── FeaturesSection.tsx
 │   │   ├── RoadmapSection.tsx
 │   │   ├── PricingSection.tsx
@@ -252,7 +254,7 @@ Admin dibuat manual via Supabase Auth + insert ke tabel `admins`. Tidak ada regi
 ## 📱 Halaman Utama
 
 ### Landing Page `/`
-Sections: **Navbar → Hero → Features → Roadmap → Pricing → CTA → Footer**
+Sections: **Navbar → Hero (Benefit Chips, Social Proof, Stats Bar) → Trusted → Features → Roadmap → CTA → Footer**
 
 ### Form Pendaftaran `/daftar`
 Field wajib sesuai form original:

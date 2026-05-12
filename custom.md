@@ -14,8 +14,12 @@ Berikut adalah pemetaan (*mapping*) antara gambar desain di `ui_references` deng
 
 ### 1. `hero.png` (Bagian Atas / Layar Pertama)
 *   **File Target:** `src/components/landing/HeroSection.tsx`
+*   **Komponen Tambahan:** `SocialProof.tsx` (avatar stack alumni)
 *   **Yang harus diubah:**
     *   Teks Headline utama (H1) dan Sub-headline.
+    *   **Benefit Chips** — 4 chip keunggulan (Project Nyata, Mentoring 1-on-1, Sertifikat BNSP, Job Referral). Edit langsung di `HeroSection.tsx`.
+    *   **Social Proof** — Data avatar alumni dan nama perusahaan. Edit di `SocialProof.tsx`.
+    *   **Stats Bar** — 3 statistik (100+ Alumni, BNSP, 6 Bulan) dengan sub-label. Edit langsung di `HeroSection.tsx`.
     *   Mengganti ilustrasi/foto (saat ini menggunakan ikon placeholder/kosong) dengan foto asli suasana kelas atau gambar ilustrasi pahlawan (*hero image*).
     *   Pastikan gambar baru dimasukkan ke folder `public/images/` dan *path*-nya diperbarui di kode.
 
