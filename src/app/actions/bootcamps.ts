@@ -3,12 +3,12 @@
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
-export async function toggleBootcampStatus(id: string, currentStatus: boolean) {
+export async function toggleBootcampStatus(id: string, newStatus: boolean) {
   const supabase = await createClient();
 
   const { error } = await supabase
     .from("bootcamps")
-    .update({ is_open: !currentStatus })
+    .update({ is_open: newStatus })
     .eq("id", id);
 
   if (error) {
@@ -32,6 +32,7 @@ export async function createBootcamp(formData: FormData) {
   const price_premium = parseInt(formData.get("price_premium") as string);
   const price_intensif = parseInt(formData.get("price_intensif") as string);
   const max_capacity = parseInt(formData.get("max_capacity") as string);
+  const location = formData.get("location") as string;
 
   if (!name || !batch_number || !price_reguler || !max_capacity) {
     return { error: "Kolom wajib belum diisi semua" };
@@ -46,6 +47,7 @@ export async function createBootcamp(formData: FormData) {
     price_reguler,
     price_premium: price_premium || null,
     price_intensif: price_intensif || null,
+    location: location || "Online & Hybrid",
     max_capacity,
     is_open: true,
   });

@@ -3,12 +3,12 @@
 import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 
-export async function toggleVoucherStatus(id: string, currentStatus: boolean) {
+export async function toggleVoucherStatus(id: string, newStatus: boolean) {
   const supabase = await createClient();
 
   const { error } = await supabase
     .from("vouchers")
-    .update({ is_active: !currentStatus })
+    .update({ is_active: newStatus })
     .eq("id", id);
 
   if (error) {

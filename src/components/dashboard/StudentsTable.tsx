@@ -29,6 +29,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { ArrowUpDown, Eye, Search } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface StudentTableData {
   id: string;
@@ -46,6 +53,7 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
   const router = useRouter();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [globalFilter, setGlobalFilter] = useState("");
 
   const columns: ColumnDef<StudentTableData>[] = [
     {
@@ -138,9 +146,11 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
     state: {
       sorting,
       columnFilters,
+      globalFilter,
     },
   });
 
@@ -198,16 +208,36 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
   return (
     <div className="space-y-4">
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="relative w-full sm:w-72">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Cari nama atau email..."
-            value={(table.getColumn("full_name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("full_name")?.setFilterValue(event.target.value)
-            }
-            className="pl-9 bg-white"
-          />
+        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+          <div className="relative w-full sm:w-72">
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Cari nama atau email..."
+              value={globalFilter ?? ""}
+              onChange={(event) => setGlobalFilter(event.target.value)}
+              className="pl-9 bg-white"
+            />
+          </div>
+          <Select
+            value={(table.getColumn("registration_status")?.getFilterValue() as string) || "all"}
+            onValueChange={(value) => {
+              if (value === "all") {
+                table.getColumn("registration_status")?.setFilterValue("");
+              } else {
+                table.getColumn("registration_status")?.setFilterValue(value);
+              }
+            }}
+          >
+            <SelectTrigger className="w-full sm:w-[160px] bg-white">
+              <SelectValue placeholder="Semua Status" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">Semua Status</SelectItem>
+              <SelectItem value="pending">Pending</SelectItem>
+              <SelectItem value="confirmed">Confirmed</SelectItem>
+              <SelectItem value="rejected">Rejected</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <Button variant="outline" onClick={handleExportCSV} className="w-full sm:w-auto bg-white">
           Export CSV
@@ -274,7 +304,7 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Sebelumnya
         </Button>
         <Button
           variant="outline"
@@ -282,7 +312,7 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Selanjutnya
         </Button>
       </div>
     </div>

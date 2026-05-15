@@ -85,6 +85,11 @@ export function BootcampFormDialog() {
               <Input id="end_date" name="end_date" type="date" disabled={isLoading} />
             </div>
             
+            <div className="space-y-2 md:col-span-2">
+              <Label htmlFor="location">Lokasi Program</Label>
+              <Input id="location" name="location" defaultValue="Online & Hybrid" disabled={isLoading} />
+            </div>
+            
             <div className="space-y-2 md:col-span-2 pt-4 border-t">
               <h4 className="font-medium text-sm">Pengaturan Harga</h4>
             </div>

@@ -42,7 +42,7 @@ export default async function VouchersPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {vouchers?.map((voucher) => {
-          const isExpired = new Date(voucher.valid_until) < new Date();
+          const isExpired = voucher.valid_until ? new Date(voucher.valid_until) < new Date() : false;
           const isExhausted = voucher.used_count >= voucher.max_uses;
           const usagePercent = Math.min(100, Math.round((voucher.used_count / voucher.max_uses) * 100));
 

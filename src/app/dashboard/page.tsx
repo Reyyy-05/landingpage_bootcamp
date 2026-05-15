@@ -3,7 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Clock, CheckCircle2, XCircle } from "lucide-react";
 import Link from "next/link";
-import { formatCurrency } from "@/lib/utils";
+
 
 export const metadata: Metadata = {
   title: "Overview Dashboard",

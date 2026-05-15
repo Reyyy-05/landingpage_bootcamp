@@ -15,7 +15,7 @@ export function VoucherStatusToggle({ id, initialStatus }: { id: string; initial
     // Optimistic UI
     setIsActive(checked);
     
-    const result = await toggleVoucherStatus(id, !checked);
+    const result = await toggleVoucherStatus(id, checked);
     
     if (result.error) {
       toast.error(`Gagal mengubah status: ${result.error}`);

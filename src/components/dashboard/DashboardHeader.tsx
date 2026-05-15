@@ -12,10 +12,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut, User } from "lucide-react";
+import { LogOut, User, Menu } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { DashboardSidebarContent } from "./DashboardSidebar";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export function DashboardHeader({ admin }: { admin: any }) {
   const [isPending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const getInitials = (name: string) => {
     return name
@@ -27,9 +33,20 @@ export function DashboardHeader({ admin }: { admin: any }) {
   };
 
   return (
-    <header className="h-16 border-b bg-white flex items-center justify-between px-6 shadow-sm z-10">
-      <div className="flex-1">
-        {/* Can put a search bar here later or breadcrumbs */}
+    <header className="h-16 border-b bg-white flex items-center justify-between px-4 sm:px-6 shadow-sm z-10 shrink-0">
+      <div className="flex items-center gap-4">
+        <Sheet open={open} onOpenChange={setOpen}>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle navigation</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-64 p-0 bg-slate-900 border-r-slate-800 text-white flex flex-col">
+            <SheetTitle className="sr-only">Navigasi Mobile</SheetTitle>
+            <DashboardSidebarContent admin={admin} pathname={pathname} onClick={() => setOpen(false)} />
+          </SheetContent>
+        </Sheet>
       </div>
       
       <div className="flex items-center gap-4">

@@ -15,7 +15,7 @@ export function BootcampStatusToggle({ id, initialStatus }: { id: string; initia
     // Optimistic UI
     setIsOpen(checked);
     
-    const result = await toggleBootcampStatus(id, !checked);
+    const result = await toggleBootcampStatus(id, checked);
     
     if (result.error) {
       toast.error(`Gagal mengubah status: ${result.error}`);
