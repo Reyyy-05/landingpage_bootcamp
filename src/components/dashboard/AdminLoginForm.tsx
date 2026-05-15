@@ -17,7 +17,7 @@ export function AdminLoginForm() {
   const [state, formAction, isPending] = useActionState(loginAdmin, null);
 
   return (
-    <Card className="w-full max-w-sm shadow-xl border-gray-100">
+    <Card className="w-full max-w-sm shadow-xl border-gray-100 bg-white text-slate-900">
       <CardHeader className="space-y-1 text-center">
         <CardTitle className="text-2xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
           Admin Panel
@@ -49,6 +49,7 @@ export function AdminLoginForm() {
               placeholder="admin@creativemu.id"
               required
               disabled={isPending}
+              className="bg-white text-slate-900 border-slate-200"
             />
           </div>
           <div className="space-y-2">
@@ -59,6 +60,7 @@ export function AdminLoginForm() {
               type="password"
               required
               disabled={isPending}
+              className="bg-white text-slate-900 border-slate-200"
             />
           </div>
         </CardContent>
