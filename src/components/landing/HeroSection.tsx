@@ -76,11 +76,6 @@ export async function HeroSection() {
 
 
 
-            {/* P4: Social Proof — Avatar Stack */}
-            <div className="scroll-animate scroll-animate-delay-200 mb-5">
-              <SocialProof />
-            </div>
-
             {/* CTA Buttons — P2: fix outline button visibility */}
             <div className="flex flex-col sm:flex-row gap-4 scroll-animate scroll-animate-delay-200">
               <Link

@@ -7,15 +7,32 @@ import { useEffect, useState } from "react";
 import type { Bootcamp } from "@/types";
 import { formatDate } from "@/lib/utils";
 
-const TESTIMONIAL = {
-  name: "Siti Rahma",
-  role: "Alumni Batch 10 · Digital Marketing Specialist",
-  quote:
-    '"Sertifikasi BNSP dari program ini benar-benar membuka pintu karir saya. Kurikulumnya sangat daging dan mentornya luar biasa."',
-};
+const TESTIMONIALS = [
+  {
+    name: "Siti Rahma",
+    role: "Alumni Batch 10 · Digital Marketer",
+    quote: '"Sertifikasi BNSP dari sini beneran ngebuka jalan karirku. Kurikulumnya daging banget dan mentornya super asik plus solutif!"',
+  },
+  {
+    name: "Bagas Pratama",
+    role: "Alumni Batch 11 · Web Developer",
+    quote: '"Awalnya ngira bakal susah ngikutin, ternyata belajarnya full praktek. Vibesnya seru parah, sekarang udah pede megang project gede."',
+  },
+  {
+    name: "Nabila Aurel",
+    role: "Alumni Batch 11 · Freelance Web Dev",
+    quote: '"Jujur worth it banget. Ga cuma diajarin coding, tapi diajarin juga cara dapet klien. Mentornya the best lah pokoknya, super sabar!"',
+  },
+  {
+    name: "Rizky Fauzi",
+    role: "Alumni Batch 12 · Tech Enthusiast",
+    quote: '"Relate banget sama studi kasusnya, beneran kepake di dunia kerja. Ga nyangka dalam 6 bulan skillku bisa loncat sejauh ini. GGWP!"',
+  }
+];
 
 export function CTASection() {
   const [bootcamp, setBootcamp] = useState<Bootcamp | null>(null);
+  const [activeTestiIndex, setActiveTestiIndex] = useState(0);
 
   useEffect(() => {
     const supabase = createClient();
@@ -28,6 +45,13 @@ export function CTASection() {
       .limit(1)
       .single()
       .then(({ data }) => data && setBootcamp(data));
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTestiIndex((current) => (current + 1) % TESTIMONIALS.length);
+    }, 6000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -44,69 +68,71 @@ export function CTASection() {
                 >
                   Amankan Kursi Anda Sekarang.
                 </h2>
-                {bootcamp && (
-                  <p className="text-violet-200 text-sm mb-8">
-                    Kelas terbaru akan dimulai pada <strong>8 Mei 2026</strong>. Jangan
-                    lewatkan kesempatan untuk bertransformasi menjadi digital
-                    marketer tersertifikasi melalui kelas <strong>Full Online</strong>.
-                  </p>
-                )}
+                <p className="text-violet-200 text-sm mb-8">
+                  Kelas terbaru akan dimulai pada <strong>15 Mei 2026</strong>. Jangan
+                  lewatkan kesempatan untuk bertransformasi menjadi digital
+                  marketer tersertifikasi melalui kelas <strong>Full Online</strong>.
+                </p>
 
                 {/* Batch details */}
-                {bootcamp && (
-                  <div className="flex flex-col gap-3 mb-8">
-                    {bootcamp.start_date && (
-                      <div className="flex items-center gap-3">
-                        <div className="size-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                          <Calendar size={15} />
-                        </div>
-                        <div>
-                          <p className="text-xs text-violet-300 uppercase tracking-wider">
-                            Mulai Kelas
-                          </p>
-                          <p className="font-semibold text-sm">
-                            {formatDate(bootcamp.start_date)}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-                    {bootcamp.location && (
-                      <div className="flex items-center gap-3">
-                        <div className="size-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
-                          <MapPin size={15} />
-                        </div>
-                        <div>
-                          <p className="text-xs text-violet-300 uppercase tracking-wider">
-                            Lokasi
-                          </p>
-                          <p className="font-semibold text-sm">
-                            {bootcamp.location}
-                          </p>
-                        </div>
-                      </div>
-                    )}
+                <div className="flex flex-col gap-3 mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="size-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                      <Calendar size={15} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-violet-300 uppercase tracking-wider">
+                        Mulai Kelas
+                      </p>
+                      <p className="font-semibold text-sm">
+                        15 Mei 2026
+                      </p>
+                    </div>
                   </div>
-                )}
-              </div>
-
-              {/* Testimonial */}
-              <div className="bg-white/10 rounded-2xl p-5 mt-4">
-                <div className="flex items-start gap-3">
-                  <div className="size-10 rounded-full bg-violet-400 flex items-center justify-center text-white font-bold shrink-0">
-                    SR
-                  </div>
-                  <div>
-                    <p className="text-sm text-white font-semibold">
-                      {TESTIMONIAL.name}
-                    </p>
-                    <p className="text-xs text-violet-300 mb-2">
-                      {TESTIMONIAL.role}
-                    </p>
-                    <p className="text-sm text-violet-100 leading-relaxed italic">
-                      {TESTIMONIAL.quote}
-                    </p>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="size-8 rounded-lg bg-white/10 flex items-center justify-center shrink-0">
+                      <MapPin size={15} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-violet-300 uppercase tracking-wider">
+                        Lokasi
+                      </p>
+                      <p className="font-semibold text-sm">
+                        Full Online
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Testimonial Carousel */}
+              <div className="bg-white/10 rounded-2xl p-5 mt-4 relative overflow-hidden min-h-[140px]">
+                {TESTIMONIALS.map((testi, idx) => (
+                  <div
+                    key={idx}
+                    className={`absolute inset-0 p-5 flex items-start gap-3 transition-all duration-700 ease-in-out ${
+                      idx === activeTestiIndex
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 translate-x-8 pointer-events-none"
+                    }`}
+                  >
+                    <div className="size-10 rounded-full bg-violet-400 flex items-center justify-center text-white font-bold shrink-0">
+                      {testi.name.split(' ').map(n => n[0]).slice(0,2).join('')}
+                    </div>
+                    <div>
+                      <p className="text-sm text-white font-semibold">
+                        {testi.name}
+                      </p>
+                      <p className="text-xs text-violet-300 mb-2">
+                        {testi.role}
+                      </p>
+                      <p className="text-sm text-violet-100 leading-relaxed italic">
+                        {testi.quote}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 

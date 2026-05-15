@@ -46,7 +46,7 @@
 **Yang perlu dilakukan:**
 - [x] Minta kurikulum resmi bulan 1 sampai 6 dari tim materi, lalu masukkan ke `RoadmapSection.tsx`.
 - [x] Ganti teks deskripsi keunggulan di `FeaturesSection.tsx` agar sesuai dengan *Unique Selling Proposition* terbaru. (Selesai pada revisi terbaru: Sertif BNSP, Job Connection, Career Support, dll)
-- [ ] Masukkan testimoni asli dari alumni (Nama, Instansi, Quote) untuk menggantikan data dummy.
+- [x] Masukkan testimoni asli dari alumni (Nama, Instansi, Quote) untuk menggantikan data dummy.
 
 ---
 
