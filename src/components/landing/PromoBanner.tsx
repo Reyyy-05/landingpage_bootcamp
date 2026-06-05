@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { TicketPercent, Timer, Sparkles } from "lucide-react";
+import { OFFER_DEADLINE } from "@/constants/data";
 
 export function PromoBanner() {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,15 +13,14 @@ export function PromoBanner() {
   });
 
   useEffect(() => {
-    // Target date: May 20, 2026 at 23:59:59
-    const targetDate = new Date("2026-05-20T23:59:59").getTime();
+    const targetDate = new Date(OFFER_DEADLINE).getTime();
 
-    const interval = setInterval(() => {
+    const tick = () => {
       const now = new Date().getTime();
       const difference = targetDate - now;
 
       if (difference <= 0) {
-        clearInterval(interval);
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
 
@@ -30,7 +30,10 @@ export function PromoBanner() {
         minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
         seconds: Math.floor((difference % (1000 * 60)) / 1000),
       });
-    }, 1000);
+    };
+
+    tick();
+    const interval = setInterval(tick, 1000);
 
     return () => clearInterval(interval);
   }, []);

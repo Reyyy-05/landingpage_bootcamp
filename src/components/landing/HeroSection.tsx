@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, Shield, Users, Clock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import type { Bootcamp } from "@/types";
-import { SocialProof } from "./SocialProof";
 
 async function getActiveBootcamp(): Promise<Bootcamp | null> {
   try {

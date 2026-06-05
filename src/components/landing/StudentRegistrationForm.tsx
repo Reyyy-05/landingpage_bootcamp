@@ -1,14 +1,13 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { useForm } from "react-hook-form";
+import { useState, useEffect } from "react";
+import { useForm, useWatch, type Control, type FieldErrors, type UseFormRegister, type UseFormSetValue } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { Loader2, CheckCircle2, AlertCircle, Tag, ChevronDown } from "lucide-react";
 import { studentFormSchema, type StudentFormSchema, isPelajarStatus, isMahasiswaStatus } from "@/lib/validations/student";
-import { STUDENT_STATUSES, GENDER_OPTIONS, PACKAGES } from "@/constants";
-import { formatCurrency } from "@/lib/utils";
+import { STUDENT_STATUSES, GENDER_OPTIONS } from "@/constants";
 import type { Bootcamp } from "@/types";
 
 // ─── Debounce hook ───────────────────────────────────────────
@@ -47,6 +46,106 @@ const inputClass =
 const inputErrorClass =
   "w-full px-4 py-3 rounded-xl border border-red-300 bg-red-50 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-all";
 
+interface VoucherSectionProps {
+  control: Control<StudentFormSchema>;
+  register: UseFormRegister<StudentFormSchema>;
+  errors: FieldErrors<StudentFormSchema>;
+  setValue: UseFormSetValue<StudentFormSchema>;
+}
+
+function VoucherSection({ control, register, errors, setValue }: VoucherSectionProps) {
+  const voucherCode = useWatch({
+    control,
+    name: "voucher_code",
+    defaultValue: "",
+  });
+
+  const bootcampId = useWatch({
+    control,
+    name: "bootcamp_id",
+    defaultValue: "",
+  });
+
+  const debouncedVoucher = useDebounce(voucherCode, 700);
+
+  const [voucherState, setVoucherState] = useState<{
+    status: "idle" | "checking" | "valid" | "invalid";
+    message?: string;
+    discountLabel?: string;
+  }>({ status: "idle" });
+
+  useEffect(() => {
+    if (!debouncedVoucher || debouncedVoucher.length < 3) {
+      setVoucherState({ status: "idle" });
+      return;
+    }
+    setVoucherState({ status: "checking" });
+    fetch("/api/vouchers/validate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        code: debouncedVoucher,
+        bootcamp_id: bootcampId || undefined,
+      }),
+    })
+      .then((r) => r.json())
+      .then((res) => {
+        const result = res?.data;
+        if (result?.valid) {
+          setVoucherState({
+            status: "valid",
+            message: "Voucher valid!",
+            discountLabel: result.discountLabel,
+          });
+        } else {
+          setVoucherState({ status: "invalid", message: result?.error ?? "Voucher tidak valid" });
+        }
+      })
+      .catch(() => setVoucherState({ status: "idle" }));
+  }, [debouncedVoucher, bootcampId]);
+
+  return (
+    <div>
+      <Label>Kode Voucher <span className="text-gray-400 font-normal">(opsional)</span></Label>
+      <div className="relative">
+        <Tag size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+        <input
+          {...register("voucher_code")}
+          type="text"
+          placeholder="Masukkan kode voucher"
+          className={`${inputClass} pl-10 uppercase`}
+          style={{ textTransform: "uppercase" }}
+        />
+        {/* Voucher status indicator */}
+        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+          {voucherState.status === "checking" && (
+            <Loader2 size={16} className="animate-spin text-gray-400" />
+          )}
+          {voucherState.status === "valid" && (
+            <CheckCircle2 size={16} className="text-green-500" />
+          )}
+          {voucherState.status === "invalid" && (
+            <AlertCircle size={16} className="text-red-400" />
+          )}
+        </div>
+      </div>
+      {/* Voucher feedback */}
+      {voucherState.status === "valid" && (
+        <div className="mt-2 flex items-center gap-2 text-sm text-green-600 bg-green-50 rounded-lg px-3 py-2 animate-in fade-in slide-in-from-top-1 duration-200">
+          <CheckCircle2 size={14} />
+          <span>{voucherState.message} — <strong>{voucherState.discountLabel}</strong></span>
+        </div>
+      )}
+      {voucherState.status === "invalid" && (
+        <p className="mt-1.5 text-sm text-red-500 flex items-center gap-1 animate-in fade-in">
+          <AlertCircle size={13} />
+          {voucherState.message}
+        </p>
+      )}
+    </div>
+  );
+}
+
 // ─── Main Component ───────────────────────────────────────────
 export function StudentRegistrationForm() {
   const router = useRouter();
@@ -54,17 +153,13 @@ export function StudentRegistrationForm() {
   const [bootcamps, setBootcamps] = useState<Bootcamp[]>([]);
   const [isLoadingBootcamps, setIsLoadingBootcamps] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [voucherState, setVoucherState] = useState<{
-    status: "idle" | "checking" | "valid" | "invalid";
-    message?: string;
-    discountLabel?: string;
-  }>({ status: "idle" });
 
   const {
     register,
     handleSubmit,
     watch,
     setValue,
+    control,
     formState: { errors },
   } = useForm<StudentFormSchema>({
     resolver: zodResolver(studentFormSchema),
@@ -74,10 +169,6 @@ export function StudentRegistrationForm() {
   });
 
   const watchedStatus = watch("student_status");
-  const watchedVoucher = watch("voucher_code");
-  const watchedBootcamp = watch("bootcamp_id");
-  const watchedPackage = watch("package_selected");
-  const debouncedVoucher = useDebounce(watchedVoucher, 700);
   const isPelajar = isPelajarStatus(watchedStatus);
   const isMahasiswa = isMahasiswaStatus(watchedStatus);
 
@@ -111,37 +202,6 @@ export function StudentRegistrationForm() {
       .catch(() => {})
       .finally(() => setIsLoadingBootcamps(false));
   }, []);
-
-  // ── Validate voucher on debounce ───────────────────────────
-  useEffect(() => {
-    if (!debouncedVoucher || debouncedVoucher.length < 3) {
-      setVoucherState({ status: "idle" });
-      return;
-    }
-    setVoucherState({ status: "checking" });
-    fetch("/api/vouchers/validate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        code: debouncedVoucher,
-        bootcamp_id: watchedBootcamp || undefined,
-      }),
-    })
-      .then((r) => r.json())
-      .then((res) => {
-        const result = res?.data;
-        if (result?.valid) {
-          setVoucherState({
-            status: "valid",
-            message: "Voucher valid!",
-            discountLabel: result.discountLabel,
-          });
-        } else {
-          setVoucherState({ status: "invalid", message: result?.error ?? "Voucher tidak valid" });
-        }
-      })
-      .catch(() => setVoucherState({ status: "idle" }));
-  }, [debouncedVoucher, watchedBootcamp]);
 
   // ── Submit ─────────────────────────────────────────────────
   const onSubmit = async (data: StudentFormSchema) => {
@@ -463,44 +523,12 @@ export function StudentRegistrationForm() {
             <input type="hidden" {...register("package_selected")} value="laravel_full_online" />
 
             {/* Kode Voucher */}
-            <div>
-              <Label>Kode Voucher <span className="text-gray-400 font-normal">(opsional)</span></Label>
-              <div className="relative">
-                <Tag size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input
-                  {...register("voucher_code")}
-                  type="text"
-                  placeholder="Masukkan kode voucher"
-                  className={`${inputClass} pl-10 uppercase`}
-                  style={{ textTransform: "uppercase" }}
-                />
-                {/* Voucher status indicator */}
-                <div className="absolute right-4 top-1/2 -translate-y-1/2">
-                  {voucherState.status === "checking" && (
-                    <Loader2 size={16} className="animate-spin text-gray-400" />
-                  )}
-                  {voucherState.status === "valid" && (
-                    <CheckCircle2 size={16} className="text-green-500" />
-                  )}
-                  {voucherState.status === "invalid" && (
-                    <AlertCircle size={16} className="text-red-400" />
-                  )}
-                </div>
-              </div>
-              {/* Voucher feedback */}
-              {voucherState.status === "valid" && (
-                <div className="mt-2 flex items-center gap-2 text-sm text-green-600 bg-green-50 rounded-lg px-3 py-2">
-                  <CheckCircle2 size={14} />
-                  <span>{voucherState.message} — <strong>{voucherState.discountLabel}</strong></span>
-                </div>
-              )}
-              {voucherState.status === "invalid" && (
-                <p className="mt-1.5 text-sm text-red-500 flex items-center gap-1">
-                  <AlertCircle size={13} />
-                  {voucherState.message}
-                </p>
-              )}
-            </div>
+            <VoucherSection
+              control={control}
+              register={register}
+              errors={errors}
+              setValue={setValue}
+            />
 
           </div>
         </div>
