@@ -52,17 +52,19 @@ export async function HeroSection() {
           <div className="flex flex-col justify-center">
             {/* Headline — P7: gradient shimmer on "Laravel Developer" */}
             <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-5 tracking-tight scroll-animate">
-              Jadi Full-Stack <br />
+              Terjebak di{" "}
               <span className="headline-gradient">
-                Laravel Developer
+                &lsquo;Tutorial Hell&rsquo;
               </span>{" "}
               <br />
-              Siap Kerja dalam 6 Bulan
+              Berbulan-bulan Tapi Belum Siap Kerja?
             </h1>
 
             {/* Sub-headline */}
             <p className="text-lg text-slate-600 mb-4 leading-relaxed max-w-lg scroll-animate scroll-animate-delay-100">
-              Bootcamp intensif berbasis project nyata + mentoring hingga kamu siap masuk industri dan tersertifikasi BNSP.
+              Ubah kebingunganmu menjadi keahlian Full-Stack Laravel Developer
+              siap industri dalam 6 bulan. Belajar lewat real-world project,
+              mentoring 1-on-1, dan kunci sertifikasi resmi BNSP kamu.
             </p>
 
             {/* P3: Benefit Chips */}

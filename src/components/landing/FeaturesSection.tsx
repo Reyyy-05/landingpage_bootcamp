@@ -23,11 +23,11 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="section-label">Kenapa Creativemu?</span>
-          <h2 className="heading-lg mt-2 mb-4">Keunggulan Program</h2>
+          <span className="section-label">💡 Solusi yang Tepat</span>
+          <h2 className="heading-lg mt-2 mb-4">Inilah yang Membedakan Creativemu Academy</h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            Kami bukan bootcamp biasa — setiap detail dirancang agar kamu siap
-            kerja, bukan sekadar lulus.
+            Semua masalah di atas? Kami sudah merancang solusinya satu per satu
+            — supaya kamu nggak cuma belajar, tapi benar-benar siap kerja.
           </p>
         </div>
 

@@ -1,5 +1,7 @@
 import { HeroSection } from "@/components/landing/HeroSection";
 import { TrustedSection } from "@/components/landing/TrustedSection";
+import { ProblemSection } from "@/components/landing/ProblemSection";
+import { AgitationSection } from "@/components/landing/AgitationSection";
 import { FeaturesSection } from "@/components/landing/FeaturesSection";
 import { RoadmapSection } from "@/components/landing/RoadmapSection";
 import { ValueStackSection } from "@/components/organisms/ValueStackSection";
@@ -11,6 +13,8 @@ export default function HomePage() {
     <>
       <HeroSection />
       <TrustedSection />
+      <ProblemSection />
+      <AgitationSection />
       <FeaturesSection />
       <RoadmapSection />
       <ValueStackSection />
@@ -19,4 +23,3 @@ export default function HomePage() {
     </>
   );
 }
-
