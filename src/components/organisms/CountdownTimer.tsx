@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import { ArrowRight, Timer } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, MessageCircle, Timer } from "lucide-react";
 import { OFFER_DEADLINE, WA_CTA } from "@/constants/data";
 
 // ─── Types ────────────────────────────────────────────────────
@@ -132,10 +133,8 @@ export function CountdownTimer() {
           {/* ── CTA Section ─────────────────────────────────── */}
           <div className="border-t border-slate-100 px-6 sm:px-8 py-6 bg-slate-50/50">
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <a
-                href={WA_CTA.getRegistrationUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/daftar"
                 className="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-violet-700 text-white font-semibold text-sm hover:bg-violet-800 transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
                 Daftar Sekarang
@@ -143,18 +142,19 @@ export function CountdownTimer() {
                   size={16}
                   className="transition-transform group-hover:translate-x-1"
                 />
-              </a>
+              </Link>
               <a
                 href={WA_CTA.getConsultationUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center px-6 py-3.5 rounded-full border-2 border-violet-200 text-violet-700 font-semibold text-sm hover:bg-violet-50 transition-all"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border-2 border-violet-200 text-violet-700 font-semibold text-sm hover:bg-violet-50 transition-all"
               >
-                💬 Konsultasi Dulu
+                <MessageCircle size={16} className="text-green-500" />
+                Konsultasi Dulu
               </a>
             </div>
             <p className="text-xs text-slate-400 text-center mt-4">
-              Klik tombol di atas untuk chat langsung dengan admin via WhatsApp
+              Klik Daftar Sekarang untuk mengisi formulir, atau Hubungi Konsultasi jika ada pertanyaan.
             </p>
           </div>
         </div>

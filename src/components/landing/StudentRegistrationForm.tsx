@@ -192,15 +192,46 @@ export function StudentRegistrationForm() {
     }
   }, [watchedStatus, isPelajar, isMahasiswa, setValue]);
 
+  // ── Hardcoded fallback when DB has no open programs ─────────
+  const FALLBACK_BOOTCAMP: Bootcamp = {
+    id: "batch-1-laravel",
+    name: "Batch 1 Laravel Web Developer",
+    batch_number: 1,
+    program_type: "bootcamp",
+    description: null,
+    start_date: null,
+    end_date: null,
+    registration_open: null,
+    registration_close: null,
+    max_capacity: 50,
+    location: "Full Online",
+    price_reguler: 3_000_000,
+    price_premium: null,
+    price_intensif: null,
+    is_active: true,
+    is_open: true,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+
   // ── Load bootcamps ─────────────────────────────────────────
   useEffect(() => {
     fetch("/api/bootcamps-public")
       .then((r) => r.json())
       .then((d) => {
-        if (d.data) setBootcamps(d.data);
+        if (d.data && d.data.length > 0) {
+          setBootcamps(d.data);
+        } else {
+          // API returned empty — use hardcoded fallback
+          setBootcamps([FALLBACK_BOOTCAMP]);
+        }
       })
-      .catch(() => {})
+      .catch(() => {
+        // Network error — use hardcoded fallback
+        setBootcamps([FALLBACK_BOOTCAMP]);
+      })
       .finally(() => setIsLoadingBootcamps(false));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ── Submit ─────────────────────────────────────────────────

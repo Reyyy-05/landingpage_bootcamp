@@ -113,8 +113,8 @@ if (_valueStackSum !== 7_500_000) {
 // ─── Pricing Config ───────────────────────────────────────────
 export const PRICING: PricingConfig = {
   totalValue: 7_500_000,
-  offerPrice: 3_500_000,
-  savings: 7_500_000 - 3_500_000, // 4_000_000
+  offerPrice: 3_000_000,
+  savings: 7_500_000 - 3_000_000, // 4_500_000
   currency: "IDR",
 };
 
@@ -189,7 +189,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const WA_CTA = {
   /** Pre-filled WA message for registration interest */
   registrationMessage:
-    "Halo Admin Creativemu Academy 👋\n\nSaya tertarik mendaftar *Bootcamp Laravel Full-Stack 6 Bulan* dengan harga spesial Rp 3.500.000.\n\nMohon info lebih lanjut tentang cara pendaftaran dan pembayaran. Terima kasih!",
+    "Halo Admin Creativemu Academy 👋\n\nSaya tertarik mendaftar *Bootcamp Laravel Full-Stack 6 Bulan* dengan harga spesial Rp 3.000.000.\n\nMohon info lebih lanjut tentang cara pendaftaran dan pembayaran. Terima kasih!",
   /** Pre-filled WA message for general consultation */
   consultationMessage:
     "Halo Admin Creativemu Academy 👋\n\nSaya ingin konsultasi tentang program Bootcamp Laravel. Bisa bantu jelaskan lebih detail? Terima kasih!",
