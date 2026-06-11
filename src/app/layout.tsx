@@ -65,8 +65,8 @@ export const metadata: Metadata = {
     images: ["/opengraph-image.png"],
   },
   icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
+    icon: "/icon.png",
+    apple: "/icon.png",
   },
   robots: {
     index: true,
