@@ -21,11 +21,11 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Creativemu Academy – Jadi Full-Stack Laravel Developer dalam 6 Bulan",
+    default: "Creativemu Academy | Batch 1 Laravel Web Developer",
     template: "%s | Creativemu Academy",
   },
   description:
-    "Bootcamp IT intensif dengan sertifikasi resmi BNSP. Belajar langsung dari praktisi industri, bangun portofolio nyata, dan dapatkan koneksi kerja selamanya.",
+    "Ayo gabung di Batch 1 Laravel Web Developer. Promo khusus bulan Juni: Potongan Rp 500.000, biaya investasi tersisa Rp 3.000.000 saja! Kuota terbatas.",
   keywords: [
     "bootcamp laravel",
     "fullstack developer",
@@ -33,36 +33,38 @@ export const metadata: Metadata = {
     "belajar coding jogja",
     "creativemu academy",
     "digital marketing",
+    "batch 1 laravel",
+    "promo juni",
   ],
   authors: [{ name: "Creativemu Academy" }],
   creator: "Creativemu Academy",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://creativemuacademy.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://landingpagebootcamp-omega.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "/",
+    url: "https://landingpagebootcamp-omega.vercel.app",
     siteName: "Creativemu Academy",
-    title: "Creativemu Academy – Jadi Full-Stack Laravel Developer dalam 6 Bulan",
+    title: "Creativemu Academy | Batch 1 Laravel Web Developer",
     description:
-      "Bootcamp IT intensif dengan sertifikasi resmi BNSP. Belajar langsung dari praktisi industri, bangun portofolio nyata, dan siap kerja dalam 6 bulan.",
+      "Promo Juni: Potongan Rp 500.000, kini hanya Rp 3.000.000 untuk kelas akselerasi Laravel Web Developer!",
     images: [
       {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Creativemu Academy",
+        url: "/icon.png",
+        width: 512,
+        height: 512,
+        alt: "Logo Creativemu Academy",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Creativemu Academy – Jadi Full-Stack Laravel Developer dalam 6 Bulan",
+    title: "Creativemu Academy | Batch 1 Laravel Web Developer",
     description:
-      "Bootcamp IT intensif dengan sertifikasi resmi BNSP. Belajar langsung dari praktisi industri dan siap kerja.",
-    images: ["/opengraph-image.png"],
+      "Promo Juni: Potongan Rp 500.000, kini hanya Rp 3.000.000 untuk kelas akselerasi Laravel Web Developer!",
+    images: ["/icon.png"],
   },
   icons: {
     icon: "/icon.png",
