@@ -135,7 +135,7 @@ export function CountdownTimer() {
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Link
                 href="/daftar"
-                className="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-violet-700 text-white font-semibold text-sm hover:bg-violet-800 transition-all hover:shadow-lg hover:-translate-y-0.5"
+                className="btn-shimmer group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-violet-700 text-white font-semibold text-sm hover:bg-violet-800 transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
                 Daftar Sekarang
                 <ArrowRight
@@ -147,9 +147,9 @@ export function CountdownTimer() {
                 href={WA_CTA.getConsultationUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border-2 border-violet-200 text-violet-700 font-semibold text-sm hover:bg-violet-50 transition-all"
+                className="group flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border-2 border-violet-200 text-violet-700 font-semibold text-sm hover:bg-violet-50 transition-all"
               >
-                <MessageCircle size={16} className="text-green-500" />
+                <MessageCircle size={16} className="text-green-500 transition-transform duration-300 group-hover:translate-x-1" />
                 Konsultasi Dulu
               </a>
             </div>
