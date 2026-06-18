@@ -52,12 +52,12 @@ export async function HeroSection() {
           <div className="flex flex-col justify-center">
             {/* Headline — P7: gradient shimmer on "Laravel Developer" */}
             <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-5 tracking-tight scroll-animate">
-              Terjebak di{" "}
-              <span className="headline-gradient">
-                &lsquo;Tutorial Hell&rsquo;
-              </span>{" "}
+              Sudah Lama Belajar,{" "}
               <br />
-              Berbulan-bulan Tapi Belum Siap Kerja?
+              Tapi{" "}
+              <span className="headline-gradient">
+                Belum Siap Kerja?
+              </span>
             </h1>
 
             {/* Sub-headline */}
@@ -103,11 +103,13 @@ export async function HeroSection() {
           {/* Right: Visual */}
           <div className="relative flex justify-center lg:justify-end scroll-animate scroll-animate-delay-300">
             <div className="relative w-full max-w-lg">
-              <img 
-                src="/images/aset-landing-page.png" 
-                alt="CreativeMU Bootcamp" 
-                className="w-full h-auto object-contain drop-shadow-2xl hover:scale-[1.02] transition-transform duration-500"
-              />
+              <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-slate-100">
+                <img 
+                  src="/images/hero-frustrated.jpeg" 
+                  alt="Frustrasi belajar coding sendiri — error terus tanpa mentor" 
+                  className="w-full h-full object-contain hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
             </div>
           </div>
         </div>
