@@ -47,11 +47,11 @@ export async function HeroSection() {
       />
 
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-8 lg:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8 lg:py-12">
           {/* Left: Content */}
-          <div className="flex flex-col justify-center">
-            {/* Headline — P7: gradient shimmer on "Laravel Developer" */}
-            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-5 tracking-tight scroll-animate">
+          <div className="lg:col-span-7 flex flex-col justify-center">
+            {/* Headline — P7: gradient shimmer on "Belum Siap Kerja?" */}
+            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-4 tracking-tight scroll-animate">
               Sudah Lama Belajar,{" "}
               <br />
               Tapi{" "}
@@ -61,21 +61,19 @@ export async function HeroSection() {
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg text-slate-600 mb-4 leading-relaxed max-w-lg scroll-animate scroll-animate-delay-100">
+            <p className="text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
               Ubah kebingunganmu menjadi keahlian Full-Stack Laravel Developer
               siap industri dalam 6 bulan. Belajar lewat real-world project,
               mentoring 1-on-1, dan kunci sertifikasi resmi BNSP kamu.
             </p>
 
             {/* P3: Benefit Chips */}
-            <div className="grid grid-cols-2 gap-3 max-w-max scroll-animate scroll-animate-delay-100">
+            <div className="grid grid-cols-2 gap-3 max-w-max mb-5 scroll-animate scroll-animate-delay-100">
               <span className="chip">✓ Project Nyata</span>
               <span className="chip">✓ Mentoring 1-on-1</span>
               <span className="chip">✓ Sertifikat BNSP</span>
               <span className="chip">✓ Job Referral</span>
             </div>
-
-
 
             {/* CTA Buttons — P2: fix outline button visibility */}
             <div className="flex flex-col sm:flex-row gap-4 scroll-animate scroll-animate-delay-200">
@@ -101,13 +99,13 @@ export async function HeroSection() {
           </div>
 
           {/* Right: Visual */}
-          <div className="relative flex justify-center lg:justify-end scroll-animate scroll-animate-delay-300">
-            <div className="relative w-full max-w-lg">
-              <div className="w-full aspect-video rounded-2xl overflow-hidden shadow-2xl bg-slate-100">
+          <div className="lg:col-span-5 relative flex justify-center lg:justify-end scroll-animate scroll-animate-delay-300">
+            <div className="relative w-full">
+              <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src="/images/hero-frustrated.jpeg" 
                   alt="Frustrasi belajar coding sendiri — error terus tanpa mentor" 
-                  className="w-full h-full object-contain hover:scale-[1.02] transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
             </div>
