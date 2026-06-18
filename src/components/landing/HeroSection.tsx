@@ -68,7 +68,7 @@ export async function HeroSection() {
             </p>
 
             {/* P3: Benefit Chips */}
-            <div className="benefit-chips scroll-animate scroll-animate-delay-100">
+            <div className="grid grid-cols-2 gap-3 max-w-max scroll-animate scroll-animate-delay-100">
               <span className="chip">✓ Project Nyata</span>
               <span className="chip">✓ Mentoring 1-on-1</span>
               <span className="chip">✓ Sertifikat BNSP</span>
