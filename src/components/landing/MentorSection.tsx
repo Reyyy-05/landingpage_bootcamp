@@ -99,18 +99,10 @@ export function MentorSection() {
                   <div className="size-28 sm:size-32 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 border-2 border-violet-200 overflow-hidden flex items-center justify-center">
                     <img
                       src="/images/mentor-zaki.png"
-                      alt="Zaki Maliki — Senior Full-Stack Engineer & Tech Educator"
+                      alt="Zaki Maliki"
+                      width={128}
+                      height={128}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        // Fallback to initials if image is missing
-                        const target = e.currentTarget;
-                        target.style.display = "none";
-                        const parent = target.parentElement;
-                        if (parent) {
-                          parent.innerHTML =
-                            '<span class="text-4xl font-bold text-violet-600" style="font-family: var(--font-display)">ZM</span>';
-                        }
-                      }}
                     />
                   </div>
                 </div>
