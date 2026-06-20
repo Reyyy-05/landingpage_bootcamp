@@ -51,7 +51,7 @@ export function Navbar() {
           {/* Subtle back link */}
           <Link
             href="/"
-            className="text-sm font-semibold text-slate-600 hover:text-violet-700 transition-colors flex items-center gap-1"
+            className="text-sm text-slate-600 hover:text-purple-600 transition-colors"
           >
             ← Kembali ke Beranda
           </Link>
