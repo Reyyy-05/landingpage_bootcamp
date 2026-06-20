@@ -4,9 +4,6 @@ import {
   Bug,
   FileCode2,
   CalendarCheck,
-  Briefcase,
-  Code2,
-  Users,
 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────
@@ -19,20 +16,6 @@ interface MethodFeature {
 
 // ─── Data ─────────────────────────────────────────────────────
 
-const PROFILE_HIGHLIGHTS = [
-  {
-    icon: Code2,
-    text: "Active industry practitioner — spesialis Enterprise Laravel & Modern JavaScript/TypeScript Ecosystems.",
-  },
-  {
-    icon: Briefcase,
-    text: "Track record membangun scalable web applications & membimbing developer pemula menjadi production-ready engineer.",
-  },
-  {
-    icon: Users,
-    text: "Portfolio Highlights — kontribusi langsung pada high-performance tech solutions & community engineering.",
-  },
-] as const;
 
 const METHOD_FEATURES: MethodFeature[] = [
   {
@@ -118,36 +101,33 @@ export function MentorSection() {
                   <p className="text-sm font-semibold text-violet-600 mb-4">
                     Senior Full-Stack Engineer & Tech Educator
                   </p>
-
-                  {/* Profile Highlights */}
-                  <div className="flex flex-col gap-4">
-                    {PROFILE_HIGHLIGHTS.map((item) => {
-                      const Icon = item.icon;
-                      return (
-                        <div key={item.text} className="flex items-start gap-3">
-                          <div className="size-8 rounded-lg bg-violet-50 flex items-center justify-center shrink-0 mt-0.5">
-                            <Icon size={16} className="text-violet-600" />
-                          </div>
-                          <p className="text-sm text-slate-600 leading-relaxed">
-                            {item.text}
-                          </p>
-                        </div>
-                      );
-                    })}
+                  {/* Profile Highlights as Badges */}
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-xs font-medium border border-violet-100">
+                      Enterprise Laravel Specialist
+                    </span>
+                    <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-xs font-medium border border-violet-100">
+                      Modern JS/TS Ecosystem
+                    </span>
+                    <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-xs font-medium border border-violet-100">
+                      Production-Ready Engineer
+                    </span>
                   </div>
                 </div>
               </div>
 
               {/* Bottom quote */}
               <div className="mt-8 pt-6 border-t border-slate-100">
-                <blockquote className="text-sm text-slate-500 italic leading-relaxed">
-                  &ldquo;Saya percaya setiap orang bisa jadi developer handal —
-                  asal dibimbing dengan cara yang benar, bukan cuma disuruh
-                  nonton video.&rdquo;
-                </blockquote>
-                <p className="text-xs text-slate-400 mt-2 font-medium">
-                  — Zaki Maliki, Lead Mentor Creativemu Academy
-                </p>
+                <div className="bg-slate-50/50 p-4 border-l-4 border-violet-600 rounded-r-xl">
+                  <blockquote className="text-sm text-slate-600 italic leading-relaxed">
+                    &ldquo;Saya percaya setiap orang bisa jadi developer handal —
+                    asal dibimbing dengan cara yang benar, bukan cuma disuruh
+                    nonton video.&rdquo;
+                  </blockquote>
+                  <p className="text-xs text-slate-500 mt-2 font-semibold">
+                    — Zaki Maliki, Lead Mentor Creativemu Academy
+                  </p>
+                </div>
               </div>
             </div>
           </div>
