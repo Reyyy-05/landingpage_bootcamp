@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
@@ -13,6 +14,7 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -21,6 +23,42 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isRegistrationPage = pathname === "/daftar";
+
+  if (isRegistrationPage) {
+    return (
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-violet-100"
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="container mx-auto px-4 max-w-6xl flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/CreativeAc-New.png"
+              alt="Creativemu Academy Logo"
+              width={200}
+              height={50}
+              className="h-9 md:h-10 w-auto object-contain"
+              priority
+            />
+          </Link>
+
+          {/* Subtle back link */}
+          <Link
+            href="/"
+            className="text-sm font-semibold text-slate-600 hover:text-violet-700 transition-colors flex items-center gap-1"
+          >
+            ← Kembali ke Beranda
+          </Link>
+        </nav>
+      </header>
+    );
+  }
 
   return (
     <header
