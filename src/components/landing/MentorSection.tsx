@@ -96,13 +96,13 @@ export function MentorSection() {
               <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
                 {/* Avatar */}
                 <div className="shrink-0">
-                  <div className="size-28 sm:size-32 rounded-2xl bg-gradient-to-br from-violet-100 to-indigo-100 border-2 border-violet-200 overflow-hidden flex items-center justify-center">
+                  <div className="w-32 h-32 min-w-[128px] rounded-full bg-gradient-to-br from-violet-100 to-indigo-100 border-2 border-violet-200 overflow-hidden flex items-center justify-center">
                     <img
                       src="/images/avatar.png"
                       alt="Zaki Maliki"
                       width={128}
                       height={128}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover object-center rounded-full"
                     />
                   </div>
                 </div>
