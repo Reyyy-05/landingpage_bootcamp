@@ -4,6 +4,9 @@ import {
   Bug,
   FileCode2,
   CalendarCheck,
+  GraduationCap,
+  Briefcase,
+  Award,
 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────
@@ -16,6 +19,24 @@ interface MethodFeature {
 
 // ─── Data ─────────────────────────────────────────────────────
 
+
+const PROFILE_HIGHLIGHTS = [
+  {
+    icon: GraduationCap,
+    title: "Pedagogy & Teaching Authority",
+    text: "4+ Tahun Pengalaman Mengajar Coding. Aktif sebagai Academic Coding Instructor di ekosistem Pijar Camp dan mantan Asisten Dosen UTDI yang telah membimbing ratusan pemula menjadi developer siap kerja.",
+  },
+  {
+    icon: Briefcase,
+    title: "Full-Stack Industry Track Record",
+    text: "Eksperiens Lintas Industri. Berpengalaman membangun dan me-revamp aplikasi produksi berskala enterprise di sektor FinTech (amalan international), platform investasi (Emtrade/Ellen May Institute), hingga Software House menggunakan ekosistem Laravel, Vue.js, dan Next.js.",
+  },
+  {
+    icon: Award,
+    title: "Elite Academic & Global Certified",
+    text: "Lulusan Terbaik Informatika (IPK 3.91). Peraih Juara 1 Beasiswa Widya Bakti, didukung oleh puluhan sertifikasi kompetensi industri dari Dicoding Academy, DQLab (Python & Data Science), hingga Progate.",
+  },
+] as const;
 
 const METHOD_FEATURES: MethodFeature[] = [
   {
@@ -99,21 +120,39 @@ export function MentorSection() {
                     Zaki Maliki
                   </h3>
                   <p className="text-sm font-semibold text-violet-600 mb-4">
-                    Senior Full-Stack Engineer & Tech Educator
+                    Academic Coding Instructor & Full-Stack Engineer
                   </p>
                   {/* Profile Highlights as Badges */}
                   <div className="flex flex-wrap gap-2">
                     <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-xs font-medium border border-violet-100">
-                      Enterprise Laravel Specialist
+                      Active Bootcamp Coding Instructor
                     </span>
                     <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-xs font-medium border border-violet-100">
-                      Modern JS/TS Ecosystem
+                      Ex-Informatics Assistant Lecturer
                     </span>
                     <span className="bg-violet-50 text-violet-700 px-3 py-1 rounded-full text-xs font-medium border border-violet-100">
-                      Production-Ready Engineer
+                      Full-Stack Web Engineer
                     </span>
                   </div>
                 </div>
+              </div>
+
+              {/* Profile Highlights Details */}
+              <div className="mt-8 flex flex-col gap-4">
+                {PROFILE_HIGHLIGHTS.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <div key={item.title} className="flex items-start gap-3">
+                      <div className="size-8 rounded-lg bg-violet-50 flex items-center justify-center shrink-0 mt-0.5 border border-violet-100/60">
+                        <Icon size={16} className="text-violet-600" />
+                      </div>
+                      <p className="text-sm text-slate-600 leading-relaxed">
+                        <strong className="text-slate-900 font-semibold">{item.title}:</strong>{" "}
+                        {item.text}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
 
               {/* Bottom quote */}
