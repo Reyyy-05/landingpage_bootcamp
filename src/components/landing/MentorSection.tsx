@@ -106,7 +106,7 @@ export function MentorSection() {
                       alt="Zaki Maliki"
                       width={128}
                       height={128}
-                      className="w-full h-full object-cover object-center rounded-full"
+                      className="w-full h-full object-cover object-top rounded-full"
                     />
                   </div>
                 </div>
