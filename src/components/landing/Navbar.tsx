@@ -37,7 +37,7 @@ export function Navbar() {
       >
         <nav className="container mx-auto px-4 max-w-6xl flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <a href="/" className="flex items-center">
             <Image
               src="/images/CreativeAc-New.png"
               alt="Creativemu Academy Logo"
@@ -46,15 +46,15 @@ export function Navbar() {
               className="h-9 md:h-10 w-auto object-contain"
               priority
             />
-          </Link>
+          </a>
 
           {/* Subtle back link */}
-          <Link
+          <a
             href="/"
             className="text-sm text-slate-600 hover:text-purple-600 transition-colors"
           >
             ← Kembali ke Beranda
-          </Link>
+          </a>
         </nav>
       </header>
     );
