@@ -155,16 +155,14 @@ export function MentorSection() {
                 })}
               </div>
 
-              {/* Bottom quote */}
+              {/* Open-Source & Tech Publication Proof */}
               <div className="mt-8 pt-6 border-t border-slate-100">
-                <div className="bg-slate-50/50 p-4 border-l-4 border-violet-600 rounded-r-xl">
-                  <blockquote className="text-sm text-slate-600 italic leading-relaxed">
-                    &ldquo;Saya percaya setiap orang bisa jadi developer handal —
-                    asal dibimbing dengan cara yang benar, bukan cuma disuruh
-                    nonton video.&rdquo;
-                  </blockquote>
-                  <p className="text-xs text-slate-500 mt-2 font-semibold">
-                    — Zaki Maliki, Lead Mentor Creativemu Academy
+                <div className="bg-violet-50/40 p-4 border-l-4 border-violet-600 rounded-r-xl">
+                  <h4 className="text-xs font-bold text-violet-900 uppercase tracking-wider mb-1.5">
+                    Open-Source & Tech Publication Proof
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    <strong>Kontributor Komunitas & Penulis E-Book:</strong> Dedikasi mengajar Mas Zaki dibuktikan lewat aksi nyata. Beliau aktif menerbitkan e-book panduan pemrograman mandiri di <a href="https://zakimaliki.gitbook.io" target="_blank" rel="noopener noreferrer" className="text-violet-700 hover:text-violet-900 font-semibold underline underline-offset-2">GitBook (zakimaliki.gitbook.io)</a> serta membagikan ratusan repositori kode publik di <a href="https://github.com/zakimaliki" target="_blank" rel="noopener noreferrer" className="text-violet-700 hover:text-violet-900 font-semibold underline underline-offset-2">GitHub (github.com/zakimaliki)</a> yang bisa diakses dan dipelajari secara terbuka oleh siapa saja.
                   </p>
                 </div>
               </div>
