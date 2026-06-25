@@ -1,42 +1,20 @@
-// Hardcoded curriculum roadmap — can be migrated to DB later
 const CURRICULUM = [
   {
     month: 1,
-    title: "PHP Fundamentals",
-    description: "Bangun fondasi yang kuat dalam PHP, mencakup sintaks dasar, logika, dan konsep pemrograman esensial untuk pengembangan web.",
+    title: "PHP Fundamentals & OOP",
+    description: "Bangun fondasi kuat dalam PHP mencakup sintaks dasar, logika, dan konsep OOP termasuk kelas, objek, pewarisan, serta praktik clean code.",
     isFinal: false,
     colorClass: "bg-blue-600",
   },
   {
     month: 2,
-    title: "Object-Oriented Programming (OOP)",
-    description: "Kuasai prinsip-prinsip OOP termasuk kelas, objek, pewarisan (inheritance), dan praktik clean code yang digunakan dalam aplikasi modern.",
-    isFinal: false,
-    colorClass: "bg-indigo-600",
-  },
-  {
-    month: 3,
-    title: "Laravel Fundamentals",
-    description: "Pelajari framework Laravel, termasuk arsitektur MVC, routing, manajemen database, dan fitur-fitur intinya.",
+    title: "Laravel Fundamentals & Implementation",
+    description: "Pelajari arsitektur MVC, routing, manajemen database, lalu terapkan keahlianmu dengan membangun proyek dunia nyata secara mandiri dan kolaborasi tim.",
     isFinal: false,
     colorClass: "bg-violet-600",
   },
   {
-    month: 4,
-    title: "Laravel Implementation (Individual Project)",
-    description: "Terapkan keahlianmu dengan membangun proyek dunia nyata secara mandiri menggunakan praktik terbaik Laravel.",
-    isFinal: false,
-    colorClass: "bg-fuchsia-600",
-  },
-  {
-    month: 5,
-    title: "Laravel Implementation (Group Project)",
-    description: "Berkolaborasi dalam tim untuk mengembangkan aplikasi dunia nyata yang skalabel, mensimulasikan alur kerja di industri.",
-    isFinal: false,
-    colorClass: "bg-rose-600",
-  },
-  {
-    month: 6,
+    month: 3,
     title: "Capstone Project & BNSP Certification",
     description: "Selesaikan proyek akhir berstandar industri dan persiapkan ujian sertifikasi BNSP untuk memvalidasi keahlian profesionalmu.",
     isFinal: true,
@@ -51,7 +29,7 @@ export function RoadmapSection() {
         {/* Header */}
         <div className="text-center mb-14">
           <h2 className="text-[clamp(32px,4vw,48px)] font-bold text-slate-900 leading-[1.2] tracking-tight mb-4">
-            Perjalanan Belajar 6 Bulanmu
+            Perjalanan Belajar 3 Bulanmu
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Kurikulum komprehensif dari dasar hingga menjadi ahli yang siap kerja.

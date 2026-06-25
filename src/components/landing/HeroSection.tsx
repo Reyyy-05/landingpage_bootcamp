@@ -63,7 +63,7 @@ export async function HeroSection() {
             {/* Sub-headline */}
             <p className="text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
               Ubah kebingunganmu menjadi keahlian Full-Stack Laravel Developer
-              siap industri dalam 6 bulan. Belajar lewat real-world project,
+              siap industri dalam 3 bulan. Belajar lewat real-world project,
               mentoring 1-on-1, dan kunci sertifikasi resmi BNSP kamu.
             </p>
 
@@ -146,7 +146,7 @@ export async function HeroSection() {
                 <Clock size={24} />
               </div>
               <div className="stat-text">
-                <span className="stat-number">6 Bulan</span>
+                <span className="stat-number">3 Bulan</span>
                 <span className="stat-label">Program Intensif</span>
                 <span className="stat-sub">Terstruktur & terbimbing</span>
               </div>

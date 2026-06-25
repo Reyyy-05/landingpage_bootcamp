@@ -127,7 +127,7 @@ export function ValueStackSection() {
                   </span>
                 </div>
                 <p className="text-violet-200 text-sm mt-2">
-                  untuk 6 bulan program intensif full online
+                  untuk 3 bulan program intensif full online
                 </p>
               </div>
 

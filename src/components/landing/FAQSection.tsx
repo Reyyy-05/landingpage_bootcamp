@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Berapa lama durasi program bootcamp ini?",
     answer:
-      "Program ini berlangsung secara intensif selama 6 bulan. Di bulan-bulan terakhir, kamu akan difokuskan pada pembuatan portfolio riil dan persiapan ujian sertifikasi BNSP.",
+      "Program ini berlangsung secara intensif selama 3 bulan. Di bulan terakhir, kamu akan difokuskan pada pembuatan portfolio riil dan persiapan ujian sertifikasi BNSP.",
   },
   {
     question: "Apakah ada jaminan mendapat pekerjaan setelah lulus?",

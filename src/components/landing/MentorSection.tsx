@@ -61,7 +61,7 @@ const METHOD_FEATURES: MethodFeature[] = [
     icon: CalendarCheck,
     title: "High-Accountability Ecosystem",
     description:
-      "Jadwal terstruktur yang menjaga motivasi belajar Anda tetap stabil selama 6 bulan.",
+      "Jadwal terstruktur yang menjaga motivasi belajar Anda tetap stabil selama 3 bulan.",
   },
 ];
 

@@ -104,7 +104,7 @@ export function CountdownTimer() {
               Harga Spesial Berakhir Dalam
             </h3>
             <p className="text-sm text-slate-500 mt-1">
-              Setelah waktu habis, harga kembali ke Rp 7.500.000
+              Setelah waktu habis, harga kembali ke Rp 2.500.000
             </p>
           </div>
 
