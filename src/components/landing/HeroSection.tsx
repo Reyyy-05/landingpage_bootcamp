@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Shield, Users, Clock } from "lucide-react";
+import { ArrowRight, FolderGit2, Users, Clock } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import type { Bootcamp } from "@/types";
 
@@ -64,14 +64,14 @@ export async function HeroSection() {
             <p className="text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
               Ubah kebingunganmu menjadi keahlian Full-Stack Laravel Developer
               siap industri dalam 3 bulan. Belajar lewat real-world project,
-              mentoring 1-on-1, dan kunci sertifikasi resmi BNSP kamu.
+              mentoring 1-on-1, dan langsung bangun portfolio nyata.
             </p>
 
             {/* P3: Benefit Chips */}
             <div className="grid grid-cols-2 gap-3 max-w-max mb-5 scroll-animate scroll-animate-delay-100">
               <span className="chip">✓ Project Nyata</span>
               <span className="chip">✓ Mentoring 1-on-1</span>
-              <span className="chip">✓ Sertifikat BNSP</span>
+              <span className="chip">✓ Career Support</span>
               <span className="chip">✓ Job Referral</span>
             </div>
 
@@ -130,12 +130,12 @@ export async function HeroSection() {
 
             <div className="stat-item">
               <div className="stat-icon stat-icon-amber">
-                <Shield size={24} />
+                <FolderGit2 size={24} />
               </div>
               <div className="stat-text">
-                <span className="stat-number">BNSP</span>
-                <span className="stat-label">Sertifikasi Resmi</span>
-                <span className="stat-sub">Diakui secara nasional</span>
+                <span className="stat-number">3+</span>
+                <span className="stat-label">Real Project</span>
+                <span className="stat-sub">Portfolio siap kerja</span>
               </div>
             </div>
 

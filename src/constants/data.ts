@@ -55,66 +55,62 @@ export interface Testimonial {
 // July 6, 2026 at 23:59:59 WIB (UTC+7)
 export const OFFER_DEADLINE = "2026-07-06T23:59:59+07:00";
 
+/** Toggle for the flash sale promo banner on /daftar. Set to true to activate. */
+export const IS_FLASH_SALE_ACTIVE = false;
+
 // ─── Value Stack Data ─────────────────────────────────────────
-// 6 line items. Sum MUST equal exactly 7_500_000.
+// 5 line items. Sum MUST equal exactly 3_500_000.
 export const VALUE_STACK_DATA: ValueStackItem[] = [
   {
     icon: "Code",
-    title: "Kurikulum Industri Laravel (6 Modul Intensif)",
+    title: "Kurikulum Industri Laravel (3 Modul Intensif)",
     description:
       "Dari PHP dasar, OOP, hingga Laravel advanced — kurikulum lengkap yang dirancang oleh praktisi industri aktif.",
-    value: 2_500_000,
+    value: 1_200_000,
   },
   {
     icon: "FolderGit2",
     title: "3 Proyek Portfolio Production-Grade",
     description:
       "Bangun 3 aplikasi nyata yang bisa langsung ditampilkan di GitHub dan interview kerja.",
-    value: 1_500_000,
-  },
-  {
-    icon: "Award",
-    title: "Voucher Ujian Sertifikasi BNSP",
-    description:
-      "Biaya ujian sertifikasi resmi BNSP sudah termasuk — sertifikat diakui secara nasional.",
-    value: 1_200_000,
+    value: 800_000,
   },
   {
     icon: "UserCheck",
     title: "Personal Code Review & Mentoring 1-on-1",
     description:
       "Sesi review kode pribadi dengan mentor praktisi. Bukan cuma teori — kamu dikoreksi langsung.",
-    value: 1_000_000,
+    value: 600_000,
   },
   {
     icon: "Handshake",
     title: "Career Support & Job Referral Network (Selamanya)",
     description:
       "Akses seumur hidup ke jaringan hiring partner, job board eksklusif, dan sesi mock interview.",
-    value: 800_000,
+    value: 500_000,
   },
   {
     icon: "PlayCircle",
     title: "Akses Seumur Hidup ke Materi & Rekaman",
     description:
       "Semua rekaman kelas, materi, dan update kurikulum bisa diakses kapanpun tanpa batas waktu.",
-    value: 500_000,
+    value: 400_000,
   },
 ] as const;
 
-// ── Compile-time validation: ensure sum === 7_500_000 ─────────
+// ── Compile-time validation: ensure sum === 3_500_000 ─────────
 const _valueStackSum = VALUE_STACK_DATA.reduce((sum, item) => sum + item.value, 0);
-if (_valueStackSum !== 7_500_000) {
+if (_valueStackSum !== 3_500_000) {
   throw new Error(
-    `VALUE_STACK_DATA sum mismatch: expected 7_500_000, got ${_valueStackSum}`
+    `VALUE_STACK_DATA sum mismatch: expected 3_500_000, got ${_valueStackSum}`
   );
 }
 
 // ─── Pricing Config ───────────────────────────────────────────
 export const PRICING: PricingConfig = {
-  totalValue: 2_500_000,
-  offerPrice: 1_000_000,
-  savings: 2_500_000 - 1_000_000, // 1_500_000
+  totalValue: 3_500_000,
+  offerPrice: 750_000,
+  savings: 3_500_000 - 750_000, // 2_750_000
   currency: "IDR",
 };
 
@@ -130,7 +126,7 @@ export const PROBLEM_POINTS: ProblemPoint[] = [
   },
   {
     emoji: "💸",
-    text: "Bootcamp lain harganya jutaan, tapi nggak ada sertifikasi resmi — ujung-ujungnya cuma dapat sertifikat \"selesai kelas\".",
+    text: "Bootcamp lain harganya jutaan, tapi nggak ada career support — ujung-ujungnya cuma dapat sertifikat \"selesai kelas\".",
   },
   {
     emoji: "🔄",
@@ -163,7 +159,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Siti Rahma",
     role: "Alumni Batch 10 · Digital Marketer",
     quote:
-      "Sertifikasi BNSP dari sini beneran ngebuka jalan karirku. Kurikulumnya daging banget dan mentornya super asik plus solutif!",
+      "Portfolio project dari sini beneran ngebuka jalan karirku. Kurikulumnya daging banget dan mentornya super asik plus solutif!",
   },
   {
     name: "Bagas Pratama",
@@ -189,7 +185,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const WA_CTA = {
   /** Pre-filled WA message for registration interest */
   registrationMessage:
-    "Halo Admin Creativemu Academy 👋\n\nSaya tertarik mendaftar *Bootcamp Laravel Full-Stack 3 Bulan* dengan harga spesial Rp 1.000.000.\n\nMohon info lebih lanjut tentang cara pendaftaran dan pembayaran. Terima kasih!",
+    "Halo Admin Creativemu Academy 👋\n\nSaya tertarik mendaftar *Bootcamp Laravel Full-Stack 3 Bulan* dengan harga spesial Rp 750.000.\n\nMohon info lebih lanjut tentang cara pendaftaran dan pembayaran. Terima kasih!",
   /** Pre-filled WA message for general consultation */
   consultationMessage:
     "Halo Admin Creativemu Academy 👋\n\nSaya ingin konsultasi tentang program Bootcamp Laravel. Bisa bantu jelaskan lebih detail? Terima kasih!",

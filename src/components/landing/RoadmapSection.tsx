@@ -15,8 +15,8 @@ const CURRICULUM = [
   },
   {
     month: 3,
-    title: "Capstone Project & BNSP Certification",
-    description: "Selesaikan proyek akhir berstandar industri dan persiapkan ujian sertifikasi BNSP untuk memvalidasi keahlian profesionalmu.",
+    title: "Capstone Project & Portfolio Showcase",
+    description: "Selesaikan proyek akhir berstandar industri, bangun portfolio profesional, dan siapkan dirimu untuk memasuki dunia kerja sebagai Full-Stack Developer.",
     isFinal: true,
     colorClass: "bg-orange-600",
   },

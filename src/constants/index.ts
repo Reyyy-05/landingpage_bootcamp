@@ -6,7 +6,6 @@ export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000
 export const PROGRAM_TYPES = [
   { value: "bootcamp", label: "Bootcamp Digital Marketing" },
   { value: "magang", label: "Magang / Prakerin" },
-  { value: "sertifikasi", label: "Sertifikasi BNSP" },
 ] as const;
 
 export const PACKAGES = [
@@ -49,9 +48,9 @@ export const DISCOUNT_TYPES = [
 export const FEATURES = [
   {
     icon: "Award",
-    title: "Sertifikasi Resmi BNSP",
+    title: "Sertifikat Penyelesaian Resmi",
     description:
-      "Sertifikat diakui secara nasional oleh Badan Nasional Sertifikasi Profesi, memperkuat nilai kamu di pasar kerja.",
+      "Dapatkan sertifikat resmi dari Creativemu Academy yang membuktikan kompetensimu sebagai Full-Stack Laravel Developer.",
   },
   {
     icon: "GraduationCap",

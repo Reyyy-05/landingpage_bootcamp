@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     template: "%s | Creativemu Academy",
   },
   description:
-    "Ayo gabung di Batch 1 Laravel Web Developer 3 Bulan. Biaya investasi hanya Rp 1.000.000 saja! Kuota terbatas.",
+    "Ayo gabung di Batch 1 Laravel Web Developer 3 Bulan. Biaya investasi hanya Rp 750.000 saja! Kuota terbatas.",
   keywords: [
     "bootcamp laravel",
     "fullstack developer",
-    "sertifikasi BNSP",
+    "portfolio developer",
     "belajar coding jogja",
     "creativemu academy",
     "digital marketing",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: "Creativemu Academy",
     title: "Creativemu Academy | Batch 1 Laravel Web Developer",
     description:
-      "Kini hanya Rp 1.000.000 untuk kelas akselerasi Laravel Web Developer 3 Bulan!",
+      "Kini hanya Rp 750.000 untuk kelas akselerasi Laravel Web Developer 3 Bulan!",
     images: [
       {
         url: "/icon.png",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Creativemu Academy | Batch 1 Laravel Web Developer",
     description:
-      "Kini hanya Rp 1.000.000 untuk kelas akselerasi Laravel Web Developer 3 Bulan!",
+      "Kini hanya Rp 750.000 untuk kelas akselerasi Laravel Web Developer 3 Bulan!",
     images: ["/icon.png"],
   },
   icons: {

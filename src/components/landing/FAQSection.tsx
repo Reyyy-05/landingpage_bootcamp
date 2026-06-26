@@ -17,7 +17,7 @@ const faqs = [
   {
     question: "Berapa lama durasi program bootcamp ini?",
     answer:
-      "Program ini berlangsung secara intensif selama 3 bulan. Di bulan terakhir, kamu akan difokuskan pada pembuatan portfolio riil dan persiapan ujian sertifikasi BNSP.",
+      "Program ini berlangsung secara intensif selama 3 bulan. Di bulan terakhir, kamu akan difokuskan pada pembuatan portfolio riil dan capstone project berstandar industri.",
   },
   {
     question: "Apakah ada jaminan mendapat pekerjaan setelah lulus?",
@@ -30,9 +30,9 @@ const faqs = [
       "Kami menyediakan sistem hybrid. Kamu bisa memilih untuk mengikuti sesi secara offline di studio kami di Yogyakarta, atau mengikuti live session secara online dari mana saja dengan kualitas interaksi yang sama baiknya.",
   },
   {
-    question: "Apakah pasti lulus ujian Sertifikasi BNSP?",
+    question: "Apakah ada sertifikat setelah menyelesaikan bootcamp?",
     answer:
-      "Tim instruktur kami adalah praktisi berlisensi yang telah memetakan kurikulum bootcamp agar 100% selaras dengan standar kompetensi BNSP. Selama kamu mengikuti kelas dengan baik dan menyelesaikan tugas, peluang lulus ujian sangatlah besar.",
+      "Ya! Setelah menyelesaikan bootcamp, kamu akan mendapatkan Sertifikat Penyelesaian resmi dari Creativemu Academy yang membuktikan kompetensimu sebagai Full-Stack Laravel Developer.",
   },
 ];
 

@@ -20,7 +20,7 @@ export function Footer() {
               />
             </div>
             <p className="text-sm leading-relaxed mb-5">
-              Platform pelatihan teknologi terpercaya dengan fokus pada kesiapan industri dan sertifikasi profesional.
+              Platform pelatihan teknologi terpercaya dengan fokus pada kesiapan industri dan pengembangan karir digital.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mt-6">
               <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer"

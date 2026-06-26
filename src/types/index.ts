@@ -1,6 +1,6 @@
 // ─── Database Row Types ────────────────────────────────────────
 
-export type ProgramType = "bootcamp" | "magang" | "sertifikasi";
+export type ProgramType = "bootcamp" | "magang";
 export type PackageType = "reguler" | "premium" | "intensif";
 export type DiscountType = "fixed" | "percentage";
 export type Gender = "laki-laki" | "perempuan";
