@@ -96,7 +96,7 @@ export function BootcampFormDialog() {
 
             <div className="space-y-2">
               <Label htmlFor="price_reguler">Harga Reguler (Rp) *</Label>
-              <Input id="price_reguler" name="price_reguler" type="number" min="0" required disabled={isLoading} />
+              <Input id="price_reguler" name="price_reguler" type="number" min="0" defaultValue="750000" required disabled={isLoading} />
             </div>
 
             <div className="space-y-2">

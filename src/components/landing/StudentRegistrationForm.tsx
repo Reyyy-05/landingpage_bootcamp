@@ -205,7 +205,7 @@ export function StudentRegistrationForm() {
     registration_close: null,
     max_capacity: 50,
     location: "Full Online",
-    price_reguler: 3_000_000,
+    price_reguler: 750_000,
     price_premium: null,
     price_intensif: null,
     is_active: true,
