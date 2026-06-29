@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Clock, CheckCircle2, XCircle } from "lucide-react";
 import Link from "next/link";
+import { BootcampStatsPanel } from "@/components/dashboard/BootcampStatsPanel";
 
 
 export const metadata: Metadata = {
@@ -103,46 +104,8 @@ export default async function DashboardPage() {
         </Card>
       </div>
 
-      {/* Detail per Bootcamp */}
-      <div className="space-y-4">
-        <h2 className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-          Statistik per Program
-        </h2>
-        <div className="grid gap-4 md:grid-cols-2">
-          {stats.map((bootcamp) => (
-            <Card key={bootcamp.bootcamp_id} className="overflow-hidden">
-              <div className="bg-slate-50 px-6 py-4 border-b">
-                <h3 className="font-semibold">{bootcamp.bootcamp_name}</h3>
-                <p className="text-xs text-muted-foreground">Batch {bootcamp.batch_number}</p>
-              </div>
-              <CardContent className="p-0">
-                <div className="grid grid-cols-3 divide-x divide-y md:divide-y-0 border-b">
-                  <div className="p-4 text-center">
-                    <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider font-semibold">Total</p>
-                    <p className="text-xl font-bold">{bootcamp.total}</p>
-                  </div>
-                  <div className="p-4 text-center">
-                    <p className="text-xs text-amber-600 mb-1 uppercase tracking-wider font-semibold">Pending</p>
-                    <p className="text-xl font-bold text-amber-600">{bootcamp.pending}</p>
-                  </div>
-                  <div className="p-4 text-center">
-                    <p className="text-xs text-emerald-600 mb-1 uppercase tracking-wider font-semibold">Confirmed</p>
-                    <p className="text-xl font-bold text-emerald-600">{bootcamp.confirmed}</p>
-                  </div>
-                </div>
-                <div className="p-4 bg-slate-50 flex items-center justify-between">
-                  <div className="text-sm">
-                    Kapasitas: <span className="font-semibold">{bootcamp.total - bootcamp.rejected}</span> / {bootcamp.max_capacity}
-                  </div>
-                  <div className="text-xs px-2 py-1 bg-white border rounded-full font-medium">
-                    {bootcamp.remaining_capacity} Sisa Kuota
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+      {/* Interactive Bootcamp Stats Panel */}
+      <BootcampStatsPanel stats={stats} />
       
       <div className="flex justify-end pt-4">
         <Link 
