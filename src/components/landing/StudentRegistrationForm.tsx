@@ -5,6 +5,7 @@ import { useForm, useWatch, type Control, type FieldErrors, type UseFormRegister
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { sendGAEvent } from "@next/third-parties/google";
 import { Loader2, CheckCircle2, AlertCircle, Tag, ChevronDown } from "lucide-react";
 import { studentFormSchema, type StudentFormSchema, isPelajarStatus, isMahasiswaStatus } from "@/lib/validations/student";
 import { STUDENT_STATUSES, GENDER_OPTIONS } from "@/constants";
@@ -253,6 +254,15 @@ export function StudentRegistrationForm() {
         toast.error(result.error ?? "Gagal mendaftar, coba lagi.");
         return;
       }
+
+      // Track conversion event on database insert success
+      sendGAEvent({
+        event: 'bootcamp_registration_success',
+        value: {
+          price: 750000,
+          currency: 'IDR'
+        }
+      });
 
       // Redirect to confirmation page with student data
       const params = new URLSearchParams({
