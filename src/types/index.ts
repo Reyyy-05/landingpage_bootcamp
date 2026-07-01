@@ -14,7 +14,11 @@ export type StudentStatus =
   | "mahasiswa_2"
   | "mahasiswa_3"
   | "mahasiswa_4"
-  | "lainnya";
+  | "lainnya"
+  | "PELAJAR"
+  | "MAHASISWA"
+  | "KARYAWAN"
+  | "UMUM";
 
 // ─── Admin ────────────────────────────────────────────────────
 export interface Admin {

@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { sendGAEvent } from "@next/third-parties/google";
 import { Loader2, CheckCircle2, AlertCircle, Tag, ChevronDown } from "lucide-react";
-import { studentFormSchema, type StudentFormSchema, isPelajarStatus, isMahasiswaStatus } from "@/lib/validations/student";
+import { studentSchema, type StudentSchema } from "@/schemas/studentSchema";
 import { STUDENT_STATUSES, GENDER_OPTIONS } from "@/constants";
 import type { Bootcamp } from "@/types";
 
@@ -48,10 +48,10 @@ const inputErrorClass =
   "w-full px-4 py-3 rounded-xl border border-red-300 bg-red-50 text-gray-900 placeholder-gray-400 text-sm transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-red-400/10 focus:border-red-400";
 
 interface VoucherSectionProps {
-  control: Control<StudentFormSchema>;
-  register: UseFormRegister<StudentFormSchema>;
-  errors: FieldErrors<StudentFormSchema>;
-  setValue: UseFormSetValue<StudentFormSchema>;
+  control: Control<StudentSchema>;
+  register: UseFormRegister<StudentSchema>;
+  errors: FieldErrors<StudentSchema>;
+  setValue: UseFormSetValue<StudentSchema>;
 }
 
 function VoucherSection({ control, register, errors, setValue }: VoucherSectionProps) {
@@ -162,36 +162,46 @@ export function StudentRegistrationForm() {
     setValue,
     control,
     formState: { errors },
-  } = useForm<StudentFormSchema>({
-    resolver: zodResolver(studentFormSchema),
+  } = useForm<StudentSchema>({
+    resolver: zodResolver(studentSchema),
     defaultValues: {
       package_selected: "laravel_full_online",
-    },
+    } as any,
   });
 
   const watchedStatus = watch("student_status");
-  const isPelajar = isPelajarStatus(watchedStatus);
-  const isMahasiswa = isMahasiswaStatus(watchedStatus);
+  const isPelajar = watchedStatus === "PELAJAR";
+  const isMahasiswa = watchedStatus === "MAHASISWA";
+  const isKaryawan = watchedStatus === "KARYAWAN";
 
-  // ── Clear irrelevant fields when status changes ────────────
+  // ── Explicitly reset/set non-relevant fields to null/empty when status changes ──
   useEffect(() => {
-    if (isPelajar) {
-      // Pelajar: clear kampus & lainnya
-      setValue("university_name", "");
-      setValue("workplace", "");
-      setValue("job_title", "");
-    } else if (isMahasiswa) {
-      // Mahasiswa: clear sekolah & lainnya
+    if (watchedStatus === "PELAJAR") {
       setValue("school_name", "");
-      setValue("workplace", "");
-      setValue("job_title", "");
-    } else {
-      // Lainnya: clear sekolah, kampus, jurusan
-      setValue("school_name", "");
+      setValue("major", "");
+      setValue("university_name", null);
+      setValue("workplace", null);
+      setValue("job_title", null);
+    } else if (watchedStatus === "MAHASISWA") {
       setValue("university_name", "");
       setValue("major", "");
+      setValue("school_name", null);
+      setValue("workplace", null);
+      setValue("job_title", null);
+    } else if (watchedStatus === "KARYAWAN") {
+      setValue("workplace", "");
+      setValue("job_title", "");
+      setValue("school_name", null);
+      setValue("university_name", null);
+      setValue("major", null);
+    } else if (watchedStatus === "UMUM") {
+      setValue("school_name", null);
+      setValue("university_name", null);
+      setValue("workplace", null);
+      setValue("job_title", null);
+      setValue("major", null);
     }
-  }, [watchedStatus, isPelajar, isMahasiswa, setValue]);
+  }, [watchedStatus, setValue]);
 
   // ── Hardcoded fallback when DB has no open programs ─────────
   const FALLBACK_BOOTCAMP: Bootcamp = {
@@ -223,12 +233,10 @@ export function StudentRegistrationForm() {
         if (d.data && d.data.length > 0) {
           setBootcamps(d.data);
         } else {
-          // API returned empty — use hardcoded fallback
           setBootcamps([FALLBACK_BOOTCAMP]);
         }
       })
       .catch(() => {
-        // Network error — use hardcoded fallback
         setBootcamps([FALLBACK_BOOTCAMP]);
       })
       .finally(() => setIsLoadingBootcamps(false));
@@ -236,16 +244,13 @@ export function StudentRegistrationForm() {
   }, []);
 
   // ── Submit ─────────────────────────────────────────────────
-  const onSubmit = async (data: StudentFormSchema) => {
+  const onSubmit = async (data: StudentSchema) => {
     setIsSubmitting(true);
     try {
       const res = await fetch("/api/students", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...data,
-          birth_date: data.birth_date,
-        }),
+        body: JSON.stringify(data),
       });
 
       const result = await res.json();
@@ -365,12 +370,12 @@ export function StudentRegistrationForm() {
               <div>
                 <Label required>Nomor WhatsApp</Label>
                 <input
-                  {...register("phone_wa")}
+                  {...register("phone_number")}
                   type="tel"
                   placeholder="08xxxxxxxxxx"
-                  className={errors.phone_wa ? inputErrorClass : inputClass}
+                  className={errors.phone_number ? inputErrorClass : inputClass}
                 />
-                <FieldError message={errors.phone_wa?.message} />
+                <FieldError message={errors.phone_number?.message} />
               </div>
               <div>
                 <Label required>Akun Instagram</Label>
@@ -441,83 +446,87 @@ export function StudentRegistrationForm() {
               <FieldError message={errors.student_status?.message} />
             </div>
 
-            {/* Nama Sekolah & Jurusan — conditional: pelajar SMA/SMK */}
-            {isPelajar && (
-              <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
-                <div>
-                  <Label required>Nama Sekolah</Label>
-                  <input
-                    {...register("school_name")}
-                    type="text"
-                    placeholder="SMKN 1 Yogyakarta, SMA Negeri 3 Bantul, dll."
-                    className={errors.school_name ? inputErrorClass : inputClass}
-                  />
-                  <FieldError message={errors.school_name?.message} />
+            {/* Conditional input wrapper with smooth fade-in / height transitions to prevent layout shifts */}
+            <div className="transition-all duration-300 ease-in-out">
+              
+              {/* Nama Sekolah & Jurusan — conditional: pelajar SMA/SMK */}
+              {isPelajar && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
+                  <div>
+                    <Label required>Nama Sekolah</Label>
+                    <input
+                      {...register("school_name")}
+                      type="text"
+                      placeholder="SMKN 1 Yogyakarta, SMA Negeri 3 Bantul, dll."
+                      className={errors.school_name ? inputErrorClass : inputClass}
+                    />
+                    <FieldError message={errors.school_name?.message} />
+                  </div>
+                  <div>
+                    <Label required>Jurusan</Label>
+                    <input
+                      {...register("major")}
+                      type="text"
+                      placeholder="RPL, TKJ, Multimedia, dll."
+                      className={errors.major ? inputErrorClass : inputClass}
+                    />
+                    <FieldError message={errors.major?.message} />
+                  </div>
                 </div>
-                <div>
-                  <Label required>Jurusan</Label>
-                  <input
-                    {...register("major")}
-                    type="text"
-                    placeholder="RPL, TKJ, Multimedia, dll."
-                    className={errors.major ? inputErrorClass : inputClass}
-                  />
-                  <FieldError message={errors.major?.message} />
-                </div>
-              </div>
-            )}
+              )}
 
-            {/* Nama Kampus & Jurusan — conditional: mahasiswa */}
-            {isMahasiswa && (
-              <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
-                <div>
-                  <Label required>Nama Kampus / Universitas</Label>
-                  <input
-                    {...register("university_name")}
-                    type="text"
-                    placeholder="Universitas Gadjah Mada, UIN Sunan Kalijaga, dll."
-                    className={errors.university_name ? inputErrorClass : inputClass}
-                  />
-                  <FieldError message={errors.university_name?.message} />
+              {/* Nama Kampus & Jurusan — conditional: mahasiswa */}
+              {isMahasiswa && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
+                  <div>
+                    <Label required>Nama Kampus / Universitas</Label>
+                    <input
+                      {...register("university_name")}
+                      type="text"
+                      placeholder="Universitas Gadjah Mada, UIN Sunan Kalijaga, dll."
+                      className={errors.university_name ? inputErrorClass : inputClass}
+                    />
+                    <FieldError message={errors.university_name?.message} />
+                  </div>
+                  <div>
+                    <Label required>Jurusan / Program Studi</Label>
+                    <input
+                      {...register("major")}
+                      type="text"
+                      placeholder="Manajemen Bisnis, Teknik Informatika, dll."
+                      className={errors.major ? inputErrorClass : inputClass}
+                    />
+                    <FieldError message={errors.major?.message} />
+                  </div>
                 </div>
-                <div>
-                  <Label required>Jurusan / Program Studi</Label>
-                  <input
-                    {...register("major")}
-                    type="text"
-                    placeholder="Manajemen Bisnis, Teknik Informatika, dll."
-                    className={errors.major ? inputErrorClass : inputClass}
-                  />
-                  <FieldError message={errors.major?.message} />
-                </div>
-              </div>
-            )}
+              )}
 
-            {/* Tempat Kerja & Posisi — conditional: lainnya */}
-            {watchedStatus === "lainnya" && (
-              <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
-                <div>
-                  <Label required>Tempat Kerja / Instansi</Label>
-                  <input
-                    {...register("workplace")}
-                    type="text"
-                    placeholder="Isi '-' jika belum bekerja"
-                    className={errors.workplace ? inputErrorClass : inputClass}
-                  />
-                  <FieldError message={errors.workplace?.message} />
+              {/* Tempat Kerja & Posisi — conditional: KARYAWAN */}
+              {watchedStatus === "KARYAWAN" && (
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300 flex flex-col gap-4">
+                  <div>
+                    <Label required>Tempat Kerja / Instansi</Label>
+                    <input
+                      {...register("workplace")}
+                      type="text"
+                      placeholder="Nama perusahaan atau instansi tempat bekerja"
+                      className={errors.workplace ? inputErrorClass : inputClass}
+                    />
+                    <FieldError message={errors.workplace?.message} />
+                  </div>
+                  <div>
+                    <Label required>Posisi / Jabatan</Label>
+                    <input
+                      {...register("job_title")}
+                      type="text"
+                      placeholder="Misal: Web Developer, UI Designer, Admin, dll."
+                      className={errors.job_title ? inputErrorClass : inputClass}
+                    />
+                    <FieldError message={errors.job_title?.message} />
+                  </div>
                 </div>
-                <div>
-                  <Label required>Posisi / Jabatan</Label>
-                  <input
-                    {...register("job_title")}
-                    type="text"
-                    placeholder="Isi '-' jika belum bekerja"
-                    className={errors.job_title ? inputErrorClass : inputClass}
-                  />
-                  <FieldError message={errors.job_title?.message} />
-                </div>
-              </div>
-            )}
+              )}
+            </div>
 
           </div>
         </div>

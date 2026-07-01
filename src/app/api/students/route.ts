@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/server";
-import { studentApiSchema } from "@/lib/validations/student";
+import { studentSchema } from "@/schemas/studentSchema";
 import { buildWALink, buildStudentWAMessage, formatWANumber } from "@/lib/utils";
 import type { ApiError, ApiSuccess } from "@/types";
 
@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
 
     // ── Server-side validation ───────────────────────────────
-    const parsed = studentApiSchema.safeParse(body);
+    const parsed = studentSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json<ApiError>(
         {
@@ -94,7 +94,17 @@ export async function POST(request: NextRequest) {
     }
 
     // ── Normalize phone number ────────────────────────────────
-    const normalizedPhone = formatWANumber(data.phone_wa);
+    const normalizedPhone = formatWANumber(data.phone_number);
+
+    // Map new statuses to database enum values
+    let dbStudentStatus: any = "lainnya";
+    if (data.student_status === "PELAJAR") {
+      dbStudentStatus = "pelajar_sma_smk_3";
+    } else if (data.student_status === "MAHASISWA") {
+      dbStudentStatus = "mahasiswa_4";
+    } else if (data.student_status === "KARYAWAN" || data.student_status === "UMUM") {
+      dbStudentStatus = "lainnya";
+    }
 
     // ── Insert student ────────────────────────────────────────
     const { data: student, error: insertError } = await supabase
@@ -108,7 +118,7 @@ export async function POST(request: NextRequest) {
         phone_wa: normalizedPhone,
         instagram_handle: data.instagram_handle.trim().replace(/^@/, ""),
         gender: data.gender,
-        student_status: data.student_status,
+        student_status: dbStudentStatus,
         major: data.major?.trim() || null,
         school_name: data.school_name?.trim() || null,
         university_name: data.university_name?.trim() || null,

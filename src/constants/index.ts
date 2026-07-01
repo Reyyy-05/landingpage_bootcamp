@@ -18,14 +18,10 @@ export const PACKAGES = [
 ] as const;
 
 export const STUDENT_STATUSES = [
-  { value: "pelajar_sma_smk_1", label: "Pelajar Kelas 1 SMA/SMK" },
-  { value: "pelajar_sma_smk_2", label: "Pelajar Kelas 2 SMA/SMK" },
-  { value: "pelajar_sma_smk_3", label: "Pelajar Kelas 3 SMA/SMK" },
-  { value: "mahasiswa_1", label: "Mahasiswa Tahun ke-1" },
-  { value: "mahasiswa_2", label: "Mahasiswa Tahun ke-2" },
-  { value: "mahasiswa_3", label: "Mahasiswa Tahun ke-3" },
-  { value: "mahasiswa_4", label: "Mahasiswa Tahun ke-4" },
-  { value: "lainnya", label: "Lainnya" },
+  { value: "PELAJAR", label: "Pelajar (SMA/SMK/Sederajat)" },
+  { value: "MAHASISWA", label: "Mahasiswa" },
+  { value: "KARYAWAN", label: "Karyawan / Profesional" },
+  { value: "UMUM", label: "Umum / Pekerja Lepas / Lainnya" },
 ] as const;
 
 export const GENDER_OPTIONS = [
