@@ -11,6 +11,29 @@ import { studentSchema, type StudentSchema } from "@/schemas/studentSchema";
 import { STUDENT_STATUSES, GENDER_OPTIONS } from "@/constants";
 import type { Bootcamp } from "@/types";
 
+// ─── Configuration: Admin WhatsApp Number ─────────────────────
+// Easy to modify placeholder value as requested
+const WA_ADMIN_NUMBER = "6285177114036";
+
+// ─── Dynamic WhatsApp Link Generator ──────────────────────────
+const buildPersonalizedWaLink = (data: StudentSchema, bootcampName: string) => {
+  let identityString = "";
+  if (data.student_status === "PELAJAR") {
+    identityString = `saya *${data.full_name}* (pelajar asal sekolah *${data.school_name}*)`;
+  } else if (data.student_status === "MAHASISWA") {
+    identityString = `saya *${data.full_name}* (mahasiswa dari kampus *${data.university_name}*)`;
+  } else if (data.student_status === "KARYAWAN") {
+    identityString = `saya *${data.full_name}* (karyawan dari *${data.workplace}*)`;
+  } else {
+    identityString = `saya *${data.full_name}* (umum)`;
+  }
+
+  const messageText = `Halo Admin Creativemu Academy 👋\n\nSaya ingin mengonfirmasi pendaftaran kelas gratis *${bootcampName}*. Sebagai informasi, ${identityString}.\n\nMohon info detail akses Zoom dan materi kelas. Terima kasih!`;
+  const fullText = messageText + "\n\n_Ref: LP-FREECLASS_";
+  
+  return `https://wa.me/${WA_ADMIN_NUMBER}?text=${encodeURIComponent(fullText)}`;
+};
+
 // ─── Debounce hook ───────────────────────────────────────────
 function useDebounce<T>(value: T, delay = 600): T {
   const [debounced, setDebounced] = useState(value);
@@ -147,13 +170,74 @@ function VoucherSection({ control, register, errors, setValue }: VoucherSectionP
   );
 }
 
-// ─── Main Component ───────────────────────────────────────────
-export function StudentRegistrationForm() {
-  const router = useRouter();
+// ─── High-Converting Success Card Component ───────────────────
+function SuccessCard({ 
+  data, 
+  bootcampName 
+}: { 
+  data: StudentSchema; 
+  bootcampName: string;
+}) {
+  const [countdown, setCountdown] = useState(3);
+  const waLink = buildPersonalizedWaLink(data, bootcampName);
 
+  useEffect(() => {
+    if (countdown === 0) {
+      window.location.href = waLink;
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [countdown, waLink]);
+
+  const handleManualRedirect = () => {
+    window.location.href = waLink;
+  };
+
+  return (
+    <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center max-w-md mx-auto animate-in fade-in zoom-in-95 duration-500">
+      <div className="mx-auto size-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-6">
+        <CheckCircle2 size={36} />
+      </div>
+      <h2 className="text-2xl font-bold text-gray-900 mb-2" style={{ fontFamily: "var(--font-display)" }}>
+        Pendaftaran Berhasil!
+      </h2>
+      <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+        Selamat, pendaftaran Anda untuk kelas gratis <strong>{bootcampName}</strong> telah berhasil disimpan.
+        Silakan klaim akses Zoom kelas via WhatsApp untuk memulai.
+      </p>
+
+      <button
+        onClick={handleManualRedirect}
+        className="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-base transition-all flex items-center justify-center gap-2 hover:shadow-lg shadow-emerald-200"
+      >
+        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current shrink-0">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.18 1.448 4.747 1.449 5.424 0 9.838-4.417 9.84-9.846.002-2.63-1.02-5.1-2.871-6.956-1.85-1.855-4.32-2.875-6.956-2.875-5.407 0-9.82 4.415-9.823 9.846-.001 1.83.482 3.619 1.398 5.187L1.875 22.13l5.053-1.849c-.198-.124-.198-.124 0 0zm11.12-6.167c-.247-.123-1.463-.722-1.692-.806-.228-.083-.394-.124-.56.124-.165.247-.641.806-.786.97-.145.165-.29.185-.537.062-.247-.125-1.045-.385-1.99-1.23-.735-.656-1.232-1.47-1.376-1.716-.145-.247-.015-.38.11-.502.11-.11.248-.29.37-.435.124-.145.165-.247.248-.412.083-.165.042-.31-.02-.435-.064-.125-.56-1.35-.768-1.85-.203-.49-.41-.422-.56-.43-.146-.007-.31-.007-.476-.007-.166 0-.436.062-.663.31-.228.248-.87.85-.87 2.072 0 1.22.885 2.4 1.008 2.565.124.165 1.74 2.658 4.218 3.727.59.254 1.05.405 1.41.52.593.187 1.132.16 1.558.097.475-.072 1.463-.6 1.67-1.18.207-.58.207-1.076.145-1.18-.063-.104-.228-.166-.475-.29z"/>
+        </svg>
+        <span>Klaim Akses Zoom via WhatsApp ({countdown}s)</span>
+      </button>
+      
+      <p className="text-xs text-gray-400 mt-4 leading-relaxed">
+        Sistem akan mengalihkan Anda secara otomatis. Jika tidak beralih, silakan klik tombol di atas.
+      </p>
+    </div>
+  );
+}
+
+// ─── StudentRegistrationForm Component ────────────────────────
+export function StudentRegistrationForm() {
   const [bootcamps, setBootcamps] = useState<Bootcamp[]>([]);
   const [isLoadingBootcamps, setIsLoadingBootcamps] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Success states
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [submittedData, setSubmittedData] = useState<StudentSchema | null>(null);
+  const [targetBootcampName, setTargetBootcampName] = useState("");
 
   const {
     register,
@@ -172,7 +256,6 @@ export function StudentRegistrationForm() {
   const watchedStatus = watch("student_status");
   const isPelajar = watchedStatus === "PELAJAR";
   const isMahasiswa = watchedStatus === "MAHASISWA";
-  const isKaryawan = watchedStatus === "KARYAWAN";
 
   // ── Explicitly reset/set non-relevant fields to null/empty when status changes ──
   useEffect(() => {
@@ -269,20 +352,23 @@ export function StudentRegistrationForm() {
         }
       });
 
-      // Redirect to confirmation page with student data
-      const params = new URLSearchParams({
-        id: result.data.student.id,
-        name: result.data.student.full_name,
-        program: result.data.bootcampName,
-        wa: result.data.waLink,
-      });
-      router.push(`/konfirmasi?${params.toString()}`);
+      // Retrieve bootcamp name to show in the Success Card
+      const selectedBootcamp = bootcamps.find((b) => b.id === data.bootcamp_id);
+      const nameOfBootcamp = selectedBootcamp ? selectedBootcamp.name : "Bootcamp Laravel Web Developer";
+      setTargetBootcampName(nameOfBootcamp);
+      setSubmittedData(data);
+      setIsSuccess(true);
     } catch {
       toast.error("Terjadi kesalahan. Periksa koneksi internet Anda.");
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  // ── Success State Overlay ───────────────────────────────────
+  if (isSuccess && submittedData) {
+    return <SuccessCard data={submittedData} bootcampName={targetBootcampName} />;
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
