@@ -48,14 +48,14 @@ const baseStudentSchema = z.object({
 
   bootcamp_id: z
     .string()
-    .min(1, "Program wajib dipilih")
+    .min(1, "Pilihan program wajib diisi")
     .uuid("Program tidak valid"),
 
-  package_selected: z.enum(["reguler", "premium", "intensif"], {
+  package_selected: z.enum(["reguler", "premium", "intensif", "laravel_full_online"], {
     required_error: "Paket wajib dipilih",
   }),
 
-  voucher_code: z.string().max(50).optional(),
+  voucher_code: z.string().max(50).optional().nullable(),
 });
 
 // ─── Discriminated Union based on student_status ───────────────

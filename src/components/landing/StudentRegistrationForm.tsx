@@ -365,13 +365,28 @@ export function StudentRegistrationForm() {
     }
   };
 
+  const onError = (formErrors: FieldErrors<StudentSchema>) => {
+    console.log("Validation Errors:", formErrors);
+    toast.error("Mohon lengkapi semua field yang wajib diisi dengan benar.");
+
+    const firstErrorKey = Object.keys(formErrors)[0];
+    if (firstErrorKey) {
+      const element =
+        document.querySelector(`[name="${firstErrorKey}"]`) ||
+        document.getElementById(firstErrorKey);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  };
+
   // ── Success State Overlay ───────────────────────────────────
   if (isSuccess && submittedData) {
     return <SuccessCard data={submittedData} bootcampName={targetBootcampName} />;
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+    <form onSubmit={handleSubmit(onSubmit, onError)} className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
       {/* Form header */}
       <div className="bg-violet-700 px-8 py-6 text-white">
         <h2 className="text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
