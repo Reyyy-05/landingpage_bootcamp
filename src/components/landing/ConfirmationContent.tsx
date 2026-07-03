@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle2, MessageSquareMore, ArrowLeft, Copy } from "lucide-react";
+import { CheckCircle2, MessageSquareMore, ArrowLeft, Copy, PartyPopper } from "lucide-react";
 import { toast } from "sonner";
 import { sendGAEvent } from "@next/third-parties/google";
 
@@ -58,7 +58,7 @@ export function ConfirmationContent() {
             className="text-2xl font-bold"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Pendaftaran Berhasil! 🎉
+            Pendaftaran Berhasil! <PartyPopper className="w-6 h-6 inline-block ml-1 -mt-0.5" />
           </h1>
           <p className="text-green-100 text-sm mt-1">
             Data kamu sudah kami terima

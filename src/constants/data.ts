@@ -29,8 +29,6 @@ export interface PricingConfig {
 }
 
 export interface ProblemPoint {
-  /** Emoji prefix for the bullet */
-  emoji: string;
   /** The pain-point copy */
   text: string;
 }
@@ -117,19 +115,15 @@ export const PRICING: PricingConfig = {
 // ─── Problem Section Data (PAS Framework — "Problem") ─────────
 export const PROBLEM_POINTS: ProblemPoint[] = [
   {
-    emoji: "😵",
     text: "Belajar coding sendiri berbulan-bulan, tapi masih stuck di tutorial hell — nggak bisa bikin project sendiri dari nol.",
   },
   {
-    emoji: "📄",
     text: "Portofolio kosong, CV ditolak terus. Perusahaan minta pengalaman, tapi darimana kalau nggak pernah diajari bikin project nyata?",
   },
   {
-    emoji: "💸",
     text: "Bootcamp lain harganya jutaan, tapi nggak ada career support — ujung-ujungnya cuma dapat sertifikat \"selesai kelas\".",
   },
   {
-    emoji: "🔄",
     text: "Sudah coba kursus online gratisan sana-sini, hasilnya? Materi berantakan, gak ada mentor, dan tetap bingung arah karir.",
   },
 ];
@@ -185,10 +179,10 @@ export const TESTIMONIALS: Testimonial[] = [
 export const WA_CTA = {
   /** Pre-filled WA message for registration interest */
   registrationMessage:
-    "Halo Admin Creativemu Academy 👋\n\nSaya tertarik mendaftar *Bootcamp Laravel Full-Stack 3 Bulan* dengan harga spesial Rp 750.000.\n\nMohon info lebih lanjut tentang cara pendaftaran dan pembayaran. Terima kasih!",
+    "Halo Admin Creativemu Academy,\n\nSaya tertarik mendaftar *Bootcamp Laravel Full-Stack 3 Bulan* dengan harga spesial Rp 750.000.\n\nMohon info lebih lanjut tentang cara pendaftaran dan pembayaran. Terima kasih!",
   /** Pre-filled WA message for general consultation */
   consultationMessage:
-    "Halo Admin Creativemu Academy 👋\n\nSaya ingin konsultasi tentang program Bootcamp Laravel. Bisa bantu jelaskan lebih detail? Terima kasih!",
+    "Halo Admin Creativemu Academy,\n\nSaya ingin konsultasi tentang program Bootcamp Laravel. Bisa bantu jelaskan lebih detail? Terima kasih!",
   /** Generate the full WA API URL */
   getRegistrationUrl: () =>
     `https://wa.me/${ADMIN_WA_NUMBER}?text=${encodeURIComponent(WA_CTA.registrationMessage)}`,

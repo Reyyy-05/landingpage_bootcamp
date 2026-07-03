@@ -28,7 +28,7 @@ const buildPersonalizedWaLink = (data: StudentSchema, bootcampName: string) => {
     identityString = `saya *${data.full_name}* (umum)`;
   }
 
-  const messageText = `Halo Admin Creativemu Academy 👋\n\nSaya ingin mengonfirmasi pendaftaran kelas gratis *${bootcampName}*. Sebagai informasi, ${identityString}.\n\nMohon info detail akses Zoom dan materi kelas. Terima kasih!`;
+  const messageText = `Halo Admin Creativemu Academy\n\nSaya ingin mengonfirmasi pendaftaran kelas gratis *${bootcampName}*. Sebagai informasi, ${identityString}.\n\nMohon info detail akses Zoom dan materi kelas. Terima kasih!`;
   const fullText = messageText + "\n\n_Ref: LP-FREECLASS_";
   
   return `https://wa.me/${WA_ADMIN_NUMBER}?text=${encodeURIComponent(fullText)}`;

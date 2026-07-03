@@ -189,8 +189,9 @@ export function BootcampStatsPanel({ stats }: { stats: BootcampStat[] }) {
                 />
               </div>
               {isFull && (
-                <p className="text-xs text-red-600 mt-1.5 font-medium">
-                  ⚠️ Kuota penuh! Pendaftaran baru tidak dapat diterima.
+                <p className="text-xs text-red-600 mt-1.5 font-medium inline-flex items-center gap-1">
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+                  Kuota penuh! Pendaftaran baru tidak dapat diterima.
                 </p>
               )}
             </div>

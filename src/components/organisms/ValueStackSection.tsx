@@ -7,6 +7,7 @@ import {
   PlayCircle,
   Check,
   Sparkles,
+  Flame,
 } from "lucide-react";
 import { VALUE_STACK_DATA, PRICING } from "@/constants/data";
 
@@ -118,8 +119,9 @@ export function ValueStackSection() {
             <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
               {/* Left — Label + Price */}
               <div className="text-center sm:text-left">
-                <p className="text-violet-200 text-sm font-medium mb-2 uppercase tracking-wider">
-                  🔥 Harga Spesial Gelombang Ini
+                <p className="text-violet-200 text-sm font-medium mb-2 uppercase tracking-wider inline-flex items-center gap-1.5">
+                  <Flame className="w-4 h-4 text-orange-300 shrink-0" />
+                  Harga Spesial Gelombang Ini
                 </p>
                 <div className="flex items-baseline gap-3 justify-center sm:justify-start">
                   <span className="text-4xl sm:text-5xl font-extrabold tracking-tight">

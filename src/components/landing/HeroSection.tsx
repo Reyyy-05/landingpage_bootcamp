@@ -50,21 +50,19 @@ export async function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8 lg:py-12">
           {/* Left: Content */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            {/* Headline — P7: gradient shimmer on "Belum Siap Kerja?" */}
-            <h1 className="text-[clamp(36px,5vw,56px)] font-bold leading-[1.1] text-slate-900 mb-4 tracking-tight scroll-animate">
-              Sudah Lama Belajar,{" "}
-              <br />
-              Tapi{" "}
+            {/* Headline — Benefit-driven, responsive typography */}
+            <h1 className="text-3xl md:text-5xl font-bold leading-[1.15] text-slate-900 mb-4 tracking-tight scroll-animate">
+              Jembatani Gap Teori dan Industri.{" "}
               <span className="headline-gradient">
-                Belum Siap Kerja?
+                Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan.
               </span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
-              Ubah kebingunganmu menjadi keahlian Full-Stack Laravel Developer
-              siap industri dalam 3 bulan. Belajar lewat real-world project,
-              mentoring 1-on-1, dan langsung bangun portfolio nyata.
+            <p className="text-base md:text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
+              Ubah kebingunganmu menjadi keahlian berstandar industri. Bangun
+              proyek riil berskala production, dapatkan bimbingan mentor 1-on-1,
+              dan amankan portofolio kesiapan kerjamu hari ini.
             </p>
 
             {/* P3: Benefit Chips */}
