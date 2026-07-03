@@ -7,6 +7,7 @@ import {
   GraduationCap,
   Briefcase,
   Award,
+  Users,
 } from "lucide-react";
 
 // ─── Types ────────────────────────────────────────────────────
@@ -74,7 +75,7 @@ export function MentorSection() {
         {/* Section Header */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 border border-violet-200 mb-6">
-            <span className="text-base">👨‍🏫</span>
+            <Users className="w-4 h-4 text-violet-700 shrink-0" />
             <span className="text-sm font-semibold text-violet-700 tracking-wide">
               Mentor & Metodologi
             </span>

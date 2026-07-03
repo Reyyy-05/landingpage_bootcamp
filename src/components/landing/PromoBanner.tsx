@@ -56,7 +56,7 @@ export function PromoBanner() {
           {/* Flash Sale badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-400/30 backdrop-blur-md border border-yellow-300/50 text-xs font-bold uppercase tracking-wider mb-3 animate-bounce">
             <Flame size={14} className="text-yellow-200" />
-            <span className="text-yellow-100">🔥 PROMO KILAT 1×24 JAM</span>
+            <span className="text-yellow-100">PROMO KILAT 1×24 JAM</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight text-white drop-shadow-md">
             Potongan Rp 150.000!

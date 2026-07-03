@@ -1,3 +1,4 @@
+import { AlertTriangle } from "lucide-react";
 import { DANGER_POINTS } from "@/constants/data";
 
 export function AgitationSection() {
@@ -7,7 +8,7 @@ export function AgitationSection() {
         {/* ── Section Header ─────────────────────────────── */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200 mb-6">
-            <span className="text-base">⚠️</span>
+            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
             <span className="text-sm font-semibold text-amber-800 tracking-wide uppercase">
               Konsekuensi Menunda
             </span>

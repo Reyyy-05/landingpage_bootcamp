@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, FolderGit2, Users, Clock } from "lucide-react";
+import { ArrowRight, FolderGit2, Users, Clock, Check } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import type { Bootcamp } from "@/types";
 
@@ -68,11 +68,11 @@ export async function HeroSection() {
             </p>
 
             {/* P3: Benefit Chips */}
-            <div className="grid grid-cols-2 gap-3 max-w-max mb-5 scroll-animate scroll-animate-delay-100">
-              <span className="chip">✓ Project Nyata</span>
-              <span className="chip">✓ Mentoring 1-on-1</span>
-              <span className="chip">✓ Career Support</span>
-              <span className="chip">✓ Job Referral</span>
+            <div className="flex flex-wrap gap-2 max-w-max mb-5 scroll-animate scroll-animate-delay-100">
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Project Nyata</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Mentoring 1-on-1</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Career Support</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Job Referral</span>
             </div>
 
             {/* CTA Buttons — P2: fix outline button visibility */}

@@ -36,7 +36,7 @@ export function ValueStackSection() {
         {/* ── Section Header ─────────────────────────────── */}
         <div className="text-center mb-14">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-50 border border-violet-200 mb-6">
-            <span className="text-base">💎</span>
+            <Sparkles className="w-4 h-4 text-violet-600 shrink-0" />
             <span className="text-sm font-semibold text-violet-700 tracking-wide">
               Inklusi Program
             </span>

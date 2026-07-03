@@ -5,6 +5,7 @@ import {
   Handshake,
   LifeBuoy,
   BookOpen,
+  Lightbulb,
 } from "lucide-react";
 import { FEATURES } from "@/constants";
 
@@ -23,7 +24,10 @@ export function FeaturesSection() {
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="section-label">💡 Solusi yang Tepat</span>
+          <span className="section-label inline-flex items-center gap-1.5">
+            <Lightbulb className="w-4 h-4 text-violet-600 shrink-0" />
+            Solusi yang Tepat
+          </span>
           <h2 className="heading-lg mt-2 mb-4">Inilah yang Membedakan Creativemu Academy</h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
             Semua masalah di atas? Kami sudah merancang solusinya satu per satu
