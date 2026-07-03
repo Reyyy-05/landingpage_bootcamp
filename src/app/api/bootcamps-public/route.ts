@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createAdminClient } from "@/lib/supabase/server";
 import type { ApiError } from "@/types";
 
 export const dynamic = "force-dynamic";
@@ -18,6 +18,17 @@ type PublicBootcamp = {
 
 export async function GET() {
   try {
+    // ── Self-healing database update for schedule ──
+    try {
+      const adminSupabase = await createAdminClient();
+      await adminSupabase
+        .from("bootcamps")
+        .update({ name: "Bootcamp Laravel Full Online (Juli-September)" })
+        .eq("name", "Bootcamp Laravel Full Online (Juni-Oktober)");
+    } catch (dbUpdateError) {
+      console.error("[bootcamps-public] self-healing update failed:", dbUpdateError);
+    }
+
     const supabase = await createClient();
     const { data, error } = await supabase
       .from("bootcamps")

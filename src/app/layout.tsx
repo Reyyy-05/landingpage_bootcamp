@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "creativemu academy",
     "digital marketing",
     "batch 1 laravel",
-    "promo juni",
+    "promo juli",
   ],
   authors: [{ name: "Creativemu Academy" }],
   creator: "Creativemu Academy",

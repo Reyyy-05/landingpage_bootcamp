@@ -12,7 +12,7 @@ export const PACKAGES = [
   {
     value: "laravel_full_online",
     label: "Bootcamp Laravel Full Online",
-    description: "Paket lengkap full online (Juni-Oktober)",
+    description: "Paket lengkap full online (Juli-September)",
     popular: true,
   },
 ] as const;
