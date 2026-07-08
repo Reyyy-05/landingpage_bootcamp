@@ -23,6 +23,14 @@ async function getActiveBootcamp(): Promise<Bootcamp | null> {
 export async function HeroSection() {
   const bootcamp = await getActiveBootcamp();
 
+  const phrase1 = "Jembatani Gap Teori dan Industri.";
+  const phrase2 = "Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan.";
+  
+  const words1 = phrase1.split(" ");
+  const words2 = phrase2.split(" ");
+  
+  let globalWordIndex = 0;
+
   return (
     <section
       id="hero"
@@ -46,15 +54,55 @@ export async function HeroSection() {
         }}
       />
 
-      <div className="container mx-auto px-4 max-w-6xl">
+      {/* Ambient Aura Glow - slow spinning JDM-inspired radial gradient */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div 
+          className="absolute -top-1/2 -left-1/2 w-[200%] h-[200%] origin-center animate-spin-slow opacity-75"
+          style={{
+            background: "radial-gradient(circle at 50% 50%, rgba(232,32,42,0.12) 0%, rgba(139,92,246,0.08) 35%, transparent 70%)",
+            filter: "blur(60px)",
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8 lg:py-12">
           {/* Left: Content */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            {/* Headline — Benefit-driven, responsive typography */}
-            <h1 className="text-3xl md:text-5xl font-bold leading-[1.15] text-slate-900 mb-4 tracking-tight scroll-animate">
-              Jembatani Gap Teori dan Industri.{" "}
-              <span className="headline-gradient">
-                Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan.
+            {/* Headline — Kinetic Heading split layout for zero hydration mismatch and screen reader support */}
+            <h1 
+              className="text-3xl md:text-5xl font-bold leading-[1.15] text-slate-900 mb-4 tracking-tight"
+              aria-label="Jembatani Gap Teori dan Industri. Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan."
+            >
+              <span aria-hidden="true" className="block">
+                {words1.map((word, i) => {
+                  const delay = globalWordIndex * 0.08;
+                  globalWordIndex++;
+                  return (
+                    <span
+                      key={`w1-${i}`}
+                      className="inline-block animate-char-fade-in opacity-0 mr-[0.25em]"
+                      style={{ animationDelay: `${delay}s` }}
+                    >
+                      {word}
+                    </span>
+                  );
+                })}
+                <span className="block mt-1 headline-gradient">
+                  {words2.map((word, i) => {
+                    const delay = globalWordIndex * 0.08;
+                    globalWordIndex++;
+                    return (
+                      <span
+                        key={`w2-${i}`}
+                        className="inline-block animate-char-fade-in opacity-0 mr-[0.25em]"
+                        style={{ animationDelay: `${delay}s` }}
+                      >
+                        {word}
+                      </span>
+                    );
+                  })}
+                </span>
               </span>
             </h1>
 
@@ -73,11 +121,11 @@ export async function HeroSection() {
               <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Job Referral</span>
             </div>
 
-            {/* CTA Buttons — P2: fix outline button visibility */}
+            {/* CTA Buttons — P2: fix outline button visibility with metallic sweep shimmer effect */}
             <div className="flex flex-col sm:flex-row gap-4 scroll-animate scroll-animate-delay-200">
               <Link
                 href="/daftar"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-all hover:shadow-lg hover:-translate-y-0.5"
+                className="group btn-shimmer inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-all hover:shadow-lg hover:-translate-y-0.5"
               >
                 Daftar Sekarang
                 <ArrowRight
@@ -89,7 +137,7 @@ export async function HeroSection() {
                 href="https://wa.me/6285177114036?text=Halo+Admin+Creativemu+Academy%2C+saya+ingin+konsultasi+tentang+program"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary inline-flex items-center justify-center"
+                className="btn-secondary btn-shimmer inline-flex items-center justify-center"
               >
                 Konsultasi Program
               </a>
@@ -110,15 +158,15 @@ export async function HeroSection() {
           </div>
         </div>
 
-        {/* P5: Revamped Stats Bar */}
+        {/* P5: Revamped Stats Bar with Staggered Spring-Pop animations */}
         <div className="mt-4 mb-4">
           <div className="stats-bar">
             <div className="stat-item">
-              <div className="stat-icon stat-icon-purple">
+              <div className="stat-icon stat-icon-purple animate-pop-bounce" style={{ animationDelay: "0.8s" }}>
                 <Users size={24} />
               </div>
               <div className="stat-text">
-                <span className="stat-number">100+</span>
+                <span className="stat-number animate-pop-bounce block" style={{ animationDelay: "0.9s" }}>100+</span>
                 <span className="stat-label">Alumni Sukses</span>
                 <span className="stat-sub">Tersebar di 30+ perusahaan</span>
               </div>
@@ -127,11 +175,11 @@ export async function HeroSection() {
             <div className="stat-divider" />
 
             <div className="stat-item">
-              <div className="stat-icon stat-icon-amber">
+              <div className="stat-icon stat-icon-amber animate-pop-bounce" style={{ animationDelay: "1.0s" }}>
                 <FolderGit2 size={24} />
               </div>
               <div className="stat-text">
-                <span className="stat-number">3+</span>
+                <span className="stat-number animate-pop-bounce block" style={{ animationDelay: "1.1s" }}>3+</span>
                 <span className="stat-label">Real Project</span>
                 <span className="stat-sub">Portfolio siap kerja</span>
               </div>
@@ -140,11 +188,11 @@ export async function HeroSection() {
             <div className="stat-divider" />
 
             <div className="stat-item">
-              <div className="stat-icon stat-icon-emerald">
+              <div className="stat-icon stat-icon-emerald animate-pop-bounce" style={{ animationDelay: "1.2s" }}>
                 <Clock size={24} />
               </div>
               <div className="stat-text">
-                <span className="stat-number">3 Bulan</span>
+                <span className="stat-number animate-pop-bounce block" style={{ animationDelay: "1.3s" }}>3 Bulan</span>
                 <span className="stat-label">Program Intensif</span>
                 <span className="stat-sub">Terstruktur & terbimbing</span>
               </div>
@@ -155,3 +203,4 @@ export async function HeroSection() {
     </section>
   );
 }
+

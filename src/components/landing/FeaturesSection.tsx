@@ -8,6 +8,7 @@ import {
   Lightbulb,
 } from "lucide-react";
 import { FEATURES } from "@/constants";
+import { HoverSpotlight } from "@/components/ui/HoverSpotlight";
 
 const ICON_MAP: Record<string, React.ElementType> = {
   Award,
@@ -40,25 +41,26 @@ export function FeaturesSection() {
           {FEATURES.map((feature, i) => {
             const Icon = ICON_MAP[feature.icon] ?? Award;
             return (
-              <div
+              <HoverSpotlight
                 key={feature.title}
                 className="card-feature scroll-animate"
                 style={{ animationDelay: `${i * 0.1}s` }}
+                glowColor="rgba(139, 92, 246, 0.08)"
               >
                 {/* Icon */}
-                <div className="size-11 rounded-xl bg-violet-50 flex items-center justify-center mb-4">
+                <div className="size-11 rounded-xl bg-violet-50 flex items-center justify-center mb-4 relative z-20">
                   <Icon className="text-violet-600" size={22} />
                 </div>
                 <h3
-                  className="font-semibold text-gray-900 mb-2"
+                  className="font-semibold text-gray-900 mb-2 relative z-20"
                   style={{ fontFamily: "var(--font-display)" }}
                 >
                   {feature.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-500 leading-relaxed relative z-20">
                   {feature.description}
                 </p>
-              </div>
+              </HoverSpotlight>
             );
           })}
         </div>

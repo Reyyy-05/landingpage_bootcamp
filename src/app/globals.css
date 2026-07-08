@@ -57,6 +57,30 @@
   --shadow-glow: 0 0 40px oklch(60% 0.22 285 / 0.15);
   --shadow-card: 0 1px 3px oklch(0% 0 0 / 0.06), 0 4px 16px oklch(0% 0 0 / 0.04);
   --shadow-card-hover: 0 4px 16px oklch(0% 0 0 / 0.1), 0 8px 32px oklch(0% 0 0 / 0.06);
+
+  /* Animations */
+  --animate-spin-slow: spin-slow 20s linear infinite;
+  --animate-shimmer-sweep: shimmer-sweep 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  --animate-pop-bounce: pop-bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  --animate-char-fade-in: char-fade-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes shimmer-sweep {
+    0% { transform: translateX(-100%) skewX(-15deg); }
+    100% { transform: translateX(200%) skewX(-15deg); }
+  }
+  @keyframes pop-bounce {
+    0% { transform: scale(0.85); opacity: 0; }
+    70% { transform: scale(1.05); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes char-fade-in {
+    0% { transform: translateY(16px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
 }
 
 /* ─── Base Styles ──────────────────────────────────────────── */
@@ -611,3 +635,25 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color-sidebar);
   color: var(--color-sidebar-foreground);
 }
+
+/* ─── Hover Spotlight Glow ──────────────────────────────────── */
+@media (hover: hover) {
+  .spotlight-glow {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .group\/spotlight:hover .spotlight-glow {
+    opacity: 1;
+  }
+}
+
+@media (hover: none) {
+  .spotlight-glow {
+    opacity: 0;
+  }
+  .group\/spotlight:active .spotlight-glow {
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+  }
+}
+
