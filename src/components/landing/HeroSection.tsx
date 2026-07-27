@@ -23,8 +23,8 @@ async function getActiveBootcamp(): Promise<Bootcamp | null> {
 export async function HeroSection() {
   const bootcamp = await getActiveBootcamp();
 
-  const phrase1 = "Jembatani Gap Teori dan Industri.";
-  const phrase2 = "Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan.";
+  const phrase1 = "Sudah Lama Belajar,";
+  const phrase2 = "Tapi Belum Siap Kerja?";
   
   const words1 = phrase1.split(" ");
   const words2 = phrase2.split(" ");
@@ -72,7 +72,7 @@ export async function HeroSection() {
             {/* Headline — Kinetic Heading split layout for zero hydration mismatch and screen reader support */}
             <h1 
               className="text-3xl md:text-5xl font-bold leading-[1.15] text-slate-900 mb-4 tracking-tight"
-              aria-label="Jembatani Gap Teori dan Industri. Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan."
+              aria-label={`${phrase1} ${phrase2}`}
             >
               <span aria-hidden="true" className="block">
                 {words1.map((word, i) => {
@@ -108,9 +108,7 @@ export async function HeroSection() {
 
             {/* Sub-headline */}
             <p className="text-base md:text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
-              Ubah kebingunganmu menjadi keahlian berstandar industri. Bangun
-              proyek riil berskala production, dapatkan bimbingan mentor 1-on-1,
-              dan amankan portofolio kesiapan kerjamu hari ini.
+              Ubah kebingunganmu menjadi keahlian Full-Stack Laravel Developer siap industri dalam 3 bulan. Belajar lewat real-world project, mentoring 1-on-1, dan langsung bangun portfolio nyata.
             </p>
 
             {/* P3: Benefit Chips */}
