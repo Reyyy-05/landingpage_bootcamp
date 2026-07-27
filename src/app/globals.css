@@ -264,52 +264,25 @@ h1, h2, h3, h4, h5, h6 {
   background: oklch(65% 0.15 285);
 }
 
-/* ─── Hero Section (P6: Reduce Whitespace) ───────────────────── */
+/* ─── Hero Section ────────────────────────────────────────────── */
 .hero-section {
-  min-height: calc(100vh - 70px);
-  padding-top: 40px;
-  padding-bottom: 60px;
+  min-height: auto;
+  padding-top: 48px;
+  padding-bottom: 40px;
 }
 
-/* ─── Headline Gradient Shimmer (P7) ─────────────────────────── */
+/* ─── Headline Gradient ──────────────────────────────────────── */
 .headline-gradient {
-  background: linear-gradient(90deg, #5B4FCF, #8B5CF6, #5B4FCF);
-  background-size: 200% auto;
+  background: linear-gradient(135deg, #4338ca, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 3s linear infinite;
 }
 
-@keyframes shimmer {
-  to { background-position: 200% center; }
-}
-
-/* Button shimmer sweep */
-@keyframes btn-shimmer {
-  0% { transform: translateX(-100%) skewX(-15deg); }
-  100% { transform: translateX(200%) skewX(-15deg); }
-}
-
+/* Button shimmer sweep (reserved for special CTAs) */
 .btn-shimmer {
   position: relative;
   overflow: hidden;
-}
-
-.btn-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    105deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.2) 45%,
-    rgba(255, 255, 255, 0.25) 50%,
-    rgba(255, 255, 255, 0.2) 55%,
-    transparent 65%
-  );
-  animation: btn-shimmer 3s ease-in-out infinite;
-  pointer-events: none;
 }
 
 /* ─── Benefit Chips (P3) ─────────────────────────────────────── */
@@ -605,10 +578,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Reduced Motion Preference ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .headline-gradient {
-    animation: none;
-  }
-
   .dot-pulse {
     animation: none;
   }
@@ -622,10 +591,6 @@ h1, h2, h3, h4, h5, h6 {
   .animate-fade-up,
   .animate-fade-in,
   .animate-float {
-    animation: none;
-  }
-
-  .btn-shimmer::after {
     animation: none;
   }
 }
