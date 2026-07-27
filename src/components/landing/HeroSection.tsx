@@ -88,7 +88,7 @@ export async function HeroSection() {
                     </span>
                   );
                 })}
-                <span className="block mt-1 headline-gradient">
+                <span className="block mt-1 text-violet-600">
                   {words2.map((word, i) => {
                     const delay = globalWordIndex * 0.08;
                     globalWordIndex++;
