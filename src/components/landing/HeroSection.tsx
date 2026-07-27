@@ -23,8 +23,8 @@ async function getActiveBootcamp(): Promise<Bootcamp | null> {
 export async function HeroSection() {
   const bootcamp = await getActiveBootcamp();
 
-  const phrase1 = "Jembatani Gap Teori dan Industri.";
-  const phrase2 = "Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan.";
+  const phrase1 = "Belajar Laravel dari Dasar Hingga Mahir.";
+  const phrase2 = "Bikin Portofolio Project & Siap Kerja dalam 3 Bulan.";
   
   const words1 = phrase1.split(" ");
   const words2 = phrase2.split(" ");
@@ -72,7 +72,7 @@ export async function HeroSection() {
             {/* Headline — Kinetic Heading split layout for zero hydration mismatch and screen reader support */}
             <h1 
               className="text-3xl md:text-5xl font-bold leading-[1.15] text-slate-900 mb-4 tracking-tight"
-              aria-label="Jembatani Gap Teori dan Industri. Siap Kerja Sebagai Full-Stack Developer dalam 3 Bulan."
+              aria-label={`${phrase1} ${phrase2}`}
             >
               <span aria-hidden="true" className="block">
                 {words1.map((word, i) => {
@@ -108,17 +108,15 @@ export async function HeroSection() {
 
             {/* Sub-headline */}
             <p className="text-base md:text-lg text-slate-600 mb-3 leading-relaxed max-w-xl scroll-animate scroll-animate-delay-100">
-              Ubah kebingunganmu menjadi keahlian berstandar industri. Bangun
-              proyek riil berskala production, dapatkan bimbingan mentor 1-on-1,
-              dan amankan portofolio kesiapan kerjamu hari ini.
+              Pelatihan intensif berbasis praktik langsung. Kamu akan dibimbing mentor praktisi untuk menyelesaikan proyek web mandiri dan menyusun portofolio yang siap dipakai melamar kerja.
             </p>
 
             {/* P3: Benefit Chips */}
             <div className="flex flex-wrap gap-2 max-w-max mb-5 scroll-animate scroll-animate-delay-100">
-              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Project Nyata</span>
-              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Mentoring 1-on-1</span>
-              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Career Support</span>
-              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Job Referral</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Praktik Langsung</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Bimbingan Mentor</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Portofolio Project</span>
+              <span className="chip inline-flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-violet-600 shrink-0" /> Rekomendasi Kerja</span>
             </div>
 
             {/* CTA Buttons — P2: fix outline button visibility with metallic sweep shimmer effect */}
