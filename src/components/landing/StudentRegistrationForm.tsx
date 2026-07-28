@@ -137,7 +137,7 @@ export function StudentRegistrationForm({
       workplace: "",
       job_title: "",
       bootcamp_id: defaultBootcampId || "",
-      package_selected: "REGULER",
+      package_selected: "reguler",
       voucher_code: "",
     },
   });
@@ -150,12 +150,13 @@ export function StudentRegistrationForm({
   const FALLBACK_BOOTCAMP: Bootcamp = {
     id: "fallback-laravel-batch-1",
     name: "Bootcamp Laravel Web Developer",
-    slug: "laravel-web-developer",
+    program_type: "bootcamp",
     description: "Pelatihan intensif 3 Bulan siap kerja",
     batch_number: 1,
     start_date: new Date().toISOString(),
     end_date: new Date().toISOString(),
-    registration_deadline: new Date().toISOString(),
+    registration_open: new Date().toISOString(),
+    registration_close: new Date().toISOString(),
     max_capacity: 50,
     location: "Full Online",
     price_reguler: 750_000,
@@ -219,7 +220,7 @@ export function StudentRegistrationForm({
     toast.error("Mohon lengkapi semua field yang wajib diisi dengan benar.");
 
     Object.entries(formErrors).forEach(([key, err]) => {
-      if (err?.message) {
+      if (err && 'message' in err) {
         analytics.trackValidationError(key, String(err.message));
       }
     });
@@ -241,7 +242,7 @@ export function StudentRegistrationForm({
 
   return (
     <form
-      onSubmit={handleSubmit(onSubmit, onError)}
+      onSubmit={handleSubmit(onSubmit as any, onError as any)}
       className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
     >
       {/* Form header */}
@@ -255,24 +256,22 @@ export function StudentRegistrationForm({
       </div>
 
       <div className="p-8 flex flex-col gap-6">
-        {/* ─── Program Selection ───────────────────────────── */}
-        <div>
-          <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
-            Program Pilihan
-          </h3>
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-              Program Bootcamp <span className="text-red-500 ml-1">*</span>
-            </label>
-            {isLoadingBootcamps ? (
-              <div className="flex items-center gap-2 text-sm text-gray-500 py-3">
-                <Loader2 size={16} className="animate-spin text-violet-600" />
-                Memuat data program...
-              </div>
-            ) : (
+        {/* Loading state for bootcamps */}
+        {isLoadingBootcamps ? (
+          <div className="py-8 flex items-center justify-center text-violet-600 gap-2">
+            <Loader2 className="animate-spin" size={24} />
+            <span className="text-sm font-medium">Memuat data program...</span>
+          </div>
+        ) : (
+          <>
+            {/* Program Selection Dropdown */}
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                Program Bootcamp yang Dipilih <span className="text-red-500">*</span>
+              </label>
               <select
                 {...register("bootcamp_id")}
-                className={errors.bootcamp_id ? inputErrorClass : inputClass}
+                className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm focus:outline-none focus:ring-4 focus:ring-violet-600/10 focus:border-violet-600"
               >
                 {bootcamps.map((b) => (
                   <option key={b.id} value={b.id}>
@@ -280,39 +279,44 @@ export function StudentRegistrationForm({
                   </option>
                 ))}
               </select>
-            )}
-            <FieldError message={errors.bootcamp_id?.message} />
-          </div>
-        </div>
+              {errors.bootcamp_id && (
+                <p className="mt-1.5 text-sm text-red-500 flex items-center gap-1">
+                  <AlertCircle size={13} />
+                  {errors.bootcamp_id.message}
+                </p>
+              )}
+            </div>
 
-        {/* ─── SECTION 1: Personal Information ─────────────── */}
-        <div>
-          <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
-            Data Pribadi
-          </h3>
-          <PersonalInformationFields register={register} errors={errors} />
-        </div>
+            {/* ─── SECTION 1: Personal Information ──────────────── */}
+            <div>
+              <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
+                Data Pribadi
+              </h3>
+              <PersonalInformationFields register={register} errors={errors} />
+            </div>
 
-        {/* ─── SECTION 2: Status & Academic Background ──────── */}
-        <div>
-          <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
-            Status & Latar Belakang
-          </h3>
-          <StatusSpecificFields control={control} register={register} errors={errors} />
-        </div>
+            {/* ─── SECTION 2: Status & Academic Background ──────── */}
+            <div>
+              <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
+                Status & Latar Belakang
+              </h3>
+              <StatusSpecificFields control={control as any} register={register} errors={errors} />
+            </div>
 
-        {/* ─── SECTION 3: Voucher & Promo ──────────────────── */}
-        <div>
-          <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
-            Voucher / Kode Promo
-          </h3>
-          <VoucherSection
-            control={control}
-            register={register}
-            errors={errors}
-            setValue={setValue}
-          />
-        </div>
+            {/* ─── SECTION 3: Voucher & Promo ──────────────────── */}
+            <div>
+              <h3 className="text-sm font-bold text-violet-700 uppercase tracking-wider mb-4 pb-2 border-b border-violet-100">
+                Voucher / Kode Promo
+              </h3>
+              <VoucherSection
+                control={control as any}
+                register={register}
+                errors={errors}
+                setValue={setValue}
+              />
+            </div>
+          </>
+        )}
 
         {/* Submit Button */}
         <div className="pt-4 border-t border-gray-100">

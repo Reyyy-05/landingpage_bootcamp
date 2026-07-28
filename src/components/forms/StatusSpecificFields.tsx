@@ -31,7 +31,7 @@ const inputErrorClass =
   "w-full px-4 py-3 rounded-xl border border-red-300 bg-red-50 text-gray-900 placeholder-gray-400 text-sm transition-all duration-300 ease-in-out focus:outline-none focus:ring-4 focus:ring-red-400/10 focus:border-red-400";
 
 interface StatusSpecificFieldsProps {
-  control: Control<StudentSchema>;
+  control: Control<any>;
   register: UseFormRegister<StudentSchema>;
   errors: FieldErrors<StudentSchema>;
 }
