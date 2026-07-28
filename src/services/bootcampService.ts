@@ -6,7 +6,6 @@ export async function fetchPublicBootcamps(): Promise<Bootcamp[]> {
     const res = await fetch("/api/bootcamps-public", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      next: { revalidate: 60 },
     });
 
     if (!res.ok) {

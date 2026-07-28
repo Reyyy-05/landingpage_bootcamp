@@ -3,7 +3,6 @@ import { createAdminClient } from "@/lib/supabase/server";
 import { studentSchema } from "@/schemas/studentSchema";
 import { buildWALink, buildStudentWAMessage, formatWANumber } from "@/lib/utils";
 import { logger } from "@/lib/logger";
-import { analytics } from "@/lib/analytics";
 import type { ApiError, ApiSuccess } from "@/types";
 
 export async function POST(request: NextRequest) {
@@ -174,7 +173,6 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     logger.error("Unexpected error in students POST route", "StudentsApiRoute", error);
-    analytics.trackApiError("/api/students", 500, error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json<ApiError>(
       { error: "Terjadi kesalahan server. Coba lagi." },
       { status: 500 }
