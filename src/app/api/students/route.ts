@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/server";
 import { studentSchema } from "@/schemas/studentSchema";
 import { buildWALink, buildStudentWAMessage, formatWANumber } from "@/lib/utils";
+import { logger } from "@/lib/logger";
+import { analytics } from "@/lib/analytics";
 import type { ApiError, ApiSuccess } from "@/types";
 
 export async function POST(request: NextRequest) {
@@ -141,7 +143,7 @@ export async function POST(request: NextRequest) {
           { status: 409 }
         );
       }
-      console.error("[students/route] insert error:", insertError);
+      logger.error("Database insert error", "StudentsApiRoute", insertError);
       return NextResponse.json<ApiError>(
         { error: `Database Error: ${insertError.message || insertError.details || "Gagal menyimpan data"}` },
         { status: 500 }
@@ -171,7 +173,8 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    console.error("[students/route] unexpected error:", error);
+    logger.error("Unexpected error in students POST route", "StudentsApiRoute", error);
+    analytics.trackApiError("/api/students", 500, error instanceof Error ? error.message : "Unknown error");
     return NextResponse.json<ApiError>(
       { error: "Terjadi kesalahan server. Coba lagi." },
       { status: 500 }

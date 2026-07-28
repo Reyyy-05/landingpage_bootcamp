@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const baseLogos = [
@@ -24,8 +25,6 @@ const baseLogos = [
   { name: "SMKN 1 Tempel", src: "/logos/SMKN 1 Tempel.jpg", width: 110 },
   { name: "SMK 17 Seyegan", src: "/logos/SMK 17 Seyegan.png", width: 110 },
   { name: "Nuansa Global", src: "/logos/Nuansa Global.jpg", width: 110 },
-  // ── Mitra Baru (file BELUM ada — tambahkan setelah user upload) ──
-  // { name: "SMKN 1 Gedangsari", src: "/logos/smkn1-gedangsari.png", width: 110 },
 ];
 
 const logos = [
@@ -40,9 +39,12 @@ function LogoCard({ name, src, width }: { name: string; src: string; width: numb
   return (
     <div className="flex items-center justify-center bg-white border border-slate-200 rounded-xl px-4 py-4 min-w-[150px] w-[150px] h-[80px] transition-all duration-200 hover:border-violet-300 hover:shadow-[0_4px_20px_rgba(124,58,237,0.12)] hover:-translate-y-0.5 shrink-0 group">
       {!imgError ? (
-        <img
+        <Image
           src={src}
           alt={`Logo ${name}`}
+          width={width}
+          height={40}
+          unoptimized
           className="object-contain max-h-[40px] w-auto transition-all duration-300 mix-blend-multiply"
           style={{ maxWidth: width }}
           onError={() => setImgError(true)}

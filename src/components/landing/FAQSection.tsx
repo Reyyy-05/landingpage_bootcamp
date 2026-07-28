@@ -7,6 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { MessageCircleQuestion } from "lucide-react";
+import { analytics } from "@/lib/analytics";
 
 const faqs = [
   {
@@ -64,7 +65,19 @@ export function FAQSection() {
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 md:p-8">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion 
+            type="single" 
+            collapsible 
+            className="w-full"
+            onValueChange={(val) => {
+              if (val) {
+                const idx = parseInt(val.replace("item-", ""), 10);
+                if (faqs[idx]) {
+                  analytics.trackFAQToggle(faqs[idx].question, true);
+                }
+              }
+            }}
+          >
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
@@ -96,6 +109,7 @@ export function FAQSection() {
               href="https://wa.me/6285177114036?text=Halo+Admin+Creativemu+Academy%2C+saya+ingin+bertanya+lebih+lanjut+tentang+bootcamp"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => analytics.trackCTA("Chat via WhatsApp Sekarang", "FAQSection")}
               className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white text-violet-700 font-bold hover:bg-violet-50 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
               Chat via WhatsApp Sekarang

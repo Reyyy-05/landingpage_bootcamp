@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/server";
 import type { ApiError, ApiSuccess, VoucherValidationResult } from "@/types";
 import { formatCurrency } from "@/lib/utils";
+import { logger } from "@/lib/logger";
 
 export async function POST(request: NextRequest) {
   try {
@@ -88,7 +89,7 @@ export async function POST(request: NextRequest) {
       },
     });
   } catch (error) {
-    console.error("[vouchers/validate] error:", error);
+    logger.error("Voucher validate API error", "VoucherValidateRoute", error);
     return NextResponse.json<ApiError>(
       { error: "Terjadi kesalahan server" },
       { status: 500 }

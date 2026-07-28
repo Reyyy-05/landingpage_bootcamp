@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, FolderGit2, Users, Clock, Check } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 import type { Bootcamp } from "@/types";
@@ -146,9 +147,13 @@ export async function HeroSection() {
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end scroll-animate scroll-animate-delay-300">
             <div className="relative w-full">
               <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
+                <Image 
                   src="/images/hero-frustrated.jpeg" 
                   alt="Frustrasi belajar coding sendiri — error terus tanpa mentor" 
+                  width={600}
+                  height={400}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 45vw"
                   className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>

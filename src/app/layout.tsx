@@ -19,6 +19,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://creativemuacademy.com";
+
 export const metadata: Metadata = {
   title: {
     default: "Creativemu Academy | Batch 1 Laravel Web Developer",
@@ -38,14 +40,14 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Creativemu Academy" }],
   creator: "Creativemu Academy",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://landingpagebootcamp-omega.vercel.app'),
+  metadataBase: new URL(siteUrl),
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://landingpagebootcamp-omega.vercel.app",
+    url: siteUrl,
     siteName: "Creativemu Academy",
     title: "Creativemu Academy | Batch 1 Laravel Web Developer",
     description:
@@ -93,7 +95,9 @@ export default function RootLayout({
             duration: 4000,
           }}
         />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
         {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
           <Script id="meta-pixel" strategy="afterInteractive">
             {`
