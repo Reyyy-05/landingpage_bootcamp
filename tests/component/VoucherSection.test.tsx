@@ -13,6 +13,6 @@ describe("VoucherSection Component (src/components/forms/VoucherSection.tsx)", (
   it("renders voucher code label and input placeholder", () => {
     render(<TestWrapper />);
     expect(screen.getByText(/Kode Voucher \/ Promo/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/Contoh: CREATIVEMU100/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/Contoh: MERDEKA81/i)).toBeInTheDocument();
   });
 });

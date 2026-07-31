@@ -16,13 +16,41 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const searchCode = code.trim().toUpperCase();
+
+    // Special Theme Vouchers (HUT RI ke-81)
+    if (searchCode === "MERDEKA81" || searchCode === "MERDEKA") {
+      return NextResponse.json<ApiSuccess<VoucherValidationResult & { discountLabel: string }>>({
+        data: {
+          valid: true,
+          voucher: {
+            id: "voucher-merdeka-81",
+            code: "MERDEKA81",
+            bootcamp_id: null,
+            description: "Promo Spesial HUT RI ke-81 — Cukup Bayar 81%",
+            discount_type: "percentage",
+            discount_value: 19,
+            max_uses: 1000,
+            used_count: 81,
+            valid_from: null,
+            valid_until: "2026-08-17T23:59:59+07:00",
+            is_active: true,
+            created_by: null,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          },
+          discountLabel: "Promo Kemerdekaan RI Aktif (Cukup Bayar 81%!)",
+        },
+      });
+    }
+
     const supabase = await createAdminClient();
 
     // Look up voucher (read-only check — don't increment yet)
     const { data: voucher, error } = await supabase
       .from("vouchers")
       .select("*")
-      .eq("code", code.trim().toUpperCase())
+      .eq("code", searchCode)
       .single();
 
     if (error || !voucher) {

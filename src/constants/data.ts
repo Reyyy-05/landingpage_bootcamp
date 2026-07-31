@@ -50,8 +50,8 @@ export interface Testimonial {
 
 // ─── Offer Deadline ───────────────────────────────────────────
 // Hard deadline for the countdown timer.
-// July 6, 2026 at 23:59:59 WIB (UTC+7)
-export const OFFER_DEADLINE = "2026-07-06T23:59:59+07:00";
+// August 17, 2026 at 23:59:59 WIB (HUT RI ke-81)
+export const OFFER_DEADLINE = "2026-08-17T23:59:59+07:00";
 
 /** Toggle for the flash sale promo banner on /daftar. Set to true to activate. */
 export const IS_FLASH_SALE_ACTIVE = false;

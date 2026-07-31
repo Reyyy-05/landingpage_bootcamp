@@ -105,7 +105,7 @@ export function VoucherSection({ control, register, errors, setValue }: VoucherS
         <input
           {...register("voucher_code")}
           type="text"
-          placeholder="Contoh: CREATIVEMU100"
+          placeholder="Contoh: MERDEKA81"
           className={`${
             errors.voucher_code || voucherState.status === "invalid"
               ? inputErrorClass

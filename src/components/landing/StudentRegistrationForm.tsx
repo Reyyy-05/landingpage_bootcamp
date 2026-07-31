@@ -138,7 +138,7 @@ export function StudentRegistrationForm({
       job_title: "",
       bootcamp_id: defaultBootcampId || "",
       package_selected: "reguler",
-      voucher_code: "",
+      voucher_code: "MERDEKA81",
     },
   });
 
