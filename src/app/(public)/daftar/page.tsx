@@ -23,7 +23,7 @@ function FormFallback() {
 
 export default function DaftarPage() {
   return (
-    <div className="min-h-screen landing-bg py-20">
+    <div className="min-h-screen landing-bg pt-28 pb-20 sm:pt-32 sm:pb-24">
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="text-center mb-10">
           <span className="section-label">Bergabung Sekarang</span>

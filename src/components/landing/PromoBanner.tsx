@@ -39,43 +39,46 @@ export function PromoBanner() {
   }, []);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 via-rose-600 to-red-700 p-6 sm:p-8 mb-10 shadow-xl border border-red-400/40 text-white">
-      {/* Animated background pulse */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-red-400/20 animate-pulse" />
-      
-      {/* Background decorations */}
-      <div className="absolute top-0 right-0 -translate-y-10 translate-x-10 opacity-10">
-        <Award size={160} />
-      </div>
-      <div className="absolute bottom-0 left-0 translate-y-6 -translate-x-6 opacity-10">
-        <Sparkles size={120} />
+    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-red-600 via-rose-600 to-red-700 p-5 sm:p-7 mb-8 shadow-xl border border-red-500/50 text-white">
+      {/* Subtle decorative background glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white/15 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+
+      {/* Decorative icon */}
+      <div className="absolute top-2 right-4 opacity-10 pointer-events-none">
+        <Award size={120} />
       </div>
 
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="text-center md:text-left flex-1">
-          {/* HUT RI Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/40 text-xs font-bold uppercase tracking-wider mb-3 animate-bounce">
-            <span className="text-base leading-none">🇮🇩</span>
-            <span className="text-white font-extrabold">PROMO SPESIAL HUT RI KE-81</span>
+      <div className="relative z-10 flex flex-col gap-5">
+        {/* Top Header Block */}
+        <div className="text-center sm:text-left">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-[11px] sm:text-xs font-extrabold uppercase tracking-wider mb-2.5 shadow-sm">
+            <span className="text-sm leading-none">🇮🇩</span>
+            <span className="text-white">PROMO SPESIAL HUT RI KE-81</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold mb-2 tracking-tight text-white drop-shadow-md">
+
+          <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-white leading-tight mb-2">
             Promo Kemerdekaan: Cukup Bayar 81%!
           </h2>
-          <p className="text-red-50 text-sm sm:text-base leading-relaxed">
+
+          <p className="text-red-100 text-xs sm:text-sm leading-relaxed max-w-xl">
             Sambut semangat kemerdekaan dengan tingkatkan skill coding! Gunakan kode voucher{" "}
-            <span className="inline-block bg-white text-red-700 font-mono font-extrabold px-2.5 py-0.5 rounded shadow-md mx-1 tracking-wider">
+            <span className="inline-block bg-white text-red-700 font-mono font-extrabold px-2 py-0.5 rounded shadow-sm mx-0.5 tracking-wider text-xs sm:text-sm">
               MERDEKA81
             </span>{" "}
-            untuk mendapatkan promo spesial — Anda hanya perlu membayar 81% saja!
+            untuk klaim promo — Anda hanya perlu membayar 81% saja!
           </p>
         </div>
 
-        <div className="flex flex-col items-center shrink-0">
-          <div className="flex items-center gap-2 text-red-100 text-sm mb-3 font-medium">
-            <Timer size={16} />
-            <span>Berakhir dalam:</span>
+        {/* Timer Section - Clean Row / Grid */}
+        <div className="pt-4 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-red-100 text-xs sm:text-sm font-medium">
+            <Timer size={16} className="text-yellow-300 animate-pulse" />
+            <span>Berakhir Dalam:</span>
           </div>
-          <div className="flex gap-3">
+
+          <div className="grid grid-cols-4 gap-2 sm:gap-2.5 w-full sm:w-auto">
             {[
               { label: "Hari", value: timeLeft.days },
               { label: "Jam", value: timeLeft.hours },
@@ -83,12 +86,12 @@ export function PromoBanner() {
               { label: "Detik", value: timeLeft.seconds },
             ].map((item) => (
               <div key={item.label} className="flex flex-col items-center">
-                <div className="w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center bg-black/25 backdrop-blur-md rounded-lg border border-white/30 shadow-inner mb-1">
-                  <span className="text-xl sm:text-2xl font-bold font-mono">
+                <div className="w-full sm:w-12 h-11 sm:h-13 flex items-center justify-center bg-black/25 backdrop-blur-md rounded-xl border border-white/20 shadow-inner px-2">
+                  <span className="text-sm sm:text-lg font-bold font-mono text-white">
                     {item.value.toString().padStart(2, "0")}
                   </span>
                 </div>
-                <span className="text-[10px] sm:text-xs text-red-100 uppercase font-medium tracking-wider">
+                <span className="text-[9px] sm:text-[10px] text-red-100 uppercase font-semibold tracking-wider mt-1">
                   {item.label}
                 </span>
               </div>
