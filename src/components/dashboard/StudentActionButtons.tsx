@@ -48,26 +48,26 @@ export function StudentActionButtons({
 
   return (
     <>
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Aksi</CardTitle>
+      <Card className="shadow-sm border border-slate-200">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-base font-semibold text-slate-900">Aksi Pendaftaran</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           {isPending && (
-            <div className="flex gap-2">
+            <div className="grid grid-cols-2 gap-2.5">
               <Button 
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white" 
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium shadow-sm transition-all text-xs sm:text-sm px-2" 
                 onClick={() => setIsConfirmOpen(true)}
               >
-                <CheckCircle className="mr-2 h-4 w-4" />
+                <CheckCircle className="mr-1.5 h-4 w-4 shrink-0" />
                 Konfirmasi
               </Button>
               <Button 
                 variant="destructive" 
-                className="w-full"
+                className="w-full font-medium shadow-sm transition-all text-xs sm:text-sm px-2"
                 onClick={() => setIsRejectOpen(true)}
               >
-                <XCircle className="mr-2 h-4 w-4" />
+                <XCircle className="mr-1.5 h-4 w-4 shrink-0" />
                 Tolak
               </Button>
             </div>
@@ -75,19 +75,19 @@ export function StudentActionButtons({
           
           <Button 
             variant="outline" 
-            className="w-full border-green-200 text-green-700 hover:bg-green-50"
+            className="w-full border-emerald-200 text-emerald-700 hover:bg-emerald-50 hover:text-emerald-800 font-medium text-xs sm:text-sm"
             asChild
           >
             <a href={waLink} target="_blank" rel="noopener noreferrer">
-              <MessageCircle className="mr-2 h-4 w-4" />
+              <MessageCircle className="mr-2 h-4 w-4 text-emerald-600 shrink-0" />
               Hubungi via WhatsApp
             </a>
           </Button>
 
           {student.admin_notes && (
-            <div className="mt-4 p-3 bg-slate-50 border rounded-lg text-sm">
-              <p className="font-medium mb-1">Catatan Admin:</p>
-              <p className="text-muted-foreground">{student.admin_notes}</p>
+            <div className="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs">
+              <p className="font-semibold text-slate-800 mb-1">Catatan Admin:</p>
+              <p className="text-slate-600 leading-relaxed">{student.admin_notes}</p>
             </div>
           )}
         </CardContent>

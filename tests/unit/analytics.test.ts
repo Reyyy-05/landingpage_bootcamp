@@ -2,10 +2,10 @@ import { describe, it, expect, vi } from "vitest";
 import { analytics } from "@/lib/analytics";
 
 describe("Analytics Layer Abstraction (src/lib/analytics.ts)", () => {
-  it("provides trackCTA, trackFormOpen, trackSubmit, trackSuccess, and trackWhatsAppRedirect methods", () => {
+  it("provides trackCTA, trackFormStart, trackFormSubmit, trackSuccess, and trackWhatsAppRedirect methods", () => {
     expect(typeof analytics.trackCTA).toBe("function");
-    expect(typeof analytics.trackFormOpen).toBe("function");
-    expect(typeof analytics.trackSubmit).toBe("function");
+    expect(typeof analytics.trackFormStart).toBe("function");
+    expect(typeof analytics.trackFormSubmit).toBe("function");
     expect(typeof analytics.trackSuccess).toBe("function");
     expect(typeof analytics.trackWhatsAppRedirect).toBe("function");
   });

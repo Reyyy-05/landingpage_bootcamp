@@ -49,6 +49,21 @@ interface StudentTableData {
   package_selected: string;
 }
 
+function formatPackageName(pkg?: string): string {
+  if (!pkg) return "N/A";
+  const map: Record<string, string> = {
+    reguler: "Reguler",
+    premium: "Premium",
+    intensif: "Intensif",
+    laravel_full_online: "Laravel Full Online",
+    Laravel_full_online: "Laravel Full Online",
+    REGULER: "Reguler",
+    PREMIUM: "Premium",
+    INTENSIF: "Intensif",
+  };
+  return map[pkg] || pkg.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 export function StudentsTable({ data }: { data: StudentTableData[] }) {
   const router = useRouter();
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -72,18 +87,20 @@ export function StudentsTable({ data }: { data: StudentTableData[] }) {
       },
       cell: ({ row }) => (
         <div className="flex flex-col">
-          <span className="font-medium text-slate-900">{row.original.full_name}</span>
+          <span className="font-semibold text-slate-900">{row.original.full_name}</span>
           <span className="text-xs text-slate-500">{row.original.email}</span>
         </div>
       ),
     },
     {
       accessorKey: "bootcamp_name",
-      header: "Program",
+      header: "Program & Paket",
       cell: ({ row }) => (
         <div className="flex flex-col">
-          <span className="text-sm">{row.original.bootcamp_name}</span>
-          <span className="text-xs text-slate-500">Batch {row.original.bootcamp_batch} • Paket {row.original.package_selected}</span>
+          <span className="text-sm font-medium text-slate-900">{row.original.bootcamp_name}</span>
+          <span className="text-xs text-slate-500">
+            Batch {row.original.bootcamp_batch || 1} • {formatPackageName(row.original.package_selected)}
+          </span>
         </div>
       ),
     },

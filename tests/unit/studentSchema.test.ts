@@ -10,12 +10,13 @@ describe("Student Validation Schema (src/schemas/studentSchema.ts)", () => {
     birth_date: "2005-05-15",
     address: "Jl. Malioboro No. 12, Sleman",
     instagram_handle: "ahmadrizky",
-    gender: "L" as const,
+    gender: "laki-laki" as const,
     student_status: "PELAJAR" as const,
     school_name: "SMKN 1 Bantul",
-    bootcamp_id: "bootcamp-laravel-1",
-    package_selected: "REGULER" as const,
-    voucher_code: "CREATIVEMU100",
+    major: "Teknik Komputer",
+    bootcamp_id: "123e4567-e89b-12d3-a456-426614174000",
+    package_selected: "reguler" as const,
+    voucher_code: "MERDEKA81",
   };
 
   const validMahasiswaData = {
@@ -26,12 +27,12 @@ describe("Student Validation Schema (src/schemas/studentSchema.ts)", () => {
     birth_date: "2003-08-20",
     address: "Jl. Kaliurang Km 5",
     instagram_handle: "@sitirahma",
-    gender: "P" as const,
+    gender: "perempuan" as const,
     student_status: "MAHASISWA" as const,
     university_name: "Universitas Gadjah Mada",
     major: "Teknik Informatika",
-    bootcamp_id: "bootcamp-laravel-1",
-    package_selected: "REGULER" as const,
+    bootcamp_id: "123e4567-e89b-12d3-a456-426614174000",
+    package_selected: "reguler" as const,
   };
 
   it("validates correct Pelajar submission payload", () => {

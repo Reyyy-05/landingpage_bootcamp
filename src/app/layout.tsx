@@ -19,24 +19,24 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://creativemuacademy.com";
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://laravel.creativemuacademy.com";
 
 export const metadata: Metadata = {
   title: {
-    default: "Creativemu Academy | Batch 1 Laravel Web Developer",
+    default: "Bootcamp Laravel Web Developer | Creativemu Academy",
     template: "%s | Creativemu Academy",
   },
   description:
-    "Ayo gabung di Batch 1 Laravel Web Developer 3 Bulan. Biaya investasi hanya Rp 750.000 saja! Kuota terbatas.",
+    "Promo Kemerdekaan RI Ke-81: Cukup Bayar 81%! Program Akselerasi 3 Bulan Siap Kerja dengan 3 Proyek Portfolio Real Production-Grade.",
   keywords: [
     "bootcamp laravel",
     "fullstack developer",
     "portfolio developer",
     "belajar coding jogja",
     "creativemu academy",
-    "digital marketing",
     "batch 1 laravel",
-    "promo juli",
+    "promo kemerdekaan",
+    "hut ri ke 81",
   ],
   authors: [{ name: "Creativemu Academy" }],
   creator: "Creativemu Academy",
@@ -49,24 +49,25 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: siteUrl,
     siteName: "Creativemu Academy",
-    title: "Creativemu Academy | Batch 1 Laravel Web Developer",
+    title: "Bootcamp Laravel Web Developer | Creativemu Academy",
     description:
-      "Kini hanya Rp 750.000 untuk kelas akselerasi Laravel Web Developer 3 Bulan!",
+      "Promo Kemerdekaan RI Ke-81: Cukup Bayar 81%! Program Akselerasi 3 Bulan Siap Kerja dengan 3 Proyek Portfolio Real Production-Grade.",
     images: [
       {
-        url: "/icon.png",
-        width: 512,
-        height: 512,
-        alt: "Logo Creativemu Academy",
+        url: "/images/og-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Bootcamp Laravel Web Developer Creativemu Academy",
+        type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Creativemu Academy | Batch 1 Laravel Web Developer",
+    title: "Bootcamp Laravel Web Developer | Creativemu Academy",
     description:
-      "Kini hanya Rp 750.000 untuk kelas akselerasi Laravel Web Developer 3 Bulan!",
-    images: ["/icon.png"],
+      "Promo Kemerdekaan RI Ke-81: Cukup Bayar 81%! Program Akselerasi 3 Bulan Siap Kerja dengan 3 Proyek Portfolio Real Production-Grade.",
+    images: ["/images/og-banner.jpg"],
   },
   icons: {
     icon: "/icon.png",

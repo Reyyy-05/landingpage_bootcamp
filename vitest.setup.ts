@@ -1,4 +1,8 @@
+import React from "react";
+import { vi } from "vitest";
 import "@testing-library/jest-dom";
+
+(globalThis as any).React = React;
 
 // Mock Next.js navigation
 vi.mock("next/navigation", () => ({
