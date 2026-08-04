@@ -19,7 +19,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL || "https://laravel.creativemuacademy.com";
+const siteUrl = "https://laravel.creativemuacademy.com";
 
 export const metadata: Metadata = {
   title: {
