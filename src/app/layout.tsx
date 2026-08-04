@@ -54,10 +54,17 @@ export const metadata: Metadata = {
       "Promo Kemerdekaan RI Ke-81: Cukup Bayar 81%! Program Akselerasi 3 Bulan Siap Kerja dengan 3 Proyek Portfolio Real Production-Grade.",
     images: [
       {
-        url: "/images/og-banner.jpg",
+        url: `${siteUrl}/images/og-banner.jpg`,
         width: 1200,
         height: 630,
-        alt: "Bootcamp Laravel Web Developer Creativemu Academy",
+        alt: "Creativemu Academy - Bootcamp Laravel Web Developer Promo Kemerdekaan",
+        type: "image/jpeg",
+      },
+      {
+        url: `${siteUrl}/images/og-square.jpg`,
+        width: 1080,
+        height: 1080,
+        alt: "Promo HUT RI Ke-81 Bootcamp Laravel Web Developer",
         type: "image/jpeg",
       },
     ],
@@ -67,7 +74,7 @@ export const metadata: Metadata = {
     title: "Bootcamp Laravel Web Developer | Creativemu Academy",
     description:
       "Promo Kemerdekaan RI Ke-81: Cukup Bayar 81%! Program Akselerasi 3 Bulan Siap Kerja dengan 3 Proyek Portfolio Real Production-Grade.",
-    images: ["/images/og-banner.jpg"],
+    images: [`${siteUrl}/images/og-banner.jpg`],
   },
   icons: {
     icon: "/icon.png",
